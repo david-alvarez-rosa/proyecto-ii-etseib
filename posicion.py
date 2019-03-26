@@ -1,4 +1,3 @@
-# TODO ESTA EN GRADOS!
 from math import sin, cos, acos, asin, pi, sqrt
 
 
@@ -7,7 +6,7 @@ def resolverSistemaGeneral(p1, p2, d1, d2):
     Resuelve el sistema:
         p1 = d1*cos(b1) + d2*cos(b2)
         p2 = d1*sin(b1) + d2*sin(b2)
-    Donde d1, d2, p1 y p2 son parámetros y b1, b2 son los ángulos a obtener.
+        Donde d1, d2, p1 y p2 son parámetros y b1, b2 son los ángulos a obtener.
     """
     c1 = p1*p1 + p2*p2 - d1*d1 + d2*d2
     c2 = 2*d2*p1
@@ -108,22 +107,25 @@ dy = 24.22
 
 
 # ---------------- Prueba ---------------------
+def prueba(px, py, h):
+    # Sistema 1.
+    phi1, phi4 = resolverSistema1(px, py, h)
+    # Sistema 2.
+    phi2, phi3 = resolverSistema2(phi1, phi4)
+    return phi1, phi2, phi3, phi4
+
+
 px = 200
 py = 60
 h = 0
 
-# Sistema 1.
-phi1, phi4 = resolverSistema1(px, py, h)
 
-# Sistema 2.
-phi2, phi3 = resolverSistema2(phi1, phi4)
+# # Mostrar resultados.
+# print("px:", px)
+# print("py:", py)
+# print("h:", h, "\n")
 
-# Mostrar resultados.
-print("px:", px)
-print("py:", py)
-print("h:", h, "\n")
-
-print("Phi1:", (phi1*180)/pi)
-print("Phi2:", (phi2*180)/pi)
-print("Phi3:", (phi3*180)/pi)
-print("Phi4:", (phi4*180)/pi)
+# print("Phi1:", (phi1*180)/pi)
+# print("Phi2:", (phi2*180)/pi)
+# print("Phi3:", (phi3*180)/pi)
+# print("Phi4:", (phi4*180)/pi)
