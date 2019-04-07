@@ -1,131 +1,128 @@
-from math import sin, cos, acos, asin, pi, sqrt
 
+#TODO ESTA EN GRADOS!
 
-def resolverSistemaGeneral(p1, p2, d1, d2):
-    """
-    Resuelve el sistema:
-        p1 = d1*cos(b1) + d2*cos(b2)
-        p2 = d1*sin(b1) + d2*sin(b2)
-        Donde d1, d2, p1 y p2 son parámetros y b1, b2 son los ángulos a obtener.
-    """
-    c1 = p1*p1 + p2*p2 - d1*d1 + d2*d2
-    c2 = 2*d2*p1
-    c3 = 2*d2*p2
-    c4 = c2*c2 + c3*c3
-    c5 = 2*c1*c2
-    c6 = c1*c1 - c3*c3
+def sol(p1,p2,d1,d2):
+	
+	#P1=d1*cos(B1)+d2*cos(B2)	
+	#P2=d1*sin(B1)+d2*sin(B2)
 
-    if (c5*c5 - 4*c4*c6 < 0):
-        print("RAIZ COMPLEJA")
-        return []
+	c1=p1^2+p2^2-d1^2+d2^2
+	c2=2*d2*p1
+	c3=2*d2*p2
+	c4=c2^2+c3^2
+	c5=2c1*c2
+	c6=c1^2-c3^2
+	
+	x1=(c5+sqrt(c5^2-4*c4*c6))/(2*c4)
+	x2=0
+	w=[]
+	if abs(x1)<=1:
+		w.append([arccos(x1),-arccos(x1)])
+	
+	if abs(x2)<=1:
+		w.append([arccos(x2),-arccos(x2)])
+	
 
-    raiz = sqrt(c5*c5 - 4*c4*c6)
+	for i in range(len(w)):
+		z(i)=arcsin((1/d1)*(p2-d2*sin(w(i))))
+		z(i+4)=180-z(i)	
+	
+		
+	
+	#8 posiciones posibles
+	
+	return w,z
 
-    aes = [(c5 + raiz)/(2*c4), (c5 - raiz)/(2*c4)]
+def filtro1(z,w):
+	#sol=[phi1,phi4]
+	
+	teta1=0
+	teta2=180
+	for i in range(len(z)):
+		#servo_phi_1 teta1 < phi1 < teta2
+		if z(i) > teta2 or z(i) < teta1:
+			z.pop(i)
+			
+	for i in range(len(w)):
+		#servo_phi_4 teta3 < phi1 < teta4
+		if w(i) > teta4 or w(i) < teta3:
+			w.pop(i)
+		
+	sol=[0,0]
+	if len(z)<1 or len(w)<1:
+		print("NO HAY SOLUCION")
+	else:
+		sol=[z(0),w(0)]
+	
+	
+	return sol
+	
+def filtro2(z,w):
+	#sol=[phi2,phi3]
+	
+	teta5=0
+	teta6=180
+	teta7=0
+	teta8=180
+	for i in range(len(z)):
+		#servo_phi_2 teta5 < phi2 < teta6
+		if z(i) > teta6 or z(i) < teta5:
+			z.pop(i)
+			
+	for i in range(len(w)):
+		#servo_phi_3 teta7 < phi3 < teta8
+		if w(i) > teta8 or w(i) < teta7:
+			w.pop(i)
+		
+	sol=[0,0]
+	if len(z)<1 or len(w)<1:
+		print("NO HAY SOLUCION")
+	else:
+		sol=[z(0),w(0)]
+	
+	
+	return sol
+	
+def main:
+	x=34
+	y=34
+	
+	l1=160
+	l2=148
+	l3=54
+	l4=42
+	l5=68.81
+	dx=34.40
+	dy=24.22
+	h=12 #OJO se puede ajustar --> altura de la articulacion O1
+	
+	#px=l2*cos(phi1)+l1*cos(phi4)+l4*cos(35)
+	#py=l2*sin(phi1)+l1*sin(phi4)+h
+	
+	#l2*cos(phi1)=l3*cos(phi4)+l3*cos(phi2)+l1*cos(phi3)
+	#l2*sin(phi1)=l3*sin(phi4)+l3*sin(phi2)+l1*sin(phi3)
+	
+	#1er sistema (resolvemos para phi1,phi4)
+	p1=x-l4*cos(35)
+	p2=y-h
+	d1=l2
+	d2=l1
+	z,w = sol(p1,p2,d1,d2)
+	[phi1,phi4]=filtro1(z,w)
+	
+	#2o sistema (resolvemos para phi2,phi3)
+	p1=l2*cos(phi1)-l3*cos(phi4)
+	p2=l2*sin(phi1)-l3*sin(phi4)
+	d1=l3
+	d2=l1
+	z,w = sol(p1,p2,d1,d2)
+	[phi2,phi3]=filtro2(z,w)
+	
+	#l2*cos(phi1)=l3*cos(phi4)+l3*cos(phi2)+l1*cos(phi3)
+	#l2*sin(phi1)=l3*sin(phi4)+l3*sin(phi2)+l1*sin(phi3)
+	
+	coord =[phi1,phi2,phi3,phi4,x,y] #phi's, todo en GRADOS, x e y [mm] 
+	
+	return
 
-    sols = []
-    for a in aes:
-        if abs(a) <= 1:
-            b2s = [acos(a), -acos(a)]
-            for b2 in b2s:
-                sinb1 = (p2 - d2*sin(b2))/d1
-                if abs(sinb1) <= 1:
-                    b1s = [asin(sinb1), pi - asin(sinb1)]
-                    for b1 in b1s:
-                        sols.append([b1, b2])
-
-    return sols
-
-
-def extraerSolucion2(phiss, phi1, phi4):
-    """
-    Devuelve una única solución que cumpla las ecuaciones del sistema 2.
-    TODO: Falta añadirle los límites a los ángulos --> podría fallar!
-    """
-    for phis in phiss:
-        phi2 = phis[0]
-        phi3 = phis[1]
-
-        if abs(l3*cos(phi2) + l1*cos(phi3) - l2*cos(phi1) + l3*cos(phi4)) < eps and \
-           abs(l3*sin(phi2) + l1*sin(phi3) - l2*sin(phi1) + l3*sin(phi4)) < eps:
-            return phi2, phi3
-
-
-def resolverSistema2(phi1, phi4):
-    """
-    Resuelve el sistema:
-        px = l2*cos(phi1) + l1*cos(phi4) + l4*cos(35º)
-        py = l2*sin(phi1) + l1*sin(phi4) + h
-    Donde l1, l2, l4 son parámetros del brazo; px, py y h son los parámetros de
-    la función y phi1, phi4 son los ángulos a obtener.
-    Solo devuelve una solución.
-    """
-    phiss = resolverSistemaGeneral(l2*cos(phi1) - l3*cos(phi4),
-                                   l2*sin(phi1) - l3*sin(phi4),
-                                   l3, l1)
-    return extraerSolucion2(phiss, phi1, phi4)
-
-
-def extraerSolucion1(phiss, px, py, h):
-    """
-    Devuelve una única solución que cumpla las ecuaciones del sistema 1.
-    TODO: Falta añadirle los límites a los ángulos --> podría fallar!
-    """
-    for phis in phiss:
-        phi1 = phis[0]
-        phi4 = phis[1]
-
-        if abs(l2*cos(phi1) + l1*cos(phi4) + l4*cos((35*pi)/180) - px) < eps and \
-           abs(l2*sin(phi1) + l1*sin(phi4) + h - py) < eps:
-            return phi1, phi4
-
-
-def resolverSistema1(px, py, h):
-    """
-    Resuelve el sistema:
-        px = l2*cos(phi1) + l1*cos(phi4) + l4*cos(35º)
-        py = l2*sin(phi1) + l1*sin(phi4) + h
-    Donde l1, l2, l4 son parámetros del brazo; px, py y h son los parámetros de
-    la función y phi1, phi4 son los ángulos a obtener.
-    Solo devuelve una solución.
-    """
-    phiss = resolverSistemaGeneral(px - l4*cos((35*pi)/180), py - h, l2, l1)
-    return extraerSolucion1(phiss, px, py, h)
-
-
-# Tolerancia.
-eps = 1e-3
-
-# Definir parámetros del brazo robótico.
-l1 = 160
-l2 = 148
-l3 = 54
-l4 = 42
-l5 = 68.81
-dx = 34.4
-dy = 24.22
-
-
-# ---------------- Prueba ---------------------
-def prueba(px, py, h):
-    # Sistema 1.
-    phi1, phi4 = resolverSistema1(px, py, h)
-    # Sistema 2.
-    phi2, phi3 = resolverSistema2(phi1, phi4)
-    return phi1, phi2, phi3, phi4
-
-
-px = 200
-py = 60
-h = 0
-
-
-# # Mostrar resultados.
-# print("px:", px)
-# print("py:", py)
-# print("h:", h, "\n")
-
-# print("Phi1:", (phi1*180)/pi)
-# print("Phi2:", (phi2*180)/pi)
-# print("Phi3:", (phi3*180)/pi)
-# print("Phi4:", (phi4*180)/pi)
+		

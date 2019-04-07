@@ -33,7 +33,7 @@ for i in range(9):
         x=input() # El input debe ser: "1 2" x espacio, y (donde 0<=x,y<=2)
         i=int(x[0])
         j=int(x[2])
-        while (cfg.board[i][j] != -3):
+        while (i < 0 or i >= 3 or j < 0 or j >= 3 or cfg.board[i][j] != -3):
             print("Humano: Vuelve a introducir tu casilla")
             x=input()
             i=int(x[0])
