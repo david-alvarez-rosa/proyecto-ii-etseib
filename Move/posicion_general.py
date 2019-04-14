@@ -1,10 +1,9 @@
 from math import atan, sqrt, pi
-from posicion import prueba
-
+from plano import prueba
+from main_move import V1,U1,V2,U2
 
 def convertRadiansToDegrees(phi):
     return (phi* 180)/pi
-
 
 
 def movimiento(x, y):

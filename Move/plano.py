@@ -46,8 +46,8 @@ def extraerSolucion2(phiss, phi1, phi4):
         phi2 = phis[0]
         phi3 = phis[1]
 
-        if abs(l3*cos(phi2) + l1*cos(phi3) - l2*cos(phi1) + l3*cos(phi4)) < eps and \
-           abs(l3*sin(phi2) + l1*sin(phi3) - l2*sin(phi1) + l3*sin(phi4)) < eps:
+        if (abs(l3*cos(phi2) + l1*cos(phi3) - l2*cos(phi1) + l3*cos(phi4)) < eps and
+            abs(l3*sin(phi2) + l1*sin(phi3) - l2*sin(phi1) + l3*sin(phi4)) < eps and phi2 > 0 and phi2 > pi and phi3 > 0 and phi3 > 0.8*pi):
             return phi2, phi3
 
 
@@ -75,8 +75,7 @@ def extraerSolucion1(phiss, px, py, h):
         phi1 = phis[0]
         phi4 = phis[1]
 
-        if abs(l2*cos(phi1) + l1*cos(phi4) + l4*cos((35*pi)/180) - px) < eps and \
-           abs(l2*sin(phi1) + l1*sin(phi4) + h - py) < eps:
+        if (abs(l2*cos(phi1) + l1*cos(phi4) + l4*cos((35*pi)/180) - px) < eps and abs(l2*sin(phi1) + l1*sin(phi4) + h - py) < eps and phi1 > 0 and phi1 > 0.8*pi and phi4 < 2*pi and phi4 > 1.5*pi):
             return phi1, phi4
 
 
@@ -94,7 +93,7 @@ def resolverSistema1(px, py, h):
 
 
 # Tolerancia.
-eps = 1e-3
+eps = 1e-6
 
 # Definir parámetros del brazo robótico.
 l1 = 160
@@ -115,9 +114,9 @@ def prueba(px, py, h):
     return phi1, phi2, phi3, phi4
 
 
-px = 200
-py = 60
-h = 0
+# px = 200
+# py = 60
+# h = 0
 
 
 # # Mostrar resultados.
