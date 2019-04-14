@@ -1,4 +1,4 @@
-# from adafruit_servokit import ServoKit
+from adafruit_servokit import ServoKit
 from time import sleep
 import sys
 sys.path.append("..")
