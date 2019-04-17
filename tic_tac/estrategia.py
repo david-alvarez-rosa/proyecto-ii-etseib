@@ -17,8 +17,15 @@ def actualiza(i, j):
     if cfg.eb == True:
         return
 
+    # # Caso especial si comienza la máquina.
+    # if cfg.rama == -1:
+    #     cfg.rama = 3
+    #     cfg.nodo = 0
+    #     cfg.board[0][0] = 1
+    #     cfg.boardInt[0][0] = 1
+
     # Si es el primer movimiento se detecta la rama inicial.
-    if cfg.nodo == -1:
+    elif cfg.nodo == -1:
         for i in range(3):
             posSig = cfg.ramas[i][0]
 

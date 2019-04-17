@@ -12,7 +12,6 @@
            width: 90%;
            min-width: 500px;
            height: 70px;
-           /* border: 20px black; */
            text-align: center;
        }
       </style>
@@ -26,7 +25,7 @@
       <div class="body-header">
          <p id="status">Proyecto II ETSEIB</p>
          <h1>Tic Tac Toe</h1>
-         <a href="/proyecto/"><button class="reset-btn">Vuelve a empezar &cularr;</button></a>
+         <a href="/proyecto/per/"><button class="reset-btn">Vuelve a empezar &cularr;</button></a>
       </div>
 
       <?php
@@ -38,7 +37,7 @@
           echo $message;
           echo '</h3>
       </div>
-      <a href="/proyecto/" id="playAsX"><button>Vuelve a empezar</button></a>
+      <a href="/proyecto/per/" id="playAsX"><button>Vuelve a empezar</button></a>
       </div>
       </div>
           ';
@@ -53,10 +52,10 @@
               $nodo = $_GET['nodo'];
               $sims = $_GET['sims'];
               $eb = $_GET['eb'];
-              $command = 'python3 cgi-bin/main.py '.$movs.' '.$rama.' '.$nodo.' '.$sims.' '.$eb;
+              $command = 'python3 ../cgi-bin/main.py '.$movs.' '.$rama.' '.$nodo.' '.$sims.' '.$eb;
           }
           else
-              $command = 'python3 cgi-bin/main.py '.$movs.' -1 -1 -1 False';
+              $command = 'python3 ../cgi-bin/main.py '.$movs.' -1 -1 -1 False';
 
           $output = exec($command);
           $outputArray = split(",", $output);
@@ -131,24 +130,23 @@
                 echo '<td><b>Mov '.$ipp.'</b></td>';
                 for ($jp = 0; $jp < 5; ++$jp) {
                     echo '<td>';
-                    if ($outputArray[5*$ip + $jp + 8] < -5000)
+                    if ($outputArray[5*$ip + $jp + 10] < -5000)
                         echo 'Abierta';
-                    else if ($outputArray[5*$ip + $jp + 8] > 5000)
+                    else if ($outputArray[5*$ip + $jp + 10] > 5000)
                         echo 'Cerrada';
                     else
-                        echo $outputArray[5*$ip + $jp + 8];
+                        echo $outputArray[5*$ip + $jp + 10];
                     echo '</td>';
                 }
                 echo '</tr>';
             }
             ?>
          </table>
-      </div>
 
       <br />
       <ul align="center">
          <li><b>Mov 0:</b> Posición de inicio (predeterminada).</li>
-         <li><b>Mov 1:</b> Sobre la pieza a coger en el almacén (a la altura justa para que al cerrar la pinza coja la pieza).</li>
+         <li><b>Mov 1:</b> Pinza sobre la pieza a coger en el almacén (a la altura justa para que al cerrar la pinza coja la pieza).</li>
          <li><b>Mov 2:</b> Justo después de cerrar la pinza.</li>
          <li><b>Mov 3:</b> Sobre la posición final.</li>
          <li><b>Mov 4:</b> Pinza bajada sobre posición final.</li>
@@ -158,7 +156,6 @@
 
 
       <br /><br /><br /><br />
-      <div align="center">
          <h2>Movimiento piezas última jugada</h2>
          <br />
          <table border="1" class="data">
@@ -175,7 +172,7 @@
                <td>x = <?php echo $outputArray[0]; ?> , y = <?php echo $outputArray[1] ?> [mm]</td>
                <td>Falta, pero va por orden.</td>
                <td>x = <?php echo $outputArray[2]; ?> , y = <?php echo $outputArray[3] ?> [mm]</td>
-               <td>Fila = <?php echo $outputArray[39]; ?> - Columna = <?php echo $outputArray[40]; ?></td>
+               <td>Fila = <?php echo $outputArray[39] + 1; ?> - Columna = <?php echo $outputArray[40] + 1; ?></td>
             </tr>
             <tr>
                <td colspan="4">Movimiento brazo (mueve X's).</td>
@@ -184,19 +181,20 @@
                <td>x = <?php echo $outputArray[41]; ?> , y = <?php echo $outputArray[42] ?> [mm]</td>
                <td>Falta, pero va por orden.</td>
                <td>x = <?php echo $outputArray[43]; ?> , y = <?php echo $outputArray[44] ?> [mm]</td>
-               <td>Fila = <?php echo $outputArray[80]; ?> - Columna = <?php echo $outputArray[81]; ?></td>
+               <td>Fila = <?php echo $outputArray[80] + 1; ?> - Columna = <?php echo $outputArray[81] + 1; ?></td>
             </tr>
          </table>
-      </div>
 
       <br />
-      <ul align="center">
-         <li>*Número de pieza en el almacén correspondiente (hay 4 huecos en cada almacén).</li>
-         <li>**Posición relativa en el tablero (fila y columna).</li>
+      <ul>
+         <li><b>*</b>Número de pieza en el almacén correspondiente (hay 4 huecos en cada almacén).</li>
+         <li><b>**</b>Posición relativa en el tablero (fila y columna).</li>
          <li>Los ejes parten del brazo (que está puesto donde está el título de
             la página, es decir, detrás del tablero). Eje de abcisas horizontal (en
             pantalla de ordenador) y de ordenadas vertical (ídem).</li>
       </ul>
+
+      </div>
 
       <br /><br /><br /><br /><br /><br /><br />
    </body>

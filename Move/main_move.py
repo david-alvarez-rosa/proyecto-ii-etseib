@@ -122,3 +122,6 @@ def movePiece(i, j, tipo):
 
     movePieceFromTo(V[tipo][U[tipo]], tablero[i][j])
     U[tipo] += 1
+
+    print(i, end =",")
+    print(j, end =",")

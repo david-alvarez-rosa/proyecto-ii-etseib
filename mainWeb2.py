@@ -15,9 +15,9 @@ def board2Str(M):
     for i in range(3):
         for j in range(3):
             if (M[i][j] == 0):
-                boardStr += "O"
-            elif (M[i][j] == 1):
                 boardStr += "X"
+            elif (M[i][j] == 1):
+                boardStr += "O"
             else:
                 boardStr += "."
 
@@ -28,6 +28,9 @@ def readVariables():
     """
     Leer las variables y guardarlas. Devuelve la última jugada realizada.
     """
+    cfg.board[0][0] = 1
+    cfg.boardInt[0][0] = 1
+
     movsStr = sys.argv[1]
     movs = []
     for i in range(int(len(movsStr)/2)):
@@ -57,6 +60,9 @@ def readVariables():
         cfg.eb = False
     else:
         cfg.eb = True
+
+    if len(movs) == 1:
+        cfg.rama = -1
 
     actualiza(movs[len(movs) - 1][0], movs[len(movs) - 1][1])
 
@@ -89,10 +95,10 @@ def printData(i, j):
 
 # Leer movimiento humano y mover la pieza correspondiente.
 i, j = readVariables()
-movePiece(i, j, "O")
+movePiece(i, j, "X")
 # Decidir movimiento respuesta y mover la pieza correspondiente.
 i, j = move()
-movePiece(i, j, "X")
+movePiece(i, j, "O")
 # Devolver datos necesarios.
 printData(i, j)
 # Falta detectar empates!
