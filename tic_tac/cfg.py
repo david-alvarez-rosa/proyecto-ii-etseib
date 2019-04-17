@@ -55,6 +55,11 @@ boardInt = [
     [-3, -3, -3],
     [-3, -3, -3]
 ]
+boardAux = [
+    [-3, -3, -3],
+    [-3, -3, -3],
+    [-3, -3, -3]
+]
 
 
 # La lista sims es de simetrías y eb es estrategia básica.

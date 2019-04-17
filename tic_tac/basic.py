@@ -93,7 +93,7 @@ def move(M):
         for j in range(3):
             if(M[i][j] == -3 and check_win(M,i,j)):
                 return i,j
-            
+
     for i in range(3):
         for j in range(3):
             if(M[i][j]==-3 and check(M,i,j)):
@@ -109,5 +109,6 @@ def moveBasic(M):
             for jp in range(3):
                 if M[ip][jp] == -3:
                     M[ip][jp] = 1
-                    return
+                    return ip, jp
     M[i][j] = 1
+    return i, j

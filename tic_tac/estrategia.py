@@ -3,9 +3,9 @@ Estrategia general, importa estrategia básica.
 """
 
 
-import cfg
-from equivalencias import *
-from basic import moveBasic
+import tic_tac.cfg as cfg
+from tic_tac.equivalencias import *
+from tic_tac.basic import moveBasic
 
 
 def actualiza(i, j):
@@ -52,11 +52,12 @@ def actualiza(i, j):
 
 def move():
     """
-    Decide el siguiente movimiento a realizar.
+    Decide el siguiente movimiento a realizar. Actualiza el tablero y devuelve
+    cuál es el movimiento.
     """
     if cfg.eb == True:
-        moveBasic(cfg.board)
-        return
+        i, j = moveBasic(cfg.board)
+        return i, j
 
     if len(cfg.conex[cfg.rama][cfg.nodo]) > 1:
         print("Error de longitud")
@@ -66,9 +67,18 @@ def move():
 
     if move == "EB":
         cfg.eb = True
-        moveBasic(cfg.board)
-        return
+        i, j = moveBasic(cfg.board)
+        return i, j
+
+    # Copia del tablero para poder detectar el movimiento.
+    boardC = []
+    for i in range(3):
+        boardC.append(list(cfg.board[i]))
 
     cfg.boardInt[move[0]][move[1]] = 1
     cfg.board = simetriaMultipleInversa(cfg.boardInt, cfg.sims)
-    return
+
+    for i in range(3):
+        for j in range(3):
+            if boardC[i][j] != cfg.board[i][j]:
+                return i, j
