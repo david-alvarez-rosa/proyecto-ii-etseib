@@ -39,15 +39,16 @@ def resolverSistemaGeneral(p1, p2, d1, d2):
 
 def extraerSolucion2(phiss, phi1, phi4):
     """
-    Devuelve una única solución que cumpla las ecuaciones del sistema 2.
-    TODO: Falta añadirle los límites a los ángulos --> podría fallar!
+    Devuelve una única solución que cumpla las ecuaciones del sistema 2 y con
+    los ángulos de los servos dentro del rango de funcionamiento.
     """
     for phis in phiss:
         phi2 = phis[0]
         phi3 = phis[1]
 
-        if (abs(l3*cos(phi2) + l1*cos(phi3) - l2*cos(phi1) + l3*cos(phi4)) < eps and
-            abs(l3*sin(phi2) + l1*sin(phi3) - l2*sin(phi1) + l3*sin(phi4)) < eps and phi2 > 0 and phi2 > pi and phi3 > 0 and phi3 > 0.8*pi):
+        if abs(l3*cos(phi2) + l1*cos(phi3) - l2*cos(phi1) + l3*cos(phi4)) < eps and \
+            abs(l3*sin(phi2) + l1*sin(phi3) - l2*sin(phi1) + l3*sin(phi4)) < eps and \
+            phi2 >= 0 and phi2 <= pi and phi3 >= 0 and phi3 <= pi:
             return phi2, phi3
 
 
@@ -66,20 +67,22 @@ def resolverSistema2(phi1, phi4):
     return extraerSolucion2(phiss, phi1, phi4)
 
 
-def extraerSolucion1(phiss, px, py, h):
+def extraerSolucion1(phiss, px, py):
     """
-    Devuelve una única solución que cumpla las ecuaciones del sistema 1.
-    TODO: Falta añadirle los límites a los ángulos --> podría fallar!
+    Devuelve una única solución que cumpla las ecuaciones del sistema 1 y con
+    los ángulos de los servos dentro del rango de funcionamiento.
     """
     for phis in phiss:
         phi1 = phis[0]
         phi4 = phis[1]
 
-        if (abs(l2*cos(phi1) + l1*cos(phi4) + l4*cos((35*pi)/180) - px) < eps and abs(l2*sin(phi1) + l1*sin(phi4) + h - py) < eps and phi1 > 0 and phi1 > 0.8*pi and phi4 < 2*pi and phi4 > 1.5*pi):
+        if abs(l2*cos(phi1) + l1*cos(phi4) + l4*cos((35*pi)/180) - px) < eps and \
+           abs(l2*sin(phi1) + l1*sin(phi4) + h - py) < eps and \
+           phi1 >= 0 and phi1 <= pi and phi4 <= 0 and phi4 >= -pi:
             return phi1, phi4
 
 
-def resolverSistema1(px, py, h):
+def resolverSistema1(px, py):
     """
     Resuelve el sistema:
         px = l2*cos(phi1) + l1*cos(phi4) + l4*cos(35º)
@@ -89,7 +92,7 @@ def resolverSistema1(px, py, h):
     Solo devuelve una solución.
     """
     phiss = resolverSistemaGeneral(px - l4*cos((35*pi)/180), py - h, l2, l1)
-    return extraerSolucion1(phiss, px, py, h)
+    return extraerSolucion1(phiss, px, py)
 
 
 # Tolerancia.
@@ -103,28 +106,17 @@ l4 = 42
 l5 = 68.81
 dx = 34.4
 dy = 24.22
+# Consideraremos la altura como un parámetro más.
+h = 0
 
 
-# ---------------- Prueba ---------------------
-def prueba(px, py, h):
+def verticalMove(px, py):
+    """
+    Dada una posición (px, py) en un plano vertical, devuelve los ángulos de los
+    servos que corresponden a esa posición.
+    """
     # Sistema 1.
-    phi1, phi4 = resolverSistema1(px, py, h)
+    phi1, phi4 = resolverSistema1(px, py)
     # Sistema 2.
     phi2, phi3 = resolverSistema2(phi1, phi4)
     return phi1, phi2, phi3, phi4
-
-
-# px = 200
-# py = 60
-# h = 0
-
-
-# # Mostrar resultados.
-# print("px:", px)
-# print("py:", py)
-# print("h:", h, "\n")
-
-# print("Phi1:", (phi1*180)/pi)
-# print("Phi2:", (phi2*180)/pi)
-# print("Phi3:", (phi3*180)/pi)
-# print("Phi4:", (phi4*180)/pi)

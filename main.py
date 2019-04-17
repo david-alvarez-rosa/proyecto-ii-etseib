@@ -1,6 +1,6 @@
-import cfg
-from estrategia import actualiza, move
-from basic import game_end
+import tic_tac.cfg as cfg
+from tic_tac.estrategia import actualiza, move
+from tic_tac.basic import game_end
 
 
 def printMatrix(M):
@@ -16,6 +16,7 @@ def printMatrix(M):
                 elif (M[i][j] == 1): print("X")
                 else: print(".")
     print()
+
 
 def jugar():
     # Bucle principal del juego.
@@ -58,3 +59,6 @@ def jugar():
             print("Respuesta máquina a humano: ")
             printMatrix(cfg.board)
             print("\n"*10)
+
+
+jugar()
