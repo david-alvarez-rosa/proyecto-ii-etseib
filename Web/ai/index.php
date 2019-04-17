@@ -52,10 +52,10 @@
               $nodo = $_GET['nodo'];
               $sims = $_GET['sims'];
               $eb = $_GET['eb'];
-              $command = 'python3 ../cgi-bin/main.py '.$movs.' '.$rama.' '.$nodo.' '.$sims.' '.$eb;
+              $command = 'python3 ../cgi-bin/main2.py '.$movs.' '.$rama.' '.$nodo.' '.$sims.' '.$eb;
           }
           else
-              $command = 'python3 ../cgi-bin/main.py '.$movs.' 3 0 -1 False';
+              $command = 'python3 ../cgi-bin/main2.py '.$movs.' 3 0 -1 False';
 
           $output = exec($command);
           $outputArray = split(",", $output);
