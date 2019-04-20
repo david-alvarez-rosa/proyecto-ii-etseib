@@ -4,8 +4,8 @@
    <head>
       <meta charset="UTF-8">
       <title>Tres en Raya</title>
-      <link rel="stylesheet" type="text/css" href="../layout.css" />
-      <link rel="stylesheet" type="text/css" href="../board.css" />
+      <link rel="stylesheet" type="text/css" href="../../layout.css" />
+      <link rel="stylesheet" type="text/css" href="../../board.css" />
       <style type="text/css">
        .data {
            width: 90%;
@@ -20,31 +20,17 @@
 
    <body>
       <header id="header">
-         <h1 align="center"><a href="/proyecto/">Tres en Raya</a></h1>
+         <h1 align="center">
+            <span style="float: left;"><a href="/proyecto/">Tres en Raya</a></span>
+            <a href="/proyecto/jugar/">Jugar</a>
+            <span style="float: right;"><a href="/proyecto/jugar/per/">Comienza tú</a></span>
+         </h1>
       </header>
 
 
-      <nav id="nav">
-         <div class="innertube">
-            <h1>Proyecto</h1>
-            <ul>
-               <li><a href="/proyecto/error/">Documentación</a></li>
-               <li><a href="/proyecto/error/">El código</a></li>
-            </ul>
-            <h1>Jugar</h1>
-            <ul>
-               <li><a href="/proyecto/per/">Comienza tú</a></li>
-               <li><a href="/proyecto/ai/">Comienza el brazo</a></li>
-               <li><a href="/proyecto/error/">Ver partida</a></li>
-            </ul>
-            <h1>Presentaciones</h1>
-            <ul>
-               <li><a href="/proyecto/presentaciones/1.pdf#view=Fit">Presentación 1</a></li>
-               <li><a href="/proyecto/presentaciones/2.pdf#view=Fit">Presentación 2</a></li>
-               <li><a href="/proyecto/error/">Presentación 3</a></li>
-            </ul>
-         </div>
-      </nav>
+      <?php
+      include("../../navbar.html")
+      ?>
 
 
       <main>
@@ -57,7 +43,7 @@
              echo $message;
              echo '</h3>
       </div>
-      <a href="/proyecto/ai/" id="playAsX"><button>Vuelve a empezar</button></a>
+      <a href="/proyecto/per/" id="playAsX"><button>Vuelve a empezar</button></a>
       </div>
       </div>
              ';
@@ -72,10 +58,10 @@
                  $nodo = $_GET['nodo'];
                  $sims = $_GET['sims'];
                  $eb = $_GET['eb'];
-                 $command = 'python3 ../cgi-bin/main2.py '.$movs.' '.$rama.' '.$nodo.' '.$sims.' '.$eb;
+                 $command = 'python3 ../../cgi-bin/main.py '.$movs.' '.$rama.' '.$nodo.' '.$sims.' '.$eb;
              }
              else
-                 $command = 'python3 ../cgi-bin/main2.py '.$movs.' 3 0 -1 False';
+                 $command = 'python3 ../../cgi-bin/main.py '.$movs.' -1 -1 -1 False';
 
              $output = exec($command);
              $outputArray = split(",", $output);
@@ -90,10 +76,11 @@
                  endGame("Tie");
          }
          else {
-             $board = 'X........';
+             $board = '.........';
              $url = '?movs=';
          }
          ?>
+
 
          <br /><br />
          <table id="board">
@@ -110,6 +97,7 @@
             }
             ?>
          </table>
+
 
          <br /><br />
          <div align="center">
@@ -222,12 +210,9 @@
          </div>
       </main>
 
-      <footer id="footer">
-         <p align="center">
-            <span style="float: left">Proyecto II</span>
-            David Álvarez, Guillermo Creus
-            <span style="float: right">ETSEIB - UPC</span>
-         </p>
-      </footer>
+
+      <?php
+      include("../../footer.html")
+      ?>
    </body>
 </html>

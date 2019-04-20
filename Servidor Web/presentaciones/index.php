@@ -22,7 +22,7 @@
       <header id="header">
          <h1 align="center">
             <span style="float: left;"><a href="/proyecto/">Tres en Raya</a></span>
-            <a href="/proyecto/jugar/">Jugar</a>
+            <a href="/proyecto/presentaciones/">Presentaciones</a>
          </h1>
       </header>
 
@@ -35,24 +35,23 @@
       <main>
          <div class="innertube">
             <p>
-               Aquí están las diferentes opciones para jugar al tres en raya con
-               el brazo robótico.
+               Aquí están las diferentes presentaciones del proyecto.
             </p>
 
             <ul>
                <li>
-                  <a href="/proyecto/jugar/per/" title="Comienza tú a jugar.">
-                     Comienza tú
+                  <a href="/proyecto/presentaciones/p1/" title="Presentación inicial.">
+                     Presentación 1
                   </a>
                </li>
                <li>
-                  <a href="/proyecto/jugar/ai/" title="Tú juegas segundo.">
-                     Comienza el brazo
+                  <a href="/proyecto/presentaciones/p2/" title="Segunda presentación.">
+                     Presentación 2
                   </a>
                </li>
                <li>
-                  <a href="/proyecto/error/" title="Ve una partida.">
-                     Ver partida
+                  <a href="/proyecto/error/" title="Presentación final.">
+                     Presentación 3
                   </a>
                </li>
             </ul>
