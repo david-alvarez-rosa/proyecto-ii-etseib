@@ -6,10 +6,10 @@ Define y mueve suavemente los servos.
 
 # from adafruit_servokit import ServoKit
 from time import sleep
-from math import *
-from threading import Thread
+from math import pi
 
-# kit = ServoKit(channels=16)
+
+# kit = ServoKit(channels = 16)
 
 # Vector con los ánngulos de los servos
 # 0: ROTACION
@@ -47,14 +47,14 @@ def moveServo(servo, angle):
     Mueve el servo a un determinado ángulo (en radianes).
     TODO: mirar para cambiar las velocidades o hacerlas de otra manera.
     """
-    angle = floor(rad2Deg(angle))  # PARA QUE NO HAYA PROBLEMAS TRUNCO!!!!!!!!
+    angle = rad2Deg(angle)
     steps = 50
     time = 0  # Modificar este valor.
     timeStep = time/steps
     angleIni = Sp[servo]
     h = (angle - angleIni)/50
     for i in range(0, 50):
-        angleIni = floor(angleIni + h)  # PARA QUE NO HAYA PROBLEMAS TRUNCO!!!!!!!!
+        angleIni = angleIni + h
         # kit.servo[servo].angle = angleIni
         sleep(timeStep)
 
@@ -65,9 +65,7 @@ def moveServos(angles):
     """
     Mueve los servos a los ángulos dados (en radianes).
     """
-    if __name__ == '__main__':
-        Thread(target=moveServo, args=[0, angles[0]]).start()
-        Thread(target=moveServo, args=[1, angles[1]]).start()
-        Thread(target=moveServo, args=[2, angles[2]]).start()
-        Thread(target=moveServo, args=[4, angles[4]]).start()
-        Thread(target=moveServo, args=[5, angles[5]]).start()
+    for i in range(6):
+        # El 3 no es un servo.
+        if i != 3:
+            moveServo(i, angles[i])

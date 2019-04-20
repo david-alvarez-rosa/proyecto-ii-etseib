@@ -1,6 +1,6 @@
 from Move.plano import verticalMove
 from Move.interpolacion import *
-from math import *
+from math import pi, cos, sin, atan, sqrt, pow
 
 
 # DEFINICION DE VARIABLES
@@ -51,14 +51,10 @@ def reset_servos():
     moveServos(S)
 
 
-
 def movePieceFromTo(p0, pf):
     """
     Mueve una pieza sobre el plano (horizontal) de una posición p0 = [x0, y0] a
     una pf = [xf, yf].
-
-    La pieza utilizada es una goma Marca: Milan, Modelo: 430
-    Medidas: 2.8 x 2.8 x 1.3 cm.
     """
     printServosAngles(S)
 
@@ -66,11 +62,9 @@ def movePieceFromTo(p0, pf):
     # inicio).
     r = sqrt(pow(p0[0], 2) + pow(p0[1], 2))
     S[0] = atan(p0[1]/p0[0])
-    S[4] = -S[0]  # MODIFICAR POR TEMA ANGULOS NEGATIVOS
-    ancho = 34  # Le dejo margen. Hay q vigilar q no toque a otras piezas
-    S[5] = acos((ancho+18)/52)
-    h0 = 26*sin(S[5])+68
-    phi1, phi2, phi3, phi4 = verticalMove(r, h0)
+    S[4] = -S[0]
+    S[5] = -1000
+    phi1, phi2, phi3, phi4 = verticalMove(r, 50) # Falta cambiar la alura.
     S[1] = phi1
     S[2] = phi2
 
@@ -78,29 +72,16 @@ def movePieceFromTo(p0, pf):
     printServosAngles(S)
 
     # Cerrar pinza para coger pieza.
-    ancho = 25  # A 25 mm. (< 28) la pinza hara fuerza - MODIFICAR
-    S[5] = acos((ancho+18)/52)
-    h0 = 26*sin(S[5])+68
-    phi1, phi2, phi3, phi4 = verticalMove(r, h0)
-    S[1] = phi1
-    S[2] = phi2
-
-    print("CERRANDO PINZA")
+    S[5] = 1000
     moveServos(S)
     printServosAngles(S)
 
-    # Subir la pinza para que no se choque
-    phi1, phi2, phi3, phi4 = verticalMove(r, h0+50)  # MODIFICAR
-    S[1] = phi1
-    S[2] = phi2
-    moveServos(S)
-    printServosAngles(S)
-    
-    # Mover la pieza hasta la posición final
+    # Mover la pieza hasta la posición final. El brazo se moverá a una altura de
+    # 50 mm.
     r = sqrt(pow(pf[0], 2) + pow(pf[1], 2))
     S[0] = atan(pf[1]/pf[0])
-    S[4] = -S[0]  # MODIFICAR POR TEMA ANGULOS NEGATIVOS
-    phi1, phi2, phi3, phi4 = verticalMove(r, h0+50)
+    S[4] = -S[0]
+    phi1, phi2, phi3, phi4 = verticalMove(r, 50)
     S[1] = phi1
     S[2] = phi2
 
@@ -108,7 +89,7 @@ def movePieceFromTo(p0, pf):
     printServosAngles(S)
 
     # Bajar pinza sobre posición final.
-    phi1, phi2, phi3, phi4 = verticalMove(r, h0)
+    phi1, phi2, phi3, phi4 = verticalMove(r, 30)
     S[1] = phi1
     S[2] = phi2
 
@@ -116,26 +97,11 @@ def movePieceFromTo(p0, pf):
     printServosAngles(S)
 
     # Soltar pieza en la posición final.
-    ancho = 34  # > 28
-    S[5] = acos((ancho+18)/52)
-    h0 = 26*sin(S[5])+68
-    phi1, phi2, phi3, phi4 = verticalMove(r, h0)
-    S[1] = phi1
-    S[2] = phi2
-
+    S[5] = -1000
     moveServos(S)
     printServosAngles(S)
-
-    # Subir la pinza para que no se choque
-    phi1, phi2, phi3, phi4 = verticalMove(r, h0+50)  # MODIFICAR
-    S[1] = phi1
-    S[2] = phi2
-    moveServos(S)
-    printServosAngles(S)
-
 
     # Dejar el brazo en posición por defecto para permitir ver el tablero.
-    # Esta posición se podría mejorar
     reset_servos()
     printServosAngles(S)
 

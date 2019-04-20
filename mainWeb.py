@@ -1,4 +1,5 @@
 import sys
+# from adafruit_servokit import ServoKit
 import tic_tac.cfg as cfg
 from tic_tac.estrategia import actualiza, move
 from tic_tac.basic import game_end
@@ -6,6 +7,12 @@ from tic_tac.equivalencias import simetriaMultiple
 import Move.main_move
 from Move.main_move import movePiece
 
+"""
+kit = ServoKit(channels=16)
+for i in range(6):
+    if i != 3:
+        kit.servo[i].angle = 0
+"""
 
 def board2Str(M):
     """
