@@ -8,11 +8,14 @@ import Move.main_move
 from Move.main_move import movePiece
 
 """
+TODO: Esto está definido dos veces, mirarlo porque podría fallar.
+Quizá lo mejor moverlo a Move.
 kit = ServoKit(channels=16)
 for i in range(6):
     if i != 3:
         kit.servo[i].angle = 0
 """
+
 
 def board2Str(M):
     """

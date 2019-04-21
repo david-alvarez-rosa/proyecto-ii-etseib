@@ -4,8 +4,10 @@ from math import *
 
 
 # DEFINICION DE VARIABLES
-R1 = 70
-R2 = 100
+# Almacén más separado, si no parece que no es capaz de llegar.
+# TODO: Revisar esto.
+R1 = 200
+R2 = 230
 ang1 = 0.9*(pi/2)
 ang2 = 0.7*(pi/2)
 
@@ -51,7 +53,6 @@ def reset_servos():
     moveServos(S)
 
 
-
 def movePieceFromTo(p0, pf):
     """
     Mueve una pieza sobre el plano (horizontal) de una posición p0 = [x0, y0] a
@@ -85,7 +86,6 @@ def movePieceFromTo(p0, pf):
     S[1] = phi1
     S[2] = phi2
 
-    print("CERRANDO PINZA")
     moveServos(S)
     printServosAngles(S)
 
@@ -95,7 +95,7 @@ def movePieceFromTo(p0, pf):
     S[2] = phi2
     moveServos(S)
     printServosAngles(S)
-    
+
     # Mover la pieza hasta la posición final
     r = sqrt(pow(pf[0], 2) + pow(pf[1], 2))
     S[0] = atan(pf[1]/pf[0])

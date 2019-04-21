@@ -121,16 +121,8 @@
                for ($i = 0; $i < 7; ++$i) {
                    echo '<tr>';
                    echo '<td><b>Mov '.$i.'</b></td>';
-                   for ($j = 0; $j < 5; ++$j) {
-                       echo '<td>';
-                       if ($outputArray[5*$i + $j + 4] < -5000)
-                           echo 'Abierta';
-                       else if ($outputArray[5*$i + $j + 4] > 5000)
-                           echo 'Cerrada';
-                       else
-                           echo $outputArray[5*$i + $j + 4];
-                       echo '</td>';
-                   }
+                   for ($j = 0; $j < 5; ++$j)
+                       echo '<td>'.$outputArray[5*$i + $j + 4].'</td>';
                    echo '</tr>';
                }
                ?>
@@ -142,16 +134,8 @@
                    echo '<tr>';
                    $ipp = $ip - 7;
                    echo '<td><b>Mov '.$ipp.'</b></td>';
-                   for ($jp = 0; $jp < 5; ++$jp) {
-                       echo '<td>';
-                       if ($outputArray[5*$ip + $jp + 10] < -5000)
-                           echo 'Abierta';
-                       else if ($outputArray[5*$ip + $jp + 10] > 5000)
-                           echo 'Cerrada';
-                       else
-                           echo $outputArray[5*$ip + $jp + 10];
-                       echo '</td>';
-                   }
+                   for ($jp = 0; $jp < 5; ++$jp)
+                       echo '<td>'.$outputArray[5*$ip + $jp + 10].'<td>';
                    echo '</tr>';
                }
                ?>
