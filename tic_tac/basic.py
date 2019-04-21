@@ -16,11 +16,27 @@ def game_end(M):
     y2=M[2][0]+M[2][1]+M[2][2]
     d1=M[0][0]+M[1][1]+M[2][2]
     d2=M[0][2]+M[1][1]+M[2][0]
-    if(x0==0 or x0==3 or x1==0 or x1==3 or x2==0 or x2==3): return 1
-    elif(y0==0 or y0==3 or y1==0 or y1==3 or y2==0 or y2==3): return 1
-    elif(d1==0 or d1==3 or d2==0 or d2==3): return 1
+    if(x0==0 or x0==3 or x1==0 or x1==3 or x2==0 or x2==3):
+        print("AI wins")
+        return
+    elif(y0==0 or y0==3 or y1==0 or y1==3 or y2==0 or y2==3):
+        print("AI wins")
+        return
+    elif(d1==0 or d1==3 or d2==0 or d2==3):
+        print("AI wins")
+        return
 
-    return 0
+    tie = True
+    for i in range(3):
+        for j in range(3):
+            if M[i][j] != '.':
+                tie = False
+
+    if tie:
+        print("Tie")
+        return
+
+    print("Not ended")
 
 
 def check_win(M,i,j):

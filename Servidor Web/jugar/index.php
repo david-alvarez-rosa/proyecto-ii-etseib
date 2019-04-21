@@ -20,10 +20,8 @@
 
    <body>
       <header id="header">
-         <h1 align="center">
-            <span style="float: left;"><a href="/proyecto/">Tres en Raya</a></span>
-            <a href="/proyecto/jugar/">Jugar</a>
-         </h1>
+         <div style="float: left;"><a href="/proyecto/"><h1>Tres en Raya</h1></a></div>
+         <div style="margin: 0 auto; width: 100px;"><a href="/proyecto/jugar/"><h1>Jugar</h1></a></div>
       </header>
 
 

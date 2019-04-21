@@ -20,11 +20,9 @@
 
    <body>
       <header id="header">
-         <h1 align="center">
-            <span style="float: left;"><a href="/proyecto/">Tres en Raya</a></span>
-            <a href="/proyecto/jugar/">Jugar</a>
-            <span style="float: right;"><a href="/proyecto/jugar/per/">Comienza tú</a></span>
-         </h1>
+         <div style="float: left;"><a href="/proyecto/"><h1>Tres en Raya</h1></a></div>
+         <div style="float: right;"><a href="/proyecto/jugar/per/"><h3>Comienza tú</h3></a></div>
+         <div style="margin: 0 auto; width: 100px;"><a href="/proyecto/jugar/"><h1>Jugar</h1></a></div>
       </header>
 
 
@@ -35,7 +33,10 @@
 
       <main>
          <?php
+         $gameEnd = false;
          function endGame($message) {
+             global $gameEnd;
+             $gameEnd = true;
              echo '<div class="modal-wrapper">
          <div class="modal">
             <div class="head">
@@ -43,7 +44,7 @@
              echo $message;
              echo '</h3>
       </div>
-      <a href="/proyecto/per/" id="playAsX"><button>Vuelve a empezar</button></a>
+      <a href="/proyecto/jugar/per/" id="playAsX"><button>Vuelve a empezar</button></a>
       </div>
       </div>
              ';
@@ -67,12 +68,12 @@
              $outputArray = split(",", $output);
              $n = sizeof($outputArray);
 
-             $board = $outputArray[$n - 2];
-             $url = $outputArray[$n - 1];
+             $board = $outputArray[$n - 3];
+             $url = $outputArray[$n - 2];
 
-             if ($output == "AI wins")
+             if ($outputArray[$n - 1] == "AI wins")
                  endGame("AI wins");
-             else if ($output == "Tie")
+             else if ($outputArray[$n - 1] == "Tie")
                  endGame("Tie");
          }
          else {
@@ -90,6 +91,8 @@
                 for ($j = 0; $j < 3; ++$j) {
                     if ($board[3*$i + $j] != ".")
                         echo '<td id ="'.$board[3*$i + $j].'">'.$board[3*$i + $j].'</td>';
+                    else if ($gameEnd)
+                        echo '<td></td>';
                     else
                         echo '<td><a href="'.$url.$i.$j.'"><button id="tic"><span></span></button></a></td>';
                 }

@@ -84,7 +84,7 @@ def printData(i, j):
     """
     data = board2Str(cfg.board) + ","
     data += nextUrl(i, j)
-    print(data)
+    print(data, end = ",")
 
 
 # Leer movimiento humano y mover la pieza correspondiente.
@@ -95,6 +95,5 @@ i, j = move()
 movePiece(i, j, "X")
 # Devolver datos necesarios.
 printData(i, j)
-# Falta detectar empates!
-if game_end(cfg.board):
-    print("AI wins")
+# Mirar si la partida ha terminado.
+game_end(cfg.board)
