@@ -1,6 +1,7 @@
 """
 Define y mueve suavemente los servos.
  -- Todo lo de mover los servos está por ahora comentado --
+TODO: Falta conectar los ángulos entre partidas (importante, no funcionará).
 """
 
 
@@ -24,6 +25,7 @@ from threading import Thread
 # Variable real de ángulos en servos.
 Sp = [0]*6
 
+
 def rad2Deg(phi):
     """
     Convierte de radianes a grados.
@@ -39,7 +41,7 @@ def printServosAngles(S):
     for i in range(6):
         # El 3 no es un servo.
         if i != 3:
-            print("%.2f" % rad2Deg(S[i]), end =",")
+            print("%.2f" % rad2Deg(S[i]), end = ",")
 
 
 def moveServo(servo, angle):
@@ -53,7 +55,7 @@ def moveServo(servo, angle):
     timeStep = time/steps
     angleIni = Sp[servo]
     h = (angle - angleIni)/50
-    for i in range(0, 50):
+    for i in range(0, steps):
         angleIni = floor(angleIni + h)  # PARA QUE NO HAYA PROBLEMAS TRUNCO!!!!!!!!
         # kit.servo[servo].angle = angleIni
         sleep(timeStep)
@@ -65,9 +67,8 @@ def moveServos(angles):
     """
     Mueve los servos a los ángulos dados (en radianes).
     """
-    if __name__ == '__main__':
-        Thread(target=moveServo, args=[0, angles[0]]).start()
-        Thread(target=moveServo, args=[1, angles[1]]).start()
-        Thread(target=moveServo, args=[2, angles[2]]).start()
-        Thread(target=moveServo, args=[4, angles[4]]).start()
-        Thread(target=moveServo, args=[5, angles[5]]).start()
+    Thread(target=moveServo, args=[0, angles[0]]).start()
+    Thread(target=moveServo, args=[1, angles[1]]).start()
+    Thread(target=moveServo, args=[2, angles[2]]).start()
+    Thread(target=moveServo, args=[4, angles[4]]).start()
+    Thread(target=moveServo, args=[5, angles[5]]).start()
