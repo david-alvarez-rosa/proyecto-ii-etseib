@@ -2,10 +2,10 @@
 Estrategia general, importa estrategia básica.
 """
 
-
+import random, sys
 import tic_tac.cfg as cfg
 from tic_tac.equivalencias import *
-from tic_tac.basic import moveBasic
+from tic_tac.basic import moveBasic, moveRandom
 
 
 def actualiza(i, j):
@@ -16,13 +16,6 @@ def actualiza(i, j):
     cfg.board[i][j] = 0
     if cfg.eb == True:
         return
-
-    # # Caso especial si comienza la máquina.
-    # if cfg.rama == -1:
-    #     cfg.rama = 3
-    #     cfg.nodo = 0
-    #     cfg.board[0][0] = 1
-    #     cfg.boardInt[0][0] = 1
 
     # Si es el primer movimiento se detecta la rama inicial.
     elif cfg.nodo == -1:
@@ -62,6 +55,10 @@ def move():
     Decide el siguiente movimiento a realizar. Actualiza el tablero y devuelve
     cuál es el movimiento.
     """
+    if sys.argv[5] == "Easy":
+        if random.randint(0, 100) > 50:
+            return moveRandom(cfg.board)
+
     if cfg.eb == True:
         i, j = moveBasic(cfg.board)
         return i, j
@@ -71,6 +68,8 @@ def move():
 
     cfg.nodo = cfg.conex[cfg.rama][cfg.nodo][0]
     move = cfg.ramas[cfg.rama][cfg.nodo]
+
+    cfg.sims.append(aleatorizar(cfg.boardInt))
 
     if move == "EB":
         cfg.eb = True
@@ -89,3 +88,5 @@ def move():
         for j in range(3):
             if boardC[i][j] != cfg.board[i][j]:
                 return i, j
+
+    return -1, -1

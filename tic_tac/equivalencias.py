@@ -1,10 +1,9 @@
 """
 Diferentes funciones para aplicar simetrías y para comprobar si dos tableros
 son equivalentes.
-
--> Ahora mismo no se miran giros, no hacen falta, pero podrían ser necesarios
-   en un futuro. <-
 """
+
+import random
 
 
 def simetria(boardP, sim):
@@ -87,3 +86,16 @@ def equivalente(boardA, boardB):
             return sim
 
     return -2
+
+
+def aleatorizar(board):
+    """
+    Añade una simetría extra (que no modifique el tablero) para hacer aleatorios
+    los movimientos.
+    """
+    posSims = [-1]
+    for sim in range(4):
+        if equivalente(board, simetria(board, sim)) == -1:
+            posSims.append(sim)
+
+    return posSims[random.randint(0, len(posSims) - 1)]

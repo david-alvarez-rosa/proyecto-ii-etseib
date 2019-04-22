@@ -29,6 +29,8 @@ U = [U1, U2]
 
 # Posicion del tablero de casillas ancho_tablero*ancho_tablero (mm²)
 ancho_tablero = 50
+# Tablero también más separado.
+# TODO: Revisar esto.
 x_inicial_t = 80
 
 fila_1 = [[x_inicial_t + 2*ancho_tablero, -ancho_tablero], [x_inicial_t + 2*ancho_tablero, 0], [x_inicial_t + 2*ancho_tablero, ancho_tablero]]
@@ -133,7 +135,6 @@ def movePieceFromTo(p0, pf):
     moveServos(S)
     printServosAngles(S)
 
-
     # Dejar el brazo en posición por defecto para permitir ver el tablero.
     # Esta posición se podría mejorar
     reset_servos()
@@ -149,10 +150,10 @@ def movePiece(i, j, tipo):
     else:
         tipo = 1
 
-    print("%.2f" % V[tipo][U[tipo]][0], end = ",")
-    print("%.2f" % V[tipo][U[tipo]][1], end = ",")
-    print("%.2f" % tablero[i][j][0], end = ",")
-    print("%.2f" % tablero[i][j][1], end = ",")
+    print("%.1f" % V[tipo][U[tipo]][0], end = ",")
+    print("%.1f" % V[tipo][U[tipo]][1], end = ",")
+    print("%.1f" % tablero[i][j][0], end = ",")
+    print("%.1f" % tablero[i][j][1], end = ",")
 
     movePieceFromTo(V[tipo][U[tipo]], tablero[i][j])
     U[tipo] += 1

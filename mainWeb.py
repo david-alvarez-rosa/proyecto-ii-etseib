@@ -1,20 +1,10 @@
 import sys
-# from adafruit_servokit import ServoKit
 import tic_tac.cfg as cfg
 from tic_tac.estrategia import actualiza, move
 from tic_tac.basic import game_end
 from tic_tac.equivalencias import simetriaMultiple
 import Move.main_move
-from Move.main_move import movePiece
-
-"""
-TODO: Esto está definido dos veces, mirarlo porque podría fallar.
-Quizá lo mejor moverlo a Move.
-kit = ServoKit(channels=16)
-for i in range(6):
-    if i != 3:
-        kit.servo[i].angle = 0
-"""
+from Move.main_move import movePiece, reset_servos
 
 
 def board2Str(M):
@@ -77,7 +67,7 @@ def nextUrl(i, j):
     """
     Crea e imprime la siguiente dirección web. También el tablero.
     """
-    url = "?rama=" + str(cfg.rama)
+    url = "&rama=" + str(cfg.rama)
     url += "&nodo=" + str(cfg.nodo)
     url += "&sims="
     for sim in cfg.sims:
@@ -97,13 +87,18 @@ def printData(i, j):
     print(data, end = ",")
 
 
+# Iniciar los servos.
+reset_servos()
 # Leer movimiento humano y mover la pieza correspondiente.
 i, j = readVariables()
 movePiece(i, j, "O")
-# Decidir movimiento respuesta y mover la pieza correspondiente.
-i, j = move()
-movePiece(i, j, "X")
+if game_end(cfg.board) != "User wins":
+    # Decidir movimiento respuesta y mover la pieza correspondiente.
+    i, j = move()
+    # Si se puede hacer movimiento, mover la pieza.
+    if i != -1 and j != -1:
+        movePiece(i, j, "X")
 # Devolver datos necesarios.
 printData(i, j)
 # Mirar si la partida ha terminado.
-game_end(cfg.board)
+print(game_end(cfg.board))

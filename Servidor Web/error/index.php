@@ -3,7 +3,7 @@
 <html>
    <head>
       <meta charset="UTF-8">
-      <title>Tic Tac Toe</title>
+      <title>Tres en Raya</title>
       <link rel="stylesheet" type="text/css" href="../layout.css" />
    </head>
 

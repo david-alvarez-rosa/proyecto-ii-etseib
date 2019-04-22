@@ -1,6 +1,7 @@
 #board {
     border-collapse: collapse;
-    margin: 0px auto;
+    margin: -15px 150px 0 0;
+    float: right;
     background-color: #D2E0F9;
 }
 
@@ -44,4 +45,30 @@
 
 #tic:hover span:after {
     opacity: .75;
+}
+
+
+/* Actualizar con el tamaño. */
+@media only all
+and (max-width: 900px) {
+    #board {
+        margin: 0 auto;
+        float: none;
+    }
+}
+
+@media only all
+and (max-width: 1050px)
+and (min-width: 899px){
+    #board {
+        margin: -15px 50px 0 0;
+    }
+}
+
+@media only all
+and (max-width: 1200px)
+and (min-width: 1049px){
+    #board {
+        margin: -15px 100px 0 0;
+    }
 }

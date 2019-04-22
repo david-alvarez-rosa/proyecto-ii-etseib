@@ -14,14 +14,13 @@
            text-align: center;
        }
       </style>
-      <!-- <meta http-equiv="refresh" content="3;URL='https://alvarezrosa.com'" /> -->
    </head>
 
 
    <body>
       <header id="header">
          <div style="float: left;"><a href="/proyecto/"><h1>Tres en Raya</h1></a></div>
-         <div style="float: right;"><a href="/proyecto/jugar/per/"><h3>Comienza tú</h3></a></div>
+         <div style="float: right;"><a href="/proyecto/jugar/per/"><h3>Empieza tú</h3></a></div>
          <div style="margin: 0 auto; width: 100px;"><a href="/proyecto/jugar/"><h1>Jugar</h1></a></div>
       </header>
 
@@ -31,27 +30,16 @@
       ?>
 
 
-      <main>
-         <?php
-         $gameEnd = false;
-         function endGame($message) {
-             global $gameEnd;
-             $gameEnd = true;
-             echo '<div class="modal-wrapper">
-         <div class="modal">
-            <div class="head">
-               <h3>';
-             echo $message;
-             echo '</h3>
-      </div>
-      <a href="/proyecto/jugar/per/" id="playAsX"><button>Vuelve a empezar</button></a>
-      </div>
-      </div>
-             ';
-         }
-         ?>
+      <main id="main">
+         <div class="innertube">
+            <p>Juega al tres en raya, tú empiezas.</p>
+         </div>
 
          <?php
+         $dif = 'alta';
+         if (isset($_GET['dif']))
+             $dif = $_GET['dif'];
+
          if (isset($_GET['movs'])) {
              $movs = $_GET['movs'];
              if (isset($_GET['rama'])) {
@@ -59,142 +47,43 @@
                  $nodo = $_GET['nodo'];
                  $sims = $_GET['sims'];
                  $eb = $_GET['eb'];
-                 $command = 'python3 ../../cgi-bin/main.py '.$movs.' '.$rama.' '.$nodo.' '.$sims.' '.$eb;
              }
-             else
-                 $command = 'python3 ../../cgi-bin/main.py '.$movs.' -1 -1 -1 False';
-
+             else {
+                 $rama = '-1';
+                 $nodo = '-1';
+                 $sims = '-1';
+                 $eb = 'False';
+             }
+             if ($dif == 'baja')
+                 $eb = 'Easy';
+             else if ($dif == 'media')
+                 $eb = 'True';
+             $command = 'python3 ../../cgi-bin/main.py '.$movs.' '.$rama.' '.$nodo.' '.$sims.' '.$eb;
              $output = exec($command);
              $outputArray = split(",", $output);
              $n = sizeof($outputArray);
 
              $board = $outputArray[$n - 3];
-             $url = $outputArray[$n - 2];
-
-             if ($outputArray[$n - 1] == "AI wins")
-                 endGame("AI wins");
-             else if ($outputArray[$n - 1] == "Tie")
-                 endGame("Tie");
+             $url = '?dif='.$dif.$outputArray[$n - 2];
          }
+
          else {
              $board = '.........';
-             $url = '?movs=';
+             $url = '?dif='.$dif.'&movs=';
+             $outputArray = array('Not ended');
+             $n = sizeof($outputArray);
          }
          ?>
 
-
-         <br /><br />
-         <table id="board">
-            <?php
-            for ($i = 0; $i < 3; ++$i) {
-                echo '<tr>';
-                for ($j = 0; $j < 3; ++$j) {
-                    if ($board[3*$i + $j] != ".")
-                        echo '<td id ="'.$board[3*$i + $j].'">'.$board[3*$i + $j].'</td>';
-                    else if ($gameEnd)
-                        echo '<td></td>';
-                    else
-                        echo '<td><a href="'.$url.$i.$j.'"><button id="tic"><span></span></button></a></td>';
-                }
-                echo '</tr>';
-            }
-            ?>
-         </table>
-
-
-         <br /><br />
-         <div align="center">
-            <h2>Ángulos servos última jugada</h2>
-            <br />
-            <table border="1" class="data">
-               <tr>
-                  <th></th>
-                  <th>ROTACIÓN (0)</th>
-                  <th>BRAZO PRINCIPAL (1)</th>
-                  <th>BRAZO SECUNDARIO (2)</th>
-                  <th>PINZA ROTACIÓN (4)</th>
-                  <th>PINZA APERTURA (5)</th>
-               </tr>
-               <tr>
-                  <td colspan="6">Movimiento humano.</td>
-               </tr>
-
-               <?php
-               for ($i = 0; $i < 7; ++$i) {
-                   echo '<tr>';
-                   echo '<td><b>Mov '.$i.'</b></td>';
-                   for ($j = 0; $j < 5; ++$j)
-                       echo '<td>'.$outputArray[5*$i + $j + 4].'</td>';
-                   echo '</tr>';
-               }
-               ?>
-               <tr>
-                  <td colspan="6">Movimiento brazo.</td>
-               </tr>
-               <?php
-               for ($ip = 7; $ip < 14; ++$ip) {
-                   echo '<tr>';
-                   $ipp = $ip - 7;
-                   echo '<td><b>Mov '.$ipp.'</b></td>';
-                   for ($jp = 0; $jp < 5; ++$jp)
-                       echo '<td>'.$outputArray[5*$ip + $jp + 10].'<td>';
-                   echo '</tr>';
-               }
-               ?>
-            </table>
-
-            <br />
-            <ul align="center">
-               <li><b>Mov 0:</b> Posición de inicio (predeterminada).</li>
-               <li><b>Mov 1:</b> Pinza sobre la pieza a coger en el almacén (a la altura justa para que al cerrar la pinza coja la pieza).</li>
-               <li><b>Mov 2:</b> Justo después de cerrar la pinza.</li>
-               <li><b>Mov 3:</b> Sobre la posición final.</li>
-               <li><b>Mov 4:</b> Pinza bajada sobre posición final.</li>
-               <li><b>Mov 5:</b> Pieza soltada en la posición final (con las pinzas abiertas).</li>
-               <li><b>Mov 6:</b> Posición final (predeterminada).</li>
-            </ul>
-
-
-            <br /><br /><br /><br />
-            <h2>Movimiento piezas última jugada</h2>
-            <br />
-            <table border="1" class="data">
-               <tr>
-                  <th>PIEZA COGIDA DE (ejes)</th>
-                  <th>PIEZA COGIDA DE (número)*</th>
-                  <th>PIEZA DEJADA EN (ejes)</th>
-                  <th>PIEZA DEJADA EN (tablero)**</th>
-               </tr>
-               <tr>
-                  <td colspan="4">Movimiento humano (mueve O's).</td>
-               </tr>
-               <tr>
-                  <td>x = <?php echo $outputArray[0]; ?> , y = <?php echo $outputArray[1] ?> [mm]</td>
-                  <td>Falta, pero va por orden.</td>
-                  <td>x = <?php echo $outputArray[2]; ?> , y = <?php echo $outputArray[3] ?> [mm]</td>
-                  <td>Fila = <?php echo $outputArray[39] + 1; ?> - Columna = <?php echo $outputArray[40] + 1; ?></td>
-               </tr>
-               <tr>
-                  <td colspan="4">Movimiento brazo (mueve X's).</td>
-               </tr>
-               <tr>
-                  <td>x = <?php echo $outputArray[41]; ?> , y = <?php echo $outputArray[42] ?> [mm]</td>
-                  <td>Falta, pero va por orden.</td>
-                  <td>x = <?php echo $outputArray[43]; ?> , y = <?php echo $outputArray[44] ?> [mm]</td>
-                  <td>Fila = <?php echo $outputArray[80] + 1; ?> - Columna = <?php echo $outputArray[81] + 1; ?></td>
-               </tr>
-            </table>
-
-            <br />
-            <ul>
-               <li><b>*</b>Número de pieza en el almacén correspondiente (hay 4 huecos en cada almacén).</li>
-               <li><b>**</b>Posición relativa en el tablero (fila y columna).</li>
-               <li>Los ejes parten del brazo (que está puesto donde está el título de
-                  la página, es decir, detrás del tablero). Eje de abcisas horizontal (en
-                  pantalla de ordenador) y de ordenadas vertical (ídem).</li>
-            </ul>
-
-         </div>
+         <?php
+         include("../board.php");
+         $page = 'per';
+         if ($outputArray[$n - 1] == "Not ended")
+             include("../controles.php");
+         else
+             include("../endGame.php");
+         include("../data.php");
+         ?>
       </main>
 
 

@@ -78,7 +78,7 @@ def extraerSolucion1(phiss, px, py):
 
         if abs(l2*cos(phi1) + l1*cos(phi4) + l4*cos((35*pi)/180) - px) < eps and \
            abs(l2*sin(phi1) + l1*sin(phi4) + h - py) < eps and \
-           phi1 >= 0 and phi1 <= pi and phi4 <= 0 and phi4 >= -pi:
+           phi1 >= 0 and phi1 <= pi and phi4 <= pi/2 and phi4 >= -pi/2:
             return phi1, phi4
 
 

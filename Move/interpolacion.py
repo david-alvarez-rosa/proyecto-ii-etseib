@@ -1,7 +1,6 @@
 """
 Define y mueve suavemente los servos.
  -- Todo lo de mover los servos está por ahora comentado --
-TODO: Falta conectar los ángulos entre partidas (importante, no funcionará).
 """
 
 
@@ -10,7 +9,7 @@ from time import sleep
 from math import *
 from threading import Thread
 
-# kit = ServoKit(channels=16)
+# kit = ServoKit(channels = 16)
 
 # Vector con los ánngulos de los servos
 # 0: ROTACION
@@ -21,6 +20,12 @@ from threading import Thread
 # 5: PINZA APERTURA
 
 # Se actualizará en todo momento para evitar movimientos bruscos
+
+# # Iniciar los servos.
+# for i in range(6):
+#     if i != 3:
+#         kit.servo[i].angle = 0
+
 
 # Variable real de ángulos en servos.
 Sp = [0]*6
@@ -41,7 +46,7 @@ def printServosAngles(S):
     for i in range(6):
         # El 3 no es un servo.
         if i != 3:
-            print("%.2f" % rad2Deg(S[i]), end = ",")
+            print(floor(rad2Deg(S[i])), end = ",")
 
 
 def moveServo(servo, angle):
@@ -49,18 +54,20 @@ def moveServo(servo, angle):
     Mueve el servo a un determinado ángulo (en radianes).
     TODO: mirar para cambiar las velocidades o hacerlas de otra manera.
     """
-    angle = floor(rad2Deg(angle))  # PARA QUE NO HAYA PROBLEMAS TRUNCO!!!!!!!!
+    global Sp
+    angle = rad2Deg(angle)
     steps = 50
     time = 0  # Modificar este valor.
     timeStep = time/steps
     angleIni = Sp[servo]
-    h = (angle - angleIni)/50
-    for i in range(0, steps):
-        angleIni = floor(angleIni + h)  # PARA QUE NO HAYA PROBLEMAS TRUNCO!!!!!!!!
-        # kit.servo[servo].angle = angleIni
+    h = (angle - angleIni)/steps
+    for i in range(steps):
+        angleIni = angleIni + h
+        # PARA QUE NO HAYA PROBLEMAS TRUNCO!!!!!!!!
+        # kit.servo[servo].angle = floor(angleIni)
         sleep(timeStep)
 
-    Sp[servo] = angleIni
+    Sp[servo] = floor(angleIni)
 
 
 def moveServos(angles):

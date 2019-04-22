@@ -14,7 +14,6 @@
            text-align: center;
        }
       </style>
-      <!-- <meta http-equiv="refresh" content="3;URL='https://alvarezrosa.com'" /> -->
    </head>
 
 
@@ -39,13 +38,13 @@
 
             <ul>
                <li>
-                  <a href="/proyecto/jugar/per/" title="Comienza tú a jugar.">
-                     Comienza tú
+                  <a href="/proyecto/jugar/per/" title="Empieza tú a jugar.">
+                     Empieza tú
                   </a>
                </li>
                <li>
                   <a href="/proyecto/jugar/ai/" title="Tú juegas segundo.">
-                     Comienza el brazo
+                     Empieza el brazo
                   </a>
                </li>
                <li>
