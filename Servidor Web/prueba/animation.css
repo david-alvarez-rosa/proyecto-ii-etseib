@@ -1,0 +1,35 @@
+#container {
+    width: 600px;
+    height: 400px;
+    background-color: yellow;
+}
+
+#brazo {
+    width: 250px;
+    height: 10px;
+    position: absolute;
+    top: 350px;
+    left: 50px;
+    background-color: black;
+    transform-origin: 0 0;
+}
+
+#brazo2 {
+    width: 250px;
+    height: 10px;
+    position: absolute;
+    top: 350px;
+    left: 300px;
+    background-color: black;
+    transform-origin: 0 0;
+}
+
+#pinza {
+    width: 10px;
+    height: 30px;
+    position: absolute;
+    top: 350px;
+    left: 550px;
+    background-color: black;
+    transform-origin: 0 0;
+}
