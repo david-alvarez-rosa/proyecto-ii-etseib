@@ -32,7 +32,10 @@
 
       <main id="main">
          <div class="innertube">
-            <p>Juega al tres en raya, tú vas segundo.</p>
+            <p>Juega al tres en raya, tú vas segundo (también puedes
+               <a href="/proyecto/jugar/per/" title="Empieza tú a jugar.">
+                  empezar tú</a>).
+            </p>
          </div>
 
          <?php

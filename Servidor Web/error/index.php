@@ -24,6 +24,9 @@
             <p>
                Esta página no está disponible.
             </p>
+            <br />
+            <input type="button" value="Vuelve" onClick="history.go(-1);" />
+            <a href="/proyecto/"><button>Inicio</button></a>
          </div>
       </main>
 

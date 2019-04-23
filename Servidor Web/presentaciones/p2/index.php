@@ -5,7 +5,6 @@
       <meta charset="UTF-8">
       <title>Tres en Raya</title>
       <link rel="stylesheet" type="text/css" href="../../layout.css" />
-      <link rel="stylesheet" type="text/css" href="../../board.css" />
    </head>
 
 
@@ -25,7 +24,7 @@
       <main>
          <div class="innertube">
             <p>
-               Presentación inicial del proyecto.
+               Segunda presentación del proyecto.
             </p>
 
             <ul>

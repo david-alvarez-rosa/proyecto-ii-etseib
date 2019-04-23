@@ -3,6 +3,9 @@
      font-weight: bold;
      font-size: 30px;
  }
+ input[type = radio] {
+     margin-left: 20px;
+ }
 </style>
 
 
@@ -17,30 +20,31 @@
    ?>
    <p>Vuelve a empezar, vacía el tablero.</p>
    <?php
-   echo '<a href="/proyecto/jugar/per/?dif=';
+   echo '<a href="/proyecto/jugar/'.$page.'/?dif=';
    echo $dif.'">';
    echo '<button>Vacía</button></a>';
    ?>
 
    <p>Ajusta la dificultad.</p>
    <div align="center">
-      <form action="/proyecto/jugar/per/">
-         <?php
-         $same = '<input type="radio" name="dif" value=';
-         $dif = 'alta';
-         if (isset($_GET['dif']))
-             $dif = $_GET['dif'];
-         $values = array('Baja', 'Media', 'Alta');
-         for ($i = 0; $i < 3; ++$i) {
-             if (strtolower($values[$i]) == $dif)
-                 echo '<input checked type="radio" name="dif" value="'.strtolower($values[$i]).'" />'.$values[$i];
-             else
-                 echo '<input type="radio" name="dif" value="'.strtolower($values[$i]).'" />'.$values[$i];
-         }
-         ?>
-         <br /><br />
-         <input type="submit" value="Actualiza cambios" />
-      </form>
+      <?php
+      echo '<form action="/proyecto/jugar/'.$page.'/">';
+      $same = '<input type="radio" name="dif" value=';
+      $dif = 'alta';
+      if (isset($_GET['dif']))
+          $dif = $_GET['dif'];
+      $values = array('baja', 'media', 'alta');
+      $valuesDisp = array('Fácil', 'Medio', 'Imposible');
+      for ($i = 0; $i < 3; ++$i) {
+          if ($values[$i] == $dif)
+              echo '<input checked type="radio" name="dif" value="'.$values[$i].'" />'.$valuesDisp[$i];
+          else
+              echo '<input type="radio" name="dif" value="'.$values[$i].'" />'.$valuesDisp[$i];
+      }
+      echo '<br /><br />';
+      echo '<input type="submit" value="Actualiza cambios" />';
+      echo '</form>';
+      ?>
    </div>
 </div>
 

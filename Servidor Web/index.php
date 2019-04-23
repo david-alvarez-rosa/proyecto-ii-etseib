@@ -59,7 +59,6 @@
             </p>
             <br /><br />
             <p>
-               Nuevo
                asdfa añsldkfj asñlkdfj asñlkdf añlskjdf as
                asdfa añsldkfj asñlkdfj asñlkdf
                asdfa añsldkfj asñlkdfj asñlkdf añlskjdf as
