@@ -95,6 +95,18 @@ def resolverSistema1(px, py):
     return extraerSolucion1(phiss, px, py)
 
 
+def verticalMove(px, py):
+    """
+    Dada una posición (px, py) en un plano vertical, devuelve los ángulos de los
+    servos que corresponden a esa posición.
+    """
+    # Sistema 1.
+    phi1, phi4 = resolverSistema1(px, py)
+    # Sistema 2.
+    phi2, phi3 = resolverSistema2(phi1, phi4)
+    return phi1, phi2, phi3, phi4
+
+
 # Tolerancia.
 eps = 1e-6
 
@@ -108,15 +120,3 @@ dx = 34.4
 dy = 24.22
 # Consideraremos la altura como un parámetro más.
 h = 0
-
-
-def verticalMove(px, py):
-    """
-    Dada una posición (px, py) en un plano vertical, devuelve los ángulos de los
-    servos que corresponden a esa posición.
-    """
-    # Sistema 1.
-    phi1, phi4 = resolverSistema1(px, py)
-    # Sistema 2.
-    phi2, phi3 = resolverSistema2(phi1, phi4)
-    return phi1, phi2, phi3, phi4

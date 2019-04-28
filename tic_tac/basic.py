@@ -1,6 +1,6 @@
 """
-Faltaría mejorar la función 'moveBasic'. Cuando no hay ningún momento
-especial mueve al azar.
+Estrategia de juego básica y movimiento aleatorio (usado para los niveles de
+dificultad).
 """
 
 import sys
