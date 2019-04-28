@@ -1,46 +1,88 @@
 #container {
     width: 600px;
-    height: 400px;
-    background-color: yellow;
+    height: 900px;
+    background-color: #ccffff;
 }
 
 #brazo {
     width: 250px;
-    height: 10px;
+    height: 15px;
     position: absolute;
     top: 350px;
     left: 50px;
-    background-color: black;
+    background-color: #cc0000;
     transform-origin: 0 0;
 }
 
 #brazo2 {
     width: 250px;
-    height: 10px;
+    height: 15px;
     position: absolute;
     top: 350px;
     left: 300px;
-    background-color: black;
+    background-color: #cc0000;
     transform-origin: 0 0;
 }
 
 #base {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     position: absolute;
-    top: 350px;
-    left: 5px;
-    background-color: #e62e00;
+    top: 330px;
+    left: 40px;
+    background-color: #ff9900;
     transform-origin: 0 0;
 }
 
+#tierra {
+    width: 80px;
+    height: 65px;
+    position: absolute;
+    top: 370px;
+    left: 25px;
+    background-color: #cc0000;
+    transform-origin: 0 0;  
+}
 
 #pinza {
     width: 10px;
-    height: 30px;
+    height: 40px;
     position: absolute;
     top: 350px;
     left: 550px;
-    background-color: black;
+    background-color: #cc0000;
     transform-origin: 0 0;
 }
+
+#tenazas_h {
+    width: 50px;
+    height: 10px;
+    position: absolute;
+    top: 390px;
+    left: 530px;
+    background-color: #0000ff;
+    transform-origin: 0 0;
+}
+
+#tenazas_v1 {
+    width: 10px;
+    height: 40px;
+    position: absolute;
+    top: 390px;
+    left: 530px;
+    background-color: #0000ff;
+    transform-origin: 0 0;
+}
+
+#tenazas_v2 {
+    width: 10px;
+    height: 40px;
+    position: absolute;
+    top: 390px;
+    left: 570px;
+    background-color: #0000ff;
+    transform-origin: 0 0;
+}
+
+
+    
