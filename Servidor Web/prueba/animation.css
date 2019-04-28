@@ -1,7 +1,40 @@
 #container {
-    width: 600px;
+    width: 900px;
     height: 900px;
     background-color: #ccffff;
+}
+
+#pieza1 {
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    top: 415px;
+    left: 800px;
+    background-color: #2b6587;
+    transform-origin: 0 0;
+
+}
+
+#pieza2 {
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    top: 392px;
+    left: 800px;
+    background-color: #2b6587;
+    transform-origin: 0 0;
+
+}
+
+#pieza3 {
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    top: 369px;
+    left: 800px;
+    background-color: #2b6587;
+    transform-origin: 0 0;
+
 }
 
 #brazo {
