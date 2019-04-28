@@ -1,109 +1,112 @@
 #container {
     width: 900px;
-    height: 900px;
-    background-color: #ccffff;
+    height: 500px;
+    position: absolute;
+    left: 300px;
+    /* transform-origin: 0 0; */
+    /* transform: scale(1, 1); */
+}
+
+#piezasCont * {
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    left: 406px;
+    background-color: #2b6587;
 }
 
 #pieza1 {
-    width: 30px;
-    height: 20px;
-    position: absolute;
-    top: 415px;
-    left: 800px;
-    background-color: #2b6587;
-    transform-origin: 0 0;
-
+    bottom: 0;
 }
 
 #pieza2 {
-    width: 30px;
-    height: 20px;
-    position: absolute;
-    top: 392px;
-    left: 800px;
-    background-color: #2b6587;
-    transform-origin: 0 0;
-
+    bottom: 24px;
 }
 
 #pieza3 {
-    width: 30px;
-    height: 20px;
-    position: absolute;
-    top: 369px;
-    left: 800px;
-    background-color: #2b6587;
-    transform-origin: 0 0;
-
+    bottom: 48px;
 }
 
-#brazo {
+#barra1 {
+    width: 250px;
+    height: 15px;
+    background-color: #CC0000;
+}
+
+#barra2 {
     width: 250px;
     height: 15px;
     position: absolute;
-    top: 350px;
-    left: 50px;
-    background-color: #cc0000;
-    transform-origin: 0 0;
-}
-
-#brazo2 {
-    width: 250px;
-    height: 15px;
-    position: absolute;
-    top: 350px;
-    left: 300px;
-    background-color: #cc0000;
-    transform-origin: 0 0;
+    bottom: 77.5px;
+    left: 290px;
+    background-color: #CC0000;
+    transform-origin: 0 7.5px;
 }
 
 #base {
     width: 50px;
     height: 50px;
     position: absolute;
-    top: 330px;
-    left: 40px;
-    background-color: #ff9900;
-    transform-origin: 0 0;
+    bottom: 55px;
+    left: 15px;
+    background-color: #FF9900;
 }
 
 #tierra {
     width: 80px;
     height: 65px;
     position: absolute;
-    top: 370px;
-    left: 25px;
-    background-color: #cc0000;
-    transform-origin: 0 0;  
+    bottom: 0;
+    background-color: #CC0000;
+}
+
+#barra1Cont {
+    position: absolute;
+    bottom: 77.5px;
+    left: 40px;
+    transform-origin: 0 7.5px;
+}
+
+#pinzaCont {
+    position: absolute;
+    bottom: 45px;
+    left: 515px;
 }
 
 #pinza {
     width: 10px;
     height: 40px;
     position: absolute;
-    top: 350px;
-    left: 550px;
-    background-color: #cc0000;
-    transform-origin: 0 0;
+    top: -40px;
+    left: 20px;
+    background-color: #CC0000;
+}
+
+#tenaza {
+    width: 50px;
+    height: 10px;
+    position: absolute;
+    top: 390px;
+    left: 530px;
+    background-color: #0000FF;
 }
 
 #tenazas_h {
     width: 50px;
     height: 10px;
     position: absolute;
-    top: 390px;
-    left: 530px;
-    background-color: #0000ff;
-    transform-origin: 0 0;
+    top: 0;
+    left: 0;
+    background-color: #0000FF;
 }
 
 #tenazas_v1 {
     width: 10px;
     height: 40px;
     position: absolute;
-    top: 390px;
-    left: 530px;
-    background-color: #0000ff;
+    top: 0;
+    left: 0;
+    background-color: #0000FF;
     transform-origin: 0 0;
 }
 
@@ -111,11 +114,47 @@
     width: 10px;
     height: 40px;
     position: absolute;
-    top: 390px;
-    left: 570px;
-    background-color: #0000ff;
-    transform-origin: 0 0;
+    top: 0;
+    left: 40px;
+    background-color: #0000FF;
 }
 
 
-    
+#articulacion {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: Black;
+}
+
+#articulacionPos1 {
+    position: absolute;
+    left: 235px;
+    bottom: -7.5px;
+}
+
+#articulacionPos2 {
+    position: absolute;
+    left: 10px;
+    bottom: 25px;
+}
+
+#pieza {
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    background-color: #2B6587;
+    display: none;
+}
+
+#piezaDej {
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    left: 236px;
+    bottom: 0;
+    background-color: #2B6587;
+    display: none;
+}

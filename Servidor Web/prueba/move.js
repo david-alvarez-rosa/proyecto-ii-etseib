@@ -1,67 +1,101 @@
-function rad_to_deg(phi) {
-    return phi*(180/Math.PI);
+function sleep(delay) {
+    return new Promise(resolve => setTimeout(resolve, delay));
 }
 
 
-function move_brazo(phi1,phi2) {
-    /* Supongo que se pasa phi1 y phi2 en grados */
-    /* Supongo phi2 > 0 */
-    /* phi2 --> angulo que forma la barra 2 con la horizontal */
-    
-    var cont1 = 0;
-    var deg1 = Math.ceil(phi1);
-    console.log(deg1)
-    var id = setInterval(frame, 50);
-    var length = 250;
-    function frame() {
-        if (cont1 == deg1) {
-	    clearInterval(id);
-	    var y = -length*Math.sin(deg1*Math.PI/180);
-	    var x = length*Math.cos(deg1*Math.PI/180) - length;
-	    move_brazo2(phi1,phi2,x,y);
-	}
-	else {
-	    ++cont1;
-            brazo.style.transform = "rotate(" + -cont1.toString() + "deg)";
-            console.log(cont1)
-            var y = -length*Math.sin(cont1*Math.PI/180);
-            var x = length*Math.cos(cont1*Math.PI/180) - length;
-            brazo2.style.transform = "translate(" + x.toString() + "px, " + y.toString() + "px)";
-            pinza.style.transform = "translate(" + x.toString() + "px, " + y.toString() + "px)";
-	    tenazas_v1.style.transform = "translate(" + x.toString() + "px, " + y.toString() + "px)";
-	    tenazas_v2.style.transform = "translate(" + x.toString() + "px, " + y.toString() + "px)";
-	    tenazas_h.style.transform = "translate(" + x.toString() + "px, " + y.toString() + "px)";
-	    console.log("out2.0")
-	}
+async function move_barra1(phi0, phif) {
+    var phi = phi0;
+    var inc = 1;
+    if (phi0 > phif)
+        inc = -1;
+
+    while (phi != phif) {
+        await sleep(delay);
+        phi += inc;
+
+        barra1Cont.style.transform = "rotate(-" + phi.toString() + "deg)";
+
+        var xBarra2 = xBarra2Ini + length1*(Math.cos(phi*Math.PI/180) - 1);
+        var yBarra2 = yBarra2Ini + length1*Math.sin(phi*Math.PI/180);
+        barra2.style.left = xBarra2.toString() + "px";
+        barra2.style.bottom = yBarra2.toString() + "px";
+
+        var xPinza = posPinza[0] + length1*(Math.cos(phi*Math.PI/180) - Math.cos(phi0*Math.PI/180));
+        var yPinza = posPinza[1] + length1*(Math.sin(phi*Math.PI/180) - Math.sin(phi0*Math.PI/180));
+        pinzaCont.style.left = xPinza.toString() + "px";
+        pinzaCont.style.bottom = yPinza.toString() + "px";
     }
+
+    posPinza = [xPinza, yPinza];
 }
 
-function move_brazo2(phi1,phi2,x,y) {
-    console.log(x)
-    console.log(y)
-    var deg1 = Math.ceil(phi1);
-    var deg2 = Math.ceil(phi2);
-    var length = 250;
-    console.log(deg2)
-    var cont2 = 0;
-    var id2 = setInterval(frame2, 50);
-    function frame2() {
-	if (cont2 == deg2) {
-	    clearInterval(id2);
-	}
-	else {
-	    ++cont2;
 
-	    console.log(x);
-	    console.log(cont2);
-	    brazo2.style.transform = "translate(" + x.toString() + "px, " + y.toString() + "px) rotate(" + cont2.toString() + "deg)";
-	    var xp = x + length*(Math.cos(cont2*Math.PI/180) - 1) - 10;
-	    var yp = y + length*Math.sin(cont2*Math.PI/180);
-	    console.log(xp);
-	    pinza.style.transform = "translate(" + xp.toString() + "px, " + yp.toString() + "px)";
-	    tenazas_v1.style.transform = "translate(" + xp.toString() + "px, " + yp.toString() + "px)";
-	    tenazas_v2.style.transform = "translate(" + xp.toString() + "px, " + yp.toString() + "px)";
-	    tenazas_h.style.transform = "translate(" + xp.toString() + "px, " + yp.toString() + "px)";
-	}
+async function move_barra2(phi0, phif) {
+    var phi = phi0;
+    var inc = 1;
+    if (phi0 > phif)
+        inc = -1;
+
+    var transPinzaIni = document.getElementById("pinzaCont").style.transform;
+    while (phi != phif) {
+        await sleep(delay);
+        phi += inc;
+
+        barra2.style.transform = "rotate(" + phi.toString() + "deg)";
+
+        var xPinza = posPinza[0] + length2*(Math.cos(phi*Math.PI/180) - Math.cos(phi0*Math.PI/180));
+        var yPinza = posPinza[1] + length2*(-Math.sin(phi*Math.PI/180) + Math.sin(phi0*Math.PI/180));
+        pinzaCont.style.left = xPinza.toString() + "px";
+        pinzaCont.style.bottom = yPinza.toString() + "px";
     }
+
+    posPinza = [xPinza, yPinza];
 }
+
+
+async function move_barras(phi1, phi2) {
+    move_barra1(angulosBarras[0], phi1);
+    await sleep(1000); // TODO: Cambiar este valor (dejarlo en función de phi1, phi2 y delay).
+    move_barra2(angulosBarras[1], phi2);
+}
+
+
+// Función para probar.
+async function move() {
+    await sleep(500);
+    move_barras(90, 20);
+    await sleep(1500); // TODO: Cambiar este valor (dejarlo en función de phi1, phi2 y delay).
+    angulosBarras = [90, 20];
+
+    move_barras(45, 35);
+    await sleep(1500); // TODO: Cambiar este valor (dejarlo en función de phi1, phi2 y delay).
+    angulosBarras = [45, 35];
+    pieza.style.display = "block";
+    pieza3.style.display = "none";
+
+    move_barras(65, 65);
+    await sleep(1500); // TODO: Cambiar este valor (dejarlo en función de phi1, phi2 y delay).
+    angulosBarras = [65, 65];
+
+    pieza.style.display = "none";
+    piezaDej.style.display = "block";
+
+    move_barras(90, 20);
+}
+
+
+var length1 = document.getElementById("barra1").offsetWidth;
+var length2 = document.getElementById("barra2").offsetWidth;
+
+var xBarra2Ini = getComputedStyle(document.getElementById("barra2")).getPropertyValue("left");
+var yBarra2Ini = getComputedStyle(document.getElementById("barra2")).getPropertyValue("bottom");
+// Conversión.
+xBarra2Ini = Number(xBarra2Ini.slice(0, xBarra2Ini.length - 2))
+yBarra2Ini = Number(yBarra2Ini.slice(0, yBarra2Ini.length - 2))
+
+var delay = 8;
+
+var posPinza = [515, 45];
+var angulosBarras = [0, 0];
+
+move();
