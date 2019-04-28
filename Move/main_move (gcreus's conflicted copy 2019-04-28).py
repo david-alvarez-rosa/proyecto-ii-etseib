@@ -4,8 +4,10 @@ from math import *
 
 
 # DEFINICION DE VARIABLES
-R1 = 70
-R2 = 100
+# Almacén más separado, si no parece que no es capaz de llegar.
+# TODO: Revisar esto.
+R1 = 200
+R2 = 230
 ang1 = 0.9*(pi/2)
 ang2 = 0.7*(pi/2)
 
@@ -27,6 +29,8 @@ U = [U1, U2]
 
 # Posicion del tablero de casillas ancho_tablero*ancho_tablero (mm²)
 ancho_tablero = 50
+# Tablero también más separado.
+# TODO: Revisar esto.
 x_inicial_t = 80
 
 fila_1 = [[x_inicial_t + 2*ancho_tablero, -ancho_tablero], [x_inicial_t + 2*ancho_tablero, 0], [x_inicial_t + 2*ancho_tablero, ancho_tablero]]
@@ -49,7 +53,6 @@ def reset_servos():
     global S
     S = [0]*6
     moveServos(S)
-
 
 
 def movePieceFromTo(p0, pf):
@@ -85,7 +88,6 @@ def movePieceFromTo(p0, pf):
     S[1] = phi1
     S[2] = phi2
 
-    print("CERRANDO PINZA")
     moveServos(S)
     printServosAngles(S)
 
@@ -95,7 +97,7 @@ def movePieceFromTo(p0, pf):
     S[2] = phi2
     moveServos(S)
     printServosAngles(S)
-    
+
     # Mover la pieza hasta la posición final
     r = sqrt(pow(pf[0], 2) + pow(pf[1], 2))
     S[0] = atan(pf[1]/pf[0])
@@ -133,7 +135,6 @@ def movePieceFromTo(p0, pf):
     moveServos(S)
     printServosAngles(S)
 
-
     # Dejar el brazo en posición por defecto para permitir ver el tablero.
     # Esta posición se podría mejorar
     reset_servos()
@@ -149,10 +150,10 @@ def movePiece(i, j, tipo):
     else:
         tipo = 1
 
-    print("%.2f" % V[tipo][U[tipo]][0], end = ",")
-    print("%.2f" % V[tipo][U[tipo]][1], end = ",")
-    print("%.2f" % tablero[i][j][0], end = ",")
-    print("%.2f" % tablero[i][j][1], end = ",")
+    print("%.1f" % V[tipo][U[tipo]][0], end = ",")
+    print("%.1f" % V[tipo][U[tipo]][1], end = ",")
+    print("%.1f" % tablero[i][j][0], end = ",")
+    print("%.1f" % tablero[i][j][1], end = ",")
 
     movePieceFromTo(V[tipo][U[tipo]], tablero[i][j])
     U[tipo] += 1

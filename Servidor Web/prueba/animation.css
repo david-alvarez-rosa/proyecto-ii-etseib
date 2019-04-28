@@ -24,6 +24,17 @@
     transform-origin: 0 0;
 }
 
+#base {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 350px;
+    left: 5px;
+    background-color: #e62e00;
+    transform-origin: 0 0;
+}
+
+
 #pinza {
     width: 10px;
     height: 30px;
