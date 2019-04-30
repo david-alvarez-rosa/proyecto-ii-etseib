@@ -1,46 +1,9 @@
-#container {
-    width: 900px;
-    height: 500px;
+#alzado {
     position: absolute;
-    left: 300px;
+    left: 200px;
+    top: 450px;
     /* transform-origin: 0 0; */
-    /* transform: scale(1, 1); */
-}
-
-#piezasCont * {
-    width: 30px;
-    height: 20px;
-    position: absolute;
-    left: 406px;
-    background-color: #2b6587;
-}
-
-#pieza1 {
-    bottom: 0;
-}
-
-#pieza2 {
-    bottom: 24px;
-}
-
-#pieza3 {
-    bottom: 48px;
-}
-
-#barra1 {
-    width: 250px;
-    height: 15px;
-    background-color: #CC0000;
-}
-
-#barra2 {
-    width: 250px;
-    height: 15px;
-    position: absolute;
-    bottom: 77.5px;
-    left: 290px;
-    background-color: #CC0000;
-    transform-origin: 0 7.5px;
+    /* transform: scale(.75, .75); */
 }
 
 #base {
@@ -60,6 +23,8 @@
     background-color: #CC0000;
 }
 
+
+/* Barra 1 */
 #barra1Cont {
     position: absolute;
     bottom: 77.5px;
@@ -67,6 +32,26 @@
     transform-origin: 0 7.5px;
 }
 
+#barra1 {
+    width: 250px;
+    height: 15px;
+    background-color: #CC0000;
+}
+
+
+/* Barra 2 */
+#barra2 {
+    width: 250px;
+    height: 15px;
+    position: absolute;
+    bottom: 77.5px;
+    left: 290px;
+    background-color: #CC0000;
+    transform-origin: 0 7.5px;
+}
+
+
+/* Pinza */
 #pinzaCont {
     position: absolute;
     bottom: 45px;
@@ -80,6 +65,16 @@
     top: -40px;
     left: 20px;
     background-color: #CC0000;
+}
+
+#piezaPinza {
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    background-color: #2B6587;
+    display: none;
 }
 
 #tenaza {
@@ -120,6 +115,7 @@
 }
 
 
+/* Articulaciones */
 #articulacion {
     width: 30px;
     height: 30px;
@@ -139,22 +135,63 @@
     bottom: 25px;
 }
 
-#pieza {
+
+/* Almacén de piezas. */
+#almacen * {
     width: 30px;
     height: 20px;
     position: absolute;
-    left: 10px;
-    top: 12px;
+    left: 406px;
+    background-color: #2b6587;
+}
+
+#almacen {
+    opacity: 0.1;
+    transition: opacity 2s;
+    transition-timing-function: easy-in;
+}
+
+#almacenPieza0 {
+    bottom: 72px;
+}
+
+#almacenPieza1 {
+    bottom: 48px;
+}
+
+#almacenPieza2 {
+    bottom: 24px;
+}
+
+#almacenPieza3 {
+    bottom: 0;
+}
+
+
+/* Piezas tablero. */
+#tablero {
+    opacity: 0.1;
+    transition: opacity 2s;
+    transition-timing-function: easy-in;
+}
+
+#tablero * {
+    width: 30px;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
     background-color: #2B6587;
     display: none;
 }
 
-#piezaDej {
-    width: 30px;
-    height: 20px;
-    position: absolute;
-    left: 236px;
-    bottom: 0;
-    background-color: #2B6587;
-    display: none;
+#tableroPieza0 {
+    left: 170px;
+}
+
+#tableroPieza1 {
+    left: 215px;
+}
+
+#tableroPieza2 {
+    left: 260px;
 }

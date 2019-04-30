@@ -54,33 +54,61 @@ async function move_barra2(phi0, phif) {
 
 
 async function move_barras(phi1, phi2) {
+    var sleepTime1 = 1.35*delay*Math.abs(phi1 - angulosBarras[0]);
+    var sleepTime2 = 1.35*delay*Math.abs(phi2 - angulosBarras[1]);
+    sleepTime = 1.1*(sleepTime1 + sleepTime2);
+
     move_barra1(angulosBarras[0], phi1);
-    await sleep(1000); // TODO: Cambiar este valor (dejarlo en función de phi1, phi2 y delay).
+    await sleep(sleepTime1);
     move_barra2(angulosBarras[1], phi2);
+    await sleep(sleepTime2);
+    angulosBarras = [phi1, phi2];
+}
+
+
+async function move_piece(noAlmacen, noTablero) {
+    // Ir al almacén.
+    tablero.style.opacity = "0.1";
+    move_barras(angulosBarras[0] - 1, 20);
+    await sleep(sleepTime);
+
+    almacen.style.opacity = "1";
+    move_barras(almacenAngs[noAlmacen][0], almacenAngs[noAlmacen][1]);
+    await sleep(sleepTime);
+    document.getElementById("piezaPinza").style.display = "block";
+    document.getElementById("almacenPieza" + noAlmacen).style.display = "none";
+
+    // Ir al tablero.
+    almacen.style.opacity = "0.1";
+    tablero.style.opacity = "1";
+    move_barras(tableroAngs[noTablero][0], tableroAngs[noTablero][1]);
+    await sleep(sleepTime);
+    piezaPinza.style.display = "none";
+    document.getElementById("tableroPieza" + noTablero).style.display = "block";
+}
+
+
+async function reset() {
+    move_barras(90, 73);
+    await sleep(sleepTime);
 }
 
 
 // Función para probar.
 async function move() {
-    await sleep(500);
-    move_barras(90, 20);
-    await sleep(1500); // TODO: Cambiar este valor (dejarlo en función de phi1, phi2 y delay).
-    angulosBarras = [90, 20];
+    reset();
+    await sleep(280*delay + 500);
 
-    move_barras(45, 35);
-    await sleep(1500); // TODO: Cambiar este valor (dejarlo en función de phi1, phi2 y delay).
-    angulosBarras = [45, 35];
-    pieza.style.display = "block";
-    pieza3.style.display = "none";
+    move_piece(0, 0);
+    await sleep(250*delay);
 
-    move_barras(65, 65);
-    await sleep(1500); // TODO: Cambiar este valor (dejarlo en función de phi1, phi2 y delay).
-    angulosBarras = [65, 65];
+    move_piece(1, 2);
+    await sleep(250*delay);
 
-    pieza.style.display = "none";
-    piezaDej.style.display = "block";
+    move_piece(2, 1);
+    await sleep(250*delay);
 
-    move_barras(90, 20);
+    reset();
 }
 
 
@@ -93,9 +121,13 @@ var yBarra2Ini = getComputedStyle(document.getElementById("barra2")).getProperty
 xBarra2Ini = Number(xBarra2Ini.slice(0, xBarra2Ini.length - 2))
 yBarra2Ini = Number(yBarra2Ini.slice(0, yBarra2Ini.length - 2))
 
-var delay = 8;
+var delay = 12;
+var sleepTime = 0;
 
 var posPinza = [515, 45];
 var angulosBarras = [0, 0];
+
+var almacenAngs = [[48, 31], [45, 35], [42, 39], [39, 42]];
+var tableroAngs = [[71, 75], [67, 68], [61, 63]];
 
 move();
