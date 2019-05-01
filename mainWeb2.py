@@ -1,5 +1,5 @@
 """
-Es el programa principal para el usuario juega segundo, que coordina la
+Es el programa principal para cuando el usuario juega segundo, que coordina la
 estrategia y el movimiento del brazo robótico.
 
 Se le pasan por parámetros al ejecutarlo el estado de una partida ya comenzada,
