@@ -10,6 +10,13 @@
 
 
 <div class="control" align="center" id="control">
+   <button id="botonControl" onclick="mostrarControles();">
+      Controles
+   </button>
+   <button id="botonAnimacion" onclick="mostrarAnimacion();">
+      Animación
+   </button>
+
    <?php
    if ($outputArray[$n - 1] == "AI wins")
        echo '<p id="endMessage" style="color: red;">Lo sentimos, has perdido.</p>';
@@ -18,7 +25,7 @@
    else if ($outputArray[$n - 1] == "User wins")
        echo '<p id="endMessage" style="color: green;">Enhorabuena, has ganado.</p>';
    else
-       echo '<br />';
+       echo '<br /><br />';
    ?>
 
    <p>Vuelve a empezar, vacía el tablero.</p>

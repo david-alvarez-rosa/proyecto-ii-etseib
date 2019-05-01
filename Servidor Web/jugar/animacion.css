@@ -5,7 +5,6 @@
     left: 25px;
     top: 325px;
     transform-origin: 0 0;
-    transform: scale(.8, .8);
 }
 
 
@@ -208,10 +207,9 @@
 /* Planta comienza aquí. */
 #planta {
     position: absolute;
-    left: 575px;
+    left: 500px;
     top: 325px;
     transform-origin: 0 0;
-    transform: scale(.8, .8);
 }
 
 #robotP {
@@ -240,7 +238,7 @@
     position: absolute;
     bottom: 0;
     background-color: #CC0000;
-    z-index: -10;
+    z-index: 1;
 }
 
 
@@ -264,7 +262,6 @@
     position: absolute;
     bottom: 27.5px;
     left: 290px;
-    background-color: green;
 }
 
 #barra2P {
@@ -362,7 +359,7 @@
 /* Cerrar pantalla completa. */
 #cerrarPant {
     position: absolute;
-    top: 20px;
+    top: 15px;
     right: 20px;
     font-size: 60px;
     text-decoration: none;
@@ -372,4 +369,12 @@
 
 #cerrarPant:hover {
     color: Black;
+}
+
+
+/* Mostrar pantalla completa. */
+#pantCompl {
+    position: absolute;
+    top: 275px;
+    left: 150px;
 }

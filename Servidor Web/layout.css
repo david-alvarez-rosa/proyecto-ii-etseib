@@ -98,23 +98,23 @@ img:hover {
 
 /* Animación. */
 #animacion {
-    height: 530px;
-    width: 96.5%;
     position: absolute;
-    left: 17px;
-    top: 10px;
-    border: 3px solid Black;
     background-color: #E6E6E6;
-    visibility: hidden;
+    transition: all 1s;
 }
 
 
+/* Globales. */
 .innertube {
     margin: 20px;
 }
 
 html {
     overflow: hidden;
+}
+
+button, input {
+    cursor: pointer;
 }
 
 

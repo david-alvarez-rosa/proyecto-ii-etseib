@@ -11,7 +11,9 @@
 
    <body>
       <header id="header">
-         <h1 align="center"><a href="/proyecto/">Tres en Raya</a></h1>
+         <h1 align="center">
+            <a href="/proyecto/" title="Página principal.">Tres en Raya</a>
+         </h1>
       </header>
 
 

@@ -6,6 +6,7 @@
       <title>Tres en Raya</title>
       <link rel="stylesheet" type="text/css" href="../../layout.css" />
       <link rel="stylesheet" type="text/css" href="../../tablero.css" />
+      <link rel="stylesheet" type="text/css" href="../animacion.css" />
       <style type="text/css">
        .data {
            width: 90%;
@@ -19,9 +20,21 @@
 
    <body>
       <header id="header">
-         <div style="float: left;"><a href="/proyecto/"><h1>Tres en Raya</h1></a></div>
-         <div style="float: right;"><a href="/proyecto/jugar/per/"><h3>Empieza tú</h3></a></div>
-         <div style="margin: 0 auto; width: 100px;"><a href="/proyecto/jugar/"><h1>Jugar</h1></a></div>
+         <div style="float: left;">
+            <a href="/proyecto/" title="Página principal.">
+               <h1>Tres en Raya</h1>
+            </a>
+         </div>
+         <div style="float: right;">
+            <a href="/proyecto/jugar/per/" title="Empieza tú a jugar.">
+               <h3>Empieza tú</h3>
+            </a>
+         </div>
+         <div style="margin: 0 auto; width: 100px;">
+            <a href="/proyecto/jugar/" title="Juega contra la máquina.">
+               <h1>Jugar</h1>
+            </a>
+         </div>
       </header>
 
 
@@ -84,11 +97,51 @@
          include("../controles.php");
          include("../data.php");
          ?>
+
+         <div id="animacion">
+            <?php
+            include("../animacion.html");
+            ?>
+
+            <div id="velocidad" align="center">
+               <p>Ajusta la velocidad:</p>
+               <form action="/proyecto/jugar/per/">
+                  <?php
+                  echo '<input type="range" id="velSlider" name="vel" min="5" max="20" ';
+                  if (isset($_GET['vel']))
+                      echo ' value="'.$_GET['vel'].'" ';
+                  echo 'step="3" onchange="delay = 25 - this.value;" />';
+                  ?>
+                  <input type="submit" value="Vuelve a empezar" />
+               </form>
+            </div>
+
+            <button id="pantCompl" onclick="mostrarAnimacionCompleta();">
+               Pantalla completa
+            </button>
+            <a id="cerrarPant" href="javascript:void(0)" onclick="cerrarAnimacion();">
+               &times;
+            </a>
+         </div>
       </main>
 
 
       <?php
       include("../../footer.html")
       ?>
+
+
+      <script src="../animacion.js"></script>
+      <script type="text/javascript">
+       <?php
+       if (isset($_GET['vel'])) {
+           echo 'mostrarAnimacion();';
+           echo 'mostrarAnimacionCompleta();';
+       }
+       else
+           echo 'mostrarControles();';
+       ?>
+      </script>
+
    </body>
 </html>

@@ -10,9 +10,21 @@
 
    <body>
       <header id="header">
-         <div style="float: left;"><a href="/proyecto/"><h1>Tres en Raya</h1></a></div>
-         <div style="float: right;"><a href="/proyecto/presentaciones/p1/"><h3>Presentación 1</h3></a></div>
-         <div style="margin: 0 auto; width: 250px;"><a href="/proyecto/presentaciones/"><h1>Presentaciones</h1></a></div>
+         <div style="float: left;">
+            <a href="/proyecto/" title="Página principal.">
+               <h1>Tres en Raya</h1>
+            </a>
+         </div>
+         <div style="float: right;">
+            <a href="/proyecto/presentaciones/p1/" title="Presentación inicial.">
+               <h3>Presentación 1</h3>
+            </a>
+         </div>
+         <div style="margin: 0 auto; width: 250px;">
+            <a href="/proyecto/presentaciones/" title="Todas las presentaciones.">
+               <h1>Presentaciones</h1>
+            </a>
+         </div>
       </header>
 
 

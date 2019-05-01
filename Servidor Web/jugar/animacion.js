@@ -1,3 +1,57 @@
+// Funciones para web.
+function mostrarAnimacion() {
+    botonControl.style.border = "";
+    animacion.style.visibility = "visible";
+    planta.style.visibility = "hidden";
+    alzado.style.top = "250px";
+    alzado.style.transform = "scale(.7, .7)";
+    animacion.style.height = "300px";
+    animacion.style.width = "500px";
+    animacion.style.top = "120px";
+    animacion.style.left = "50px";
+    animacion.style.background = "#F0F0F0";
+    animacion.style.border = "";
+    velocidad.style.display = "none";
+    botonAnimacion.style.border = "3px inset Black";
+    cerrarPant.style.display = "none";
+    pantCompl.style.display = "block";
+    comenzarAnimacion();
+}
+
+
+function mostrarAnimacionCompleta() {
+    planta.style.visibility = "visible";
+    alzado.style.top = "325px";
+    alzado.style.transform = "scale(.8, .8)";
+    animacion.style.height = "530px";
+    animacion.style.width = "96.5%";
+    animacion.style.top = "10px";
+    animacion.style.left = "17px";
+    animacion.style.border = "3px solid Black";
+    animacion.style.background = "##E6E6E6";
+    velocidad.style.display = "block";
+    cerrarPant.style.display = "block";
+    pantCompl.style.display = "none";
+}
+
+
+function cerrarAnimacion() {
+    control.style.visibility = "visible";
+    animacion.style.visibility = "hidden";
+    planta.style.visibility = "hidden";
+    mostrarControles();
+}
+
+
+function mostrarControles() {
+    animacion.style.visibility = "hidden";
+    control.style.visibility ="visible";
+    botonControl.style.border = "3px inset Black";
+    botonAnimacion.style.border = "";
+}
+
+
+// Funciones para movimiento del brazo robótico virtual.
 function sleep(delay) {
     return new Promise(resolve => setTimeout(resolve, delay));
 }
@@ -15,7 +69,7 @@ async function rotacionP(phi0, phif) {
     while (phi != phif) {
         await sleep(delay);
         phi += inc;
-        robotP.style.transform = "rotate(-" + phi + "deg)";
+        robotP.style.transform = "rotate(" + (-phi) + "deg)";
         pinzaContP.style.transform = "rotate(" + phi + "deg)";
     }
 }
@@ -46,8 +100,8 @@ async function move_barra1(phi0, phif) {
         var length1P = length1A*(Math.cos(phi*Math.PI/180));
         barra1P.style.width = length1P + "px";
         articulacionPos1P.style.left = length1P - 15 + "px";
-        barra2ContP.style.left = length1P + "px";
-        pinzaContP.style.left = length1P + document.getElementById("barra2P").offsetWidth + "px";
+        barra2ContP.style.left = length1P + 40 + "px";
+        pinzaContP.style.left = 40 + length1P + document.getElementById("barra2P").offsetWidth + "px";
     }
 
     posPinzaA = [xPinza, yPinza];
@@ -75,7 +129,7 @@ async function move_barra2(phi0, phif) {
         var length2P = length2A*(Math.cos(phi*Math.PI/180));
         barra2P.style.width = length2P + "px";
         articulacionPos2P.style.left = length2P - 15 + "px";
-        pinzaContP.style.left = document.getElementById("barra1P").offsetWidth + length2P + "px";
+        pinzaContP.style.left = 40 + document.getElementById("barra1P").offsetWidth + length2P + "px";
     }
 
     posPinzaA = [xPinza, yPinza];
@@ -83,8 +137,8 @@ async function move_barra2(phi0, phif) {
 
 
 async function move_barras(phi1, phi2) {
-    var sleepTime1 = 1.3*delay*Math.abs(phi1 - angulosBarrasA[0]);
-    var sleepTime2 = 1.3*delay*Math.abs(phi2 - angulosBarrasA[1]);
+    var sleepTime1 = 2*delay*Math.abs(phi1 - angulosBarrasA[0]);
+    var sleepTime2 = 2*delay*Math.abs(phi2 - angulosBarrasA[1]);
     sleepTime = 1.1*(sleepTime1 + sleepTime2);
 
     move_barra1(angulosBarrasA[0], phi1);
@@ -143,13 +197,13 @@ async function comenzarAnimacion() {
     await sleep(280*delay + 500);
 
     move_piece(0, 0);
-    await sleep(400*delay);
+    await sleep(450*delay);
 
-    move_piece(1, 2);
-    await sleep(400*delay);
+    move_piece(-1, 2);
+    await sleep(450*delay);
 
     move_piece(2, 1);
-    await sleep(400*delay);
+    await sleep(450*delay);
 
     reset();
 }

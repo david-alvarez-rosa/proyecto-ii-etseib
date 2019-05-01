@@ -1,4 +1,5 @@
 <div align="center">
+   <br />
    <h2>Ángulos servos última jugada</h2>
    <br />
    <table border="1" class="data">
