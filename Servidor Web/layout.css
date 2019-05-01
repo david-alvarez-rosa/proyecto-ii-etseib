@@ -65,6 +65,16 @@ main {
     width: 300px;
 }
 
+img {
+    padding: 15px;
+    width: 70px;
+}
+
+img:hover {
+    transform: scale(1.1);
+    transition: transform .2s linear .1s;
+}
+
 
 /* Pie de página. */
 #footer {
@@ -87,29 +97,16 @@ main {
 
 
 /* Animación. */
-/* #animacion { */
-/*     height: 100%; */
-/*     width: 100%; */
-/*     display: none; */
-/*     position: fixed; */
-/*     z-index: 1; */
-/*     top: 75px; */
-/*     left: 230px; */
-/*     background-color: #F0F0F0; */
-/* } */
-
 #animacion {
-    visibility: hidden;
+    height: 530px;
+    width: 96.5%;
     position: absolute;
-    left: 25px;
-    top: 50px;
-    height: 500px;
-    width: 500px;
+    left: 17px;
+    top: 10px;
     border: 3px solid Black;
-    /* display: none; */
+    background-color: #E6E6E6;
+    visibility: hidden;
 }
-
-
 
 
 .innertube {
