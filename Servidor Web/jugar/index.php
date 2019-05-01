@@ -48,7 +48,7 @@
                   </a>
                </li>
                <li>
-                  <a href="/proyecto/error/" title="Ve una partida.">
+                  <a href="/proyecto/jugar/ver/" title="Ve una partida.">
                      Ver partida
                   </a>
                </li>

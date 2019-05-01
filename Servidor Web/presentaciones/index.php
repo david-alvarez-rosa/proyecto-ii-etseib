@@ -40,7 +40,7 @@
                   </a>
                </li>
                <li>
-                  <a href="/proyecto/error/" title="Presentación final.">
+                  <a href="/proyecto/presentaciones/p3/" title="Presentación final.">
                      Presentación 3
                   </a>
                </li>

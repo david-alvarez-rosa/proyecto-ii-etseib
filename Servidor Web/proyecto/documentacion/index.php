@@ -28,6 +28,19 @@
                La documentación del proyecto.
             </p>
 
+            <ul>
+               <li>
+                  <a href="/proyecto/documentacion/documentacion.pdf#view=Fit" title="Documentación en pdf.">
+                     Versión pdf
+                  </a>
+               </li>
+               <li>
+                  <a href="/proyecto/documentacion/documentacion.zip" title="Documentación en LaTeX.">
+                     Código fuente
+                  </a>
+               </li>
+            </ul>
+
             <?php
             include("informe.html")
             ?>

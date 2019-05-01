@@ -29,12 +29,12 @@
 
             <ul>
                <li>
-                  <a href="/proyecto/error/" title="Presentación final en pdf.">
+                  <a href="/proyecto/presentaciones/p3/p3.pdf#view=Fit" title="Presentación final en pdf.">
                      Versión pdf
                   </a>
                </li>
                <li>
-                  <a href="/proyecto/error/" title="Presentación final en Beamer LaTeX.">
+                  <a href="/proyecto/presentaciones/p3/p3.zip" title="Presentación final en Beamer LaTeX.">
                      Código fuente
                   </a>
                </li>
