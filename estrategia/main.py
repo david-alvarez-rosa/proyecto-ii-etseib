@@ -3,9 +3,9 @@ Estrategia general, importa estrategia básica.
 """
 
 import random, sys
-import tic_tac.cfg as cfg
-from tic_tac.equivalencias import *
-from tic_tac.basic import moveBasic, moveRandom
+import estrategia.cfg as cfg
+from estrategia.equivalencias import *
+from estrategia.basica import moveBasic, moveRandom
 
 
 def actualiza(i, j):

@@ -1,10 +1,25 @@
+"""
+Es el programa principal para el usuario juega segundo, que coordina la
+estrategia y el movimiento del brazo robótico.
+
+Se le pasan por parámetros al ejecutarlo el estado de una partida ya comenzada,
+entonces:
+  1. Posiciona servomotores en posición de inicio.
+  2. Mueve (físicamente) la ficha del usuario a la posición seleccionada.
+  3. Da una respuesta al tablero (de acuerdo a la dificultad).
+  4. Mueve (físicamente) la ficha de respuesta.
+  5. Devuelve diferentes datos (entre ellos las próximas url's) para que la
+  página web se pueda actualizar. Estos datos se devuelven en una línea y
+  separados por comas.
+"""
+
 import sys
-import tic_tac.cfg as cfg
-from tic_tac.estrategia import actualiza, move
-from tic_tac.basic import game_end
-from tic_tac.equivalencias import simetriaMultiple
-import Move.main_move
-from Move.main_move import movePiece, reset_servos
+import estrategia.cfg as cfg
+from estrategia.main import actualiza, move
+from estrategia.basica import game_end
+from estrategia.equivalencias import simetriaMultiple
+import movimiento.main
+from movimiento.main import movePiece, reset_servos
 
 
 def board2Str(M):

@@ -96,6 +96,7 @@ async function reset() {
 
 // Función para probar.
 async function move() {
+    await sleep(500);
     reset();
     await sleep(280*delay + 500);
 
@@ -129,5 +130,3 @@ var angulosBarras = [0, 0];
 
 var almacenAngs = [[48, 31], [45, 35], [42, 39], [39, 42]];
 var tableroAngs = [[71, 75], [67, 68], [61, 63]];
-
-move();

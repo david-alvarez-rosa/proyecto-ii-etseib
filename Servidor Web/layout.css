@@ -5,6 +5,8 @@ body {
     line-height: 1.5em;
 }
 
+
+/* Cabecera. */
 #header {
     width: 100%;
     height: 75px;
@@ -26,6 +28,8 @@ body {
     color: Black;
 }
 
+
+/* Barra de navegación. */
 #nav {
     position: fixed;
     top: 75px;
@@ -56,17 +60,13 @@ main {
 }
 
 .control {
-    margin: 60px 0 0 100px;
-    height: 350px;
-    width: 300px;
-}
-
-.end {
     margin: 35px 0 0 100px;
     height: 360px;
     width: 300px;
 }
 
+
+/* Pie de página. */
 #footer {
     position: fixed;
     bottom: 0px;
@@ -84,6 +84,33 @@ main {
     text-decoration: none;
     color: Black;
 }
+
+
+/* Animación. */
+/* #animacion { */
+/*     height: 100%; */
+/*     width: 100%; */
+/*     display: none; */
+/*     position: fixed; */
+/*     z-index: 1; */
+/*     top: 75px; */
+/*     left: 230px; */
+/*     background-color: #F0F0F0; */
+/* } */
+
+#animacion {
+    visibility: hidden;
+    position: absolute;
+    left: 25px;
+    top: 50px;
+    height: 500px;
+    width: 500px;
+    border: 3px solid Black;
+    /* display: none; */
+}
+
+
+
 
 .innertube {
     margin: 20px;

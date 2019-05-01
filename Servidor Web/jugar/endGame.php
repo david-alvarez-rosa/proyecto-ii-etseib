@@ -1,5 +1,5 @@
 <style type="text/css">
- #endMes {
+ #endMessage {
      font-weight: bold;
      font-size: 30px;
  }
@@ -12,11 +12,13 @@
 <div class="end" align="center">
    <?php
    if ($outputArray[$n - 1] == "AI wins")
-       echo '<p id="endMes" style="color: red;">Lo sentimos, has perdido.</p>';
+       echo '<p id="endMessage" style="color: red;">Lo sentimos, has perdido.</p>';
    else if ($outputArray[$n - 1] == "Tie")
-       echo '<p id="endMes">Ha sido un empate.</p>';
+       echo '<p id="endMessage">Ha sido un empate.</p>';
    else if ($outputArray[$n - 1] == "User wins")
-       echo '<p id="endMes" style="color: green;">Enhorabuena, has ganado.</p>';
+       echo '<p id="endMessage" style="color: green;">Enhorabuena, has ganado.</p>';
+   else
+       echo '<br /><br /><br />';
    ?>
    <p>Vuelve a empezar, vacía el tablero.</p>
    <?php

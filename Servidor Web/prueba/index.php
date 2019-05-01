@@ -6,6 +6,7 @@
       <link rel="stylesheet" type="text/css" href="animation.css" />
    </head>
 
+
    <body bgcolor=" #CCFFFF">
 
       <div id ="alzado">
@@ -44,7 +45,20 @@
 	          <div id="tableroPieza1"></div>
 	          <div id="tableroPieza2"></div>
          </div>
+      </div>
 
+
+      <div id="velocidad">
+         <p>Ajusta la velocidad:</p>
+         <form action="/proyecto/prueba/">
+            <?php
+            echo '<input type="range" id="velSlider" name="vel" min="5" max="20" ';
+                         if (isset($_GET['vel']))
+                         echo ' value="'.$_GET['vel'].'" ';
+                         echo 'step="3" onchange="delay = 25 - this.value;" />';
+            ?>
+            <input type="submit" value="Vuelve a empezar" />
+         </form>
       </div>
 
       <script src="move.js"></script>

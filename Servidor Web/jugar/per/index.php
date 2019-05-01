@@ -5,7 +5,7 @@
       <meta charset="UTF-8">
       <title>Tres en Raya</title>
       <link rel="stylesheet" type="text/css" href="../../layout.css" />
-      <link rel="stylesheet" type="text/css" href="../../board.css" />
+      <link rel="stylesheet" type="text/css" href="../../tablero.css" />
       <style type="text/css">
        .data {
            width: 90%;
@@ -79,12 +79,9 @@
          ?>
 
          <?php
-         include("../board.php");
+         include("../tablero.php");
          $page = 'per';
-         if ($outputArray[$n - 1] == "Not ended")
-             include("../controles.php");
-         else
-             include("../endGame.php");
+         include("../controles.php");
          include("../data.php");
          ?>
       </main>

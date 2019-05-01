@@ -1,6 +1,6 @@
-import tic_tac.cfg as cfg
-from tic_tac.estrategia import actualiza, move
-from tic_tac.basic import game_end
+import estrategia.cfg as cfg
+from estrategia.main import actualiza, move
+from estrategia.basica import game_end
 
 
 def printMatrix(M):
@@ -50,9 +50,9 @@ def jugar():
             print("Nodo: ", cfg.nodo)
             print("Simetrías: ", cfg.sims)
             if cfg.eb:
-                print("Estrategia básica: Sí.\n")
+                print("estrategia básica: Sí.\n")
             else:
-                print("Estrategia básica: No.\n")
+                print("estrategia básica: No.\n")
             move()
             print("Respuesta máquina internamente: ")
             printMatrix(cfg.boardInt)

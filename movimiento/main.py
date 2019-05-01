@@ -1,6 +1,14 @@
-from Move.plano import verticalMove
-from Move.interpolacion import *
+"""
+Se encarga de coordinar el movimiento del brazo robótico.
+  - Define la posición espacial de las casillas del tablero y de los
+    almacenes.
+  - Contiene funciones que permiten mover piezas de una posición
+    (espacial) a otra.
+"""
+
 from math import *
+from movimiento.plano import verticalMove
+from movimiento.servos import *
 
 
 # DEFINICION DE VARIABLES

@@ -1,3 +1,9 @@
+"""
+Resolución (analítica) de las ecuaciones de enlace en planos verticales.
+  - Permite pasar de posiciones en el plano a ángulos de los servomotores
+  - Se definen los parámetros del brazo.
+"""
+
 from math import sin, cos, acos, asin, pi, sqrt
 
 

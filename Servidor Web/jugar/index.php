@@ -5,7 +5,7 @@
       <meta charset="UTF-8">
       <title>Tres en Raya</title>
       <link rel="stylesheet" type="text/css" href="../layout.css" />
-      <link rel="stylesheet" type="text/css" href="../board.css" />
+      <link rel="stylesheet" type="text/css" href="../tablero.css" />
       <style type="text/css">
        .data {
            width: 90%;

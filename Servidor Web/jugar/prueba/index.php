@@ -6,6 +6,7 @@
       <title>Tres en Raya</title>
       <link rel="stylesheet" type="text/css" href="../../layout.css" />
       <link rel="stylesheet" type="text/css" href="../../tablero.css" />
+      <link rel="stylesheet" type="text/css" href="../animacion.css" />
       <style type="text/css">
        .data {
            width: 90%;
@@ -97,11 +98,46 @@
          include("../controles.php");
          include("../data.php");
          ?>
+
+
+         <button style="position: absolute; top: 200px; cursor: pointer;" onclick="mostrarAnimacion();">
+            Abre animación
+         </button>
+
+         <div id="animacion">
+            <?php
+            include("../animacion.html");
+            ?>
+
+            <div id="velocidad">
+               <p>Ajusta la velocidad:</p>
+               <form action="/proyecto/jugar/prueba2xy">
+                  <?php
+                  echo '<input type="range" id="velSlider" name="vel" min="5" max="20" ';
+                  if (isset($_GET['vel']))
+                      echo ' value="'.$_GET['vel'].'" ';
+                  echo 'step="3" onchange="delay = 25 - this.value;" />';
+                  ?>
+                  <input type="submit" value="Vuelve a empezar" />
+               </form>
+            </div>
+         </div>
+
+         <script type="text/javascript">
+          function mostrarAnimacion() {
+              control.style.visibility = "hidden";
+              animacion.style.visibility = "visible";
+              move();
+          }
+         </script>
+
       </main>
 
 
       <?php
       include("../../footer.html")
       ?>
+
+      <script src="../animacion.js"></script>
    </body>
 </html>

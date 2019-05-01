@@ -1,5 +1,5 @@
 """
-Define y mueve suavemente (de manera progresiva) los servos.
+Define y mueve simultáneamente y de manera progresiva los servos.
  -- Todo lo de mover los servos está por ahora comentado --
 
 Los servos están numerados de la siguiente manera:
@@ -47,7 +47,7 @@ def moveServo(servo, angle):
     global Sp
     angle = rad2Deg(angle)
     steps = 50
-    time = 2
+    time = 0 # Cambiar este valor al hacer la conexión real con el brazo.
     timeStep = time/steps
     angleIni = Sp[servo]
     h = (angle - angleIni)/steps
