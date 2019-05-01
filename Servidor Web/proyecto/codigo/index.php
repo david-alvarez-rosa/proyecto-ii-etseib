@@ -25,8 +25,16 @@
       <main>
          <div class="innertube">
             <p>
-               El código de este proyecto.
+               Aquí pudes descargar todo el código que hace posible este proyecto.
             </p>
+
+            <ul>
+               <li>
+                  <a href="/proyecto/proyecto/codigo/TresEnRaya.zip" title="Todo el código.">
+                     Código
+                  </a>
+               </li>
+            </ul>
          </div>
       </main>
 
