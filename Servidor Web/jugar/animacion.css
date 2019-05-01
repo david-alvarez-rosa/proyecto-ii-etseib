@@ -1,3 +1,5 @@
+/* ----------------------------------------------------- */
+/* Alzado comienza aquí. */
 #alzado {
     position: absolute;
     left: 25px;
@@ -6,7 +8,9 @@
     transform: scale(.65, .65);
 }
 
-#base {
+
+/* Base brazo robóbico. */
+#baseA {
     width: 50px;
     height: 50px;
     position: absolute;
@@ -15,7 +19,7 @@
     background-color: #FF9900;
 }
 
-#tierra {
+#tierraA {
     width: 80px;
     height: 65px;
     position: absolute;
@@ -25,14 +29,14 @@
 
 
 /* Barra 1 */
-#barra1Cont {
+#barra1ACont {
     position: absolute;
     bottom: 77.5px;
     left: 40px;
     transform-origin: 0 7.5px;
 }
 
-#barra1 {
+#barra1A {
     width: 250px;
     height: 15px;
     background-color: #CC0000;
@@ -40,7 +44,7 @@
 
 
 /* Barra 2 */
-#barra2 {
+#barra2A {
     width: 250px;
     height: 15px;
     position: absolute;
@@ -52,13 +56,13 @@
 
 
 /* Pinza */
-#pinzaCont {
+#pinzaContA {
     position: absolute;
     bottom: 45px;
     left: 515px;
 }
 
-#pinza {
+#pinzaA {
     width: 10px;
     height: 40px;
     position: absolute;
@@ -67,7 +71,7 @@
     background-color: #CC0000;
 }
 
-#piezaPinza {
+#piezaPinzaA {
     width: 30px;
     height: 20px;
     position: absolute;
@@ -86,7 +90,7 @@
     background-color: #0000FF;
 }
 
-#tenazas_h {
+#tenazas_hA {
     width: 50px;
     height: 10px;
     position: absolute;
@@ -95,7 +99,7 @@
     background-color: #0000FF;
 }
 
-#tenazas_v1 {
+#tenazas_v1A {
     width: 10px;
     height: 40px;
     position: absolute;
@@ -105,7 +109,7 @@
     transform-origin: 0 0;
 }
 
-#tenazas_v2 {
+#tenazas_v2A {
     width: 10px;
     height: 40px;
     position: absolute;
@@ -123,13 +127,13 @@
     background-color: Black;
 }
 
-#articulacionPos1 {
+#articulacionPos1A {
     position: absolute;
     left: 235px;
     bottom: -7.5px;
 }
 
-#articulacionPos2 {
+#articulacionPos2A {
     position: absolute;
     left: 10px;
     bottom: 25px;
@@ -137,7 +141,7 @@
 
 
 /* Almacén de piezas. */
-#almacen * {
+#almacenA * {
     width: 30px;
     height: 20px;
     position: absolute;
@@ -145,37 +149,37 @@
     background-color: #2b6587;
 }
 
-#almacen {
+#almacenA {
     opacity: 0.1;
     transition: opacity 2s;
     transition-timing-function: easy-in;
 }
 
-#almacenPieza0 {
+#almacenPieza0A {
     bottom: 72px;
 }
 
-#almacenPieza1 {
+#almacenPieza1A {
     bottom: 48px;
 }
 
-#almacenPieza2 {
+#almacenPieza2A {
     bottom: 24px;
 }
 
-#almacenPieza3 {
+#almacenPieza3A {
     bottom: 0;
 }
 
 
 /* Piezas tablero. */
-#tablero {
+#tableroA {
     opacity: 0.1;
     transition: opacity 2s;
     transition-timing-function: easy-in;
 }
 
-#tablero * {
+#tableroA * {
     width: 30px;
     height: 20px;
     position: absolute;
@@ -184,22 +188,173 @@
     display: none;
 }
 
-#tableroPieza0 {
+#tableroPieza0A {
     left: 170px;
 }
 
-#tableroPieza1 {
+#tableroPieza1A {
     left: 215px;
 }
 
-#tableroPieza2 {
+#tableroPieza2A {
     left: 260px;
 }
+
+/* Alzado  termina aquí.*/
+/* ----------------------------------------------------- */
+
+
+/* ----------------------------------------------------- */
+/* Planta comienza aquí. */
+#planta {
+    position: absolute;
+    left: 500px;
+    top: 250px;
+    transform-origin: 0 0;
+    transform: scale(.65, .65);
+}
+
+#robotP {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    transform-origin: 40px -35px;
+    z-index: 20;
+}
+
+
+/* Base brazo robóbico. */
+#baseP {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    background-color: #FF9900;
+    z-index: 10;
+}
+
+#tierraP {
+    width: 80px;
+    height: 70px;
+    position: absolute;
+    bottom: 0;
+    background-color: #CC0000;
+    z-index: -10;
+}
+
+
+/* Barra 1.  */
+#barra1ContP {
+    position: absolute;
+    bottom: 27.5px;
+    left: 40px;
+    z-index: 12;
+}
+
+#barra1P {
+    width: 250px;
+    height: 15px;
+    background-color: #CC0000;
+}
+
+
+/* Barra 2. */
+#barra2ContP {
+    position: absolute;
+    bottom: 27.5px;
+    left: 290px;
+    background-color: green;
+}
+
+#barra2P {
+    width: 250px;
+    height: 15px;
+    background-color: #CC0000;
+    left: 0;
+    bottom: 0;
+}
+
+
+/* Pinza. */
+#pinzaContP {
+    position: absolute;
+    bottom: 35px;
+    left: 540px;
+    transform-origin: 0 0;
+    z-index: -10;
+}
+
+#pinzaP {
+    width: 40px;
+    height: 24px;
+    position: absolute;
+    bottom: -12px;
+    left: -20px;
+    background-color: #0000FF;
+}
+
+#piezaPinzaP {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: -30px;
+    top: -30px;
+    background-color: #2B6587;
+    /* display: none; */
+    z-index: -10;
+}
+
+
+/* Articulaciones. */
+#articulacionPos1P {
+    position: absolute;
+    left: 235px;
+    bottom: -7.5px;
+}
+
+#articulacionPos2P {
+    position: absolute;
+    left: 235px;
+    bottom: -7.5px;
+}
+
+#articulacionPos3P {
+    position:absolute;
+    left: 25px;
+    bottom: 20px;
+    z-index: 15;
+}
+
+
+/* Almacenes de piezas. */
+#almacenXsP {
+    position: absolute;
+    top: 100px;
+    left: 300px;
+    height: 30px;
+    width: 30px;
+    background-color: Red;
+    border-radius: 50%;
+}
+
+#almacenXsP {
+    position: absolute;
+    top: 100px;
+    left: 300px;
+    height: 30px;
+    width: 30px;
+    background-color: Blue;
+    border-radius: 50%;
+}
+
+/* Planta  termina aquí.*/
+/* ----------------------------------------------------- */
 
 
 /* Control de velocidad. */
 #velocidad {
     position: absolute;
-    top: 425px;
+    top: 350px;
     left: 375px;
 }
