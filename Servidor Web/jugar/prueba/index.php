@@ -109,9 +109,9 @@
             include("../animacion.html");
             ?>
 
-            <div id="velocidad">
+            <div id="velocidad" align="center">
                <p>Ajusta la velocidad:</p>
-               <form action="/proyecto/jugar/prueba2xy">
+               <form action="/proyecto/jugar/prueba/">
                   <?php
                   echo '<input type="range" id="velSlider" name="vel" min="5" max="20" ';
                   if (isset($_GET['vel']))
@@ -121,16 +121,11 @@
                   <input type="submit" value="Vuelve a empezar" />
                </form>
             </div>
+
+            <a id="cerrarPant" href="javascript:void(0)" onclick="cierraAnimacion()">
+               &times;
+            </a>
          </div>
-
-         <script type="text/javascript">
-          function mostrarAnimacion() {
-              control.style.visibility = "hidden";
-              animacion.style.visibility = "visible";
-              move();
-          }
-         </script>
-
       </main>
 
 
@@ -139,5 +134,20 @@
       ?>
 
       <script src="../animacion.js"></script>
+      <script type="text/javascript">
+       function mostrarAnimacion() {
+           control.style.visibility = "hidden";
+           animacion.style.visibility = "visible";
+           comenzarAnimacion();
+       }
+
+       function cierraAnimacion() {
+           control.style.visibility = "visible";
+           animacion.style.visibility = "hidden";
+       }
+
+       mostrarAnimacion();
+      </script>
+
    </body>
 </html>
