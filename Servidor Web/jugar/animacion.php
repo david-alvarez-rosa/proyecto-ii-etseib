@@ -12,11 +12,15 @@
    <div id="tierraA"></div>
 
    <div id="pinzaContA">
+      <div id="extensionA"></div>
       <div id ="pinzaA"></div>
       <div id="tenazas_hA"></div>
       <div id="tenazas_v1A"></div>
       <div id="tenazas_v2A"></div>
       <div id="articulacionPos2A">
+         <div id="articulacion"></div>
+      </div>
+      <div id="articulacionPos3A">
          <div id="articulacion"></div>
       </div>
       <div id="piezaPinzaA"></div>
@@ -60,7 +64,12 @@
          <div id="articulacion"></div>
       </div>
 
+      <div id="extensionP"></div>
+
       <div id="pinzaContP">
+         <div id="articulacionPos4P">
+            <div id="articulacion"></div>
+         </div>
          <div id="pinzaP"></div>
          <div id="piezaPinzaP"></div>
       </div>
@@ -68,4 +77,36 @@
 
    <div id="baseP"></div>
    <div id="tierraP"></div>
+
+   <table id="boardP">
+      <?php
+      for ($i = 0; $i < 3; ++$i) {
+          echo '<tr>';
+          for ($j = 0; $j < 3; ++$j) {
+              if ($board[3*$i + $j] == "X")
+                  echo '<td><div id="tableroPiezaXP"></div></td>';
+              else if ($board[3*$i + $j] == "O")
+                  echo '<td><div id="tableroPiezaOP"></div></td>';
+              else
+                  echo '<td><a href="'.$url.$i.$j.'"><button id="ticP"><span></span></button></a></td>';
+          }
+          echo '</tr>';
+      }
+      ?>
+   </table>
 </div>
+
+
+<script type="text/javascript">
+ async function comenzarAnimacion() {
+     await sleep(500);
+
+     move_piece(3, 1);
+     await sleep(550*delay);
+
+     move_piece(-2, 3);
+     await sleep(550*delay);
+
+     reset();
+ }
+</script>

@@ -37,7 +37,7 @@ def printServosAngles(S):
     for i in range(6):
         # El 3 no es un servo.
         if i != 3:
-            print(floor(rad2Deg(S[i])), end = ",")
+            print(round(rad2Deg(S[i])), end = ",")
 
 
 def moveServo(servo, angle):
@@ -53,19 +53,18 @@ def moveServo(servo, angle):
     h = (angle - angleIni)/steps
     for i in range(steps):
         angleIni = angleIni + h
-        # PARA QUE NO HAYA PROBLEMAS TRUNCO!!!!!!!!
-        # kit.servo[servo].angle = floor(angleIni)
+        # kit.servo[servo].angle = round(angleIni)
         sleep(timeStep)
 
-    Sp[servo] = floor(angleIni)
+    Sp[servo] = round(angleIni)
 
 
 def moveServos(angles):
     """
     Mueve los servos simultáneamente a los ángulos dados (en radianes).
     """
-    Thread(target=moveServo, args=[0, angles[0]]).start()
-    Thread(target=moveServo, args=[1, angles[1]]).start()
-    Thread(target=moveServo, args=[2, angles[2]]).start()
-    Thread(target=moveServo, args=[4, angles[4]]).start()
-    Thread(target=moveServo, args=[5, angles[5]]).start()
+    Thread(target = moveServo, args = [0, angles[0]]).start()
+    Thread(target = moveServo, args = [1, angles[1]]).start()
+    Thread(target = moveServo, args = [2, angles[2]]).start()
+    Thread(target = moveServo, args = [4, angles[4]]).start()
+    Thread(target = moveServo, args = [5, angles[5]]).start()

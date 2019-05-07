@@ -21,7 +21,7 @@ function mostrarAnimacion() {
 
 function mostrarAnimacionCompleta() {
     planta.style.visibility = "visible";
-    alzado.style.top = "325px";
+    alzado.style.top = "290px";
     alzado.style.transform = "scale(.8, .8)";
     animacion.style.height = "530px";
     animacion.style.width = "96.5%";
@@ -48,6 +48,29 @@ function mostrarControles() {
     control.style.visibility ="visible";
     botonControl.style.border = "3px inset Black";
     botonAnimacion.style.border = "";
+}
+
+
+function almacenColorA(color) {
+    almacenPieza0A.style.background = color;
+    almacenPieza1A.style.background = color;
+    almacenPieza2A.style.background = color;
+    almacenPieza3A.style.background = color;
+}
+
+
+function piezaPinzaColorA(color) {
+    piezaPinzaA.style.background = color;
+}
+
+
+function actualizaAlmacenA(noAlmacen) {
+    for (var i = 0; i < 4; ++i) {
+        if (i < noAlmacen)
+            document.getElementById("almacenPieza" + i + "A").style.display = "none";
+        else
+            document.getElementById("almacenPieza" + i + "A").style.display = "block";
+    }
 }
 
 
@@ -87,8 +110,8 @@ async function move_barra1(phi0, phif) {
 
         barra1ACont.style.transform = "rotate(-" + phi + "deg)";
 
-        var xBarra2A = xBarra2AIniA + length1A*(Math.cos(phi*Math.PI/180) - 1);
-        var yBarra2A = yBarra2AIniA + length1A*Math.sin(phi*Math.PI/180);
+        var xBarra2A = xBarra2AIniA + length1A*Math.cos(phi*Math.PI/180);
+        var yBarra2A = yBarra2AIniA + length1A*(Math.sin(phi*Math.PI/180) - 1);
         barra2A.style.left = xBarra2A + "px";
         barra2A.style.bottom = yBarra2A + "px";
 
@@ -101,7 +124,8 @@ async function move_barra1(phi0, phif) {
         barra1P.style.width = length1P + "px";
         articulacionPos1P.style.left = length1P - 15 + "px";
         barra2ContP.style.left = length1P + 40 + "px";
-        pinzaContP.style.left = 40 + length1P + document.getElementById("barra2P").offsetWidth + "px";
+        extensionP.style.left = 40 + length1P + document.getElementById("barra2P").offsetWidth + "px";
+        pinzaContP.style.left = 40 + length1P + document.getElementById("barra2P").offsetWidth + 51.6 + "px";
     }
 
     posPinzaA = [xPinza, yPinza];
@@ -129,7 +153,8 @@ async function move_barra2(phi0, phif) {
         var length2P = length2A*(Math.cos(phi*Math.PI/180));
         barra2P.style.width = length2P + "px";
         articulacionPos2P.style.left = length2P - 15 + "px";
-        pinzaContP.style.left = 40 + document.getElementById("barra1P").offsetWidth + length2P + "px";
+        extensionP.style.left = 40 + document.getElementById("barra1P").offsetWidth + length2P + "px";
+        pinzaContP.style.left = 40 + document.getElementById("barra1P").offsetWidth + length2P + 51.6 + "px";
     }
 
     posPinzaA = [xPinza, yPinza];
@@ -150,22 +175,46 @@ async function move_barras(phi1, phi2) {
 
 
 async function move_piece(noAlmacen, noTablero) {
-    if (noAlmacen >= 0)
+    actualizaAlmacenA(Math.abs(noAlmacen) - 1);
+    if (noAlmacen >= 0) {
+        noAlmacen -= 1;
+        noTablero -= 1;
         almacenAngP = Math.abs(almacenAngP);
+        almacenColorA("#3862E0");
+        piezaPinzaColorA("#3862E0");
+        if (noTablero >= 0)
+            document.getElementById("tableroPieza" + noTablero + "A").style.background = "#3862E0";
+        else {
+            noTablero *= -1;
+            document.getElementById("tableroPieza" + noTablero + "A").style.background = "#336600";
+        }
+    }
     else {
-        almacenAngP = -Math.abs(almacenAngP);
         noAlmacen *= -1;
+        noAlmacen -= 1;
+        almacenAngP = -Math.abs(almacenAngP);
+        almacenColorA("#336600");
+        piezaPinzaColorA("#336600");
+        if (noTablero >= 0) {
+            noTablero -= 1;
+            document.getElementById("tableroPieza" + noTablero + "A").style.background = "#336600";
+        }
+        else {
+            noTablero *= -1;
+            noTablero -= 1;
+            document.getElementById("tableroPieza" + noTablero + "A").style.background = "#3862E0";
+        }
     }
 
     // Ir al almacén.
     rotacionP(0, almacenAngP);
     await sleep(sleepTime);
-
     tableroA.style.opacity = "0.1";
+    almacenA.style.opacity = "1";
+
     move_barras(angulosBarrasA[0] - 1, 20);
     await sleep(sleepTime);
 
-    almacenA.style.opacity = "1";
     move_barras(almacenAngsA[noAlmacen][0], almacenAngsA[noAlmacen][1]);
     await sleep(sleepTime);
     document.getElementById("piezaPinzaA").style.display = "block";
@@ -185,29 +234,9 @@ async function move_piece(noAlmacen, noTablero) {
 
 
 async function reset() {
-    move_barras(90, 73);
+    move_barras(90, 77);
     await sleep(sleepTime);
 }
-
-
-// Función para probar.
-async function comenzarAnimacion() {
-    await sleep(500);
-    reset();
-    await sleep(280*delay + 500);
-
-    move_piece(0, 0);
-    await sleep(450*delay);
-
-    move_piece(-1, 2);
-    await sleep(450*delay);
-
-    move_piece(2, 1);
-    await sleep(450*delay);
-
-    reset();
-}
-
 
 var length1A = document.getElementById("barra1A").offsetWidth;
 var length2A = document.getElementById("barra2A").offsetWidth;
@@ -221,10 +250,10 @@ yBarra2AIniA = Number(yBarra2AIniA.slice(0, yBarra2AIniA.length - 2))
 var delay = 25 - Number(document.getElementById("velSlider").value);
 var sleepTime = 0;
 
-var posPinzaA = [515, 45];
-var angulosBarrasA = [0, 0];
+var posPinzaA = [120.588, 33.151];
+var angulosBarrasA = [90, 77];
 
-var almacenAngsA = [[48, 31], [45, 35], [42, 39], [39, 42]];
-var tableroAngsA = [[71, 75], [67, 68], [61, 63]];
+var almacenAngsA = [[46, 24], [43, 29], [39, 33], [36, 36]];
+var tableroAngsA = [[76, 73], [69, 67], [61, 61]];
 
-var almacenAngP = 45;
+var almacenAngP = 40;

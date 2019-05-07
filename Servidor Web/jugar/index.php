@@ -55,11 +55,6 @@
                      Empieza el brazo
                   </a>
                </li>
-               <li>
-                  <a href="/proyecto/jugar/ver/" title="Ve una partida.">
-                     Ver partida
-                  </a>
-               </li>
             </ul>
          </div>
       </main>

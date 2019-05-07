@@ -113,7 +113,7 @@
 
          <div id="animacion">
             <?php
-            include("../animacion.html");
+            include("../animacion.php");
             ?>
 
             <div id="velocidad" align="center">

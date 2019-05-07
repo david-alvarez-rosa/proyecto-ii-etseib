@@ -28,7 +28,7 @@
                de la izquierda. Aquí un ejemplo de tablero.
             </p>
 
-            <table id="board">
+            <table id="board" style="margin-right: 25px;">
                <tr>
                   <td id="X">X</td>
                   <td id="O">O</td>
@@ -45,31 +45,6 @@
                   <td id="O">O</td>
                </tr>
             </table>
-
-            <br /><br />
-            <p>
-               asdfa añsldkfj asñlkdfj asñlkdf añlskjdf as
-               asdfa añsldkfj asñlkdfj asñlkdf añlskjdf as
-               asdfa añsldkfj asñlkdfj asñlkdf
-               asdfa añsldkfj asñlkdfj asñlkdf añlskjdf as
-               asdfa añsldkfj asñlkdfj asñlkdf añlskjdf as
-               asdfa añsldkfj asñlkdfj asñlkdf
-               asdfa añsldkfj asñlkdfj asñlkdf añlskjdf as
-               asdfa añsldkfj asñlkdfj asñlkdf añlskjdf as
-               asdfa añsldkfj asñlkdfj asñlkdf
-
-            </p>
-            <br /><br />
-            <p>
-               asdfa añsldkfj asñlkdfj asñlkdf añlskjdf as
-               asdfa añsldkfj asñlkdfj asñlkdf
-               asdfa añsldkfj asñlkdfj asñlkdf añlskjdf as
-               asdfa añsldkfj asñlkdfj asñlkdf añlskjdf as
-               asdfa añsldkfj asñlkdfj asñlkdf
-               asdfa añsldkfj asñlkdfj asñlkdf añlskjdf as
-               asdfa añsldkfj asñlkdfj asñlkdf añlskjdf as
-               asdfa añsldkfj asñlkdfj asñlkdf
-            </p>
          </div>
       </main>
 

@@ -100,20 +100,23 @@
 
          <div id="animacion">
             <?php
-            include("../animacion.html");
+            include("../animacion.php");
             ?>
 
             <div id="velocidad" align="center">
                <p>Ajusta la velocidad:</p>
                <form action="/proyecto/jugar/per/">
                   <?php
-                  echo '<input type="range" id="velSlider" name="vel" min="5" max="20" ';
+                  echo '<input type="range" id="velSlider" name="vel" min="3" max="27" ';
                   if (isset($_GET['vel']))
                       echo ' value="'.$_GET['vel'].'" ';
                   echo 'step="3" onchange="delay = 25 - this.value;" />';
                   ?>
-                  <input type="submit" value="Vuelve a empezar" />
+                  <!-- <input type="submit" value="Vuelve a empezar" /> -->
                </form>
+               <button onclick="comenzarAnimacion();">
+                  Volver a empezar
+               </button>
             </div>
 
             <button id="pantCompl" onclick="mostrarAnimacionCompleta();">

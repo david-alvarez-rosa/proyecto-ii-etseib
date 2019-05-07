@@ -3,7 +3,7 @@
 #alzado {
     position: absolute;
     left: 25px;
-    top: 325px;
+    top: 290px;
     transform-origin: 0 0;
 }
 
@@ -19,10 +19,11 @@
 }
 
 #tierraA {
-    width: 80px;
-    height: 65px;
+    width: 85px;
+    height: 75px;
     position: absolute;
-    bottom: 0;
+    bottom: -10px;
+    left: -5px;
     background-color: #CC0000;
 }
 
@@ -32,11 +33,12 @@
     position: absolute;
     bottom: 77.5px;
     left: 40px;
+    transform: rotate(-90deg);
     transform-origin: 0 7.5px;
 }
 
 #barra1A {
-    width: 250px;
+    width: 222px;
     height: 15px;
     background-color: #CC0000;
 }
@@ -44,12 +46,13 @@
 
 /* Barra 2 */
 #barra2A {
-    width: 250px;
+    width: 240px;
     height: 15px;
     position: absolute;
-    bottom: 77.5px;
-    left: 290px;
+    bottom: 299.5px;
+    left: 39.5px;
     background-color: #CC0000;
+    transform: rotate(77deg);
     transform-origin: 0 7.5px;
 }
 
@@ -57,8 +60,17 @@
 /* Pinza */
 #pinzaContA {
     position: absolute;
-    bottom: 45px;
-    left: 515px;
+    bottom: 33.151px;
+    left: 120.588px;
+}
+
+#extensionA {
+    height: 15px;
+    width: 51.6px;
+    position: absolute;
+    top: -47.5px;
+    left: -26.6px;
+    background-color: #CC0000;
 }
 
 #pinzaA {
@@ -75,7 +87,7 @@
     height: 20px;
     position: absolute;
     left: 10px;
-    top: 12px;
+    top: 18px;
     background-color: #2B6587;
     display: none;
 }
@@ -128,11 +140,17 @@
 
 #articulacionPos1A {
     position: absolute;
-    left: 235px;
+    left: 207px;
     bottom: -7.5px;
 }
 
 #articulacionPos2A {
+    position: absolute;
+    left: -41.6px;
+    bottom: 25px;
+}
+
+#articulacionPos3A {
     position: absolute;
     left: 10px;
     bottom: 25px;
@@ -144,7 +162,7 @@
     width: 30px;
     height: 20px;
     position: absolute;
-    left: 406px;
+    left: 450px;
     background-color: #2b6587;
 }
 
@@ -155,19 +173,19 @@
 }
 
 #almacenPieza0A {
-    bottom: 72px;
+    bottom: 65px;
 }
 
 #almacenPieza1A {
-    bottom: 48px;
+    bottom: 40px;
 }
 
 #almacenPieza2A {
-    bottom: 24px;
+    bottom: 15px;
 }
 
 #almacenPieza3A {
-    bottom: 0;
+    bottom: -10px;
 }
 
 
@@ -182,21 +200,21 @@
     width: 30px;
     height: 20px;
     position: absolute;
-    bottom: 0;
+    bottom: -10px;
     background-color: #2B6587;
     display: none;
 }
 
 #tableroPieza0A {
-    left: 170px;
+    left: 200px;
 }
 
 #tableroPieza1A {
-    left: 215px;
+    left: 250px;
 }
 
 #tableroPieza2A {
-    left: 260px;
+    left: 300px;
 }
 
 /* Alzado  termina aquí.*/
@@ -207,9 +225,10 @@
 /* Planta comienza aquí. */
 #planta {
     position: absolute;
-    left: 500px;
-    top: 325px;
+    left: 550px;
+    top: 300px;
     transform-origin: 0 0;
+    transform: scale(.8, .8);
 }
 
 #robotP {
@@ -233,10 +252,11 @@
 }
 
 #tierraP {
-    width: 80px;
-    height: 70px;
+    width: 85px;
+    height: 85px;
     position: absolute;
-    bottom: 0;
+    bottom: -7.5px;
+    left: -2.5px;
     background-color: #CC0000;
     z-index: 1;
 }
@@ -251,8 +271,8 @@
 }
 
 #barra1P {
-    width: 250px;
     height: 15px;
+    width: 0px;
     background-color: #CC0000;
 }
 
@@ -261,11 +281,11 @@
 #barra2ContP {
     position: absolute;
     bottom: 27.5px;
-    left: 290px;
+    left: 40px;
 }
 
 #barra2P {
-    width: 250px;
+    width: 53.988px;
     height: 15px;
     background-color: #CC0000;
     left: 0;
@@ -273,13 +293,24 @@
 }
 
 
+/* Extensión. */
+#extensionP {
+    height: 15px;
+    width: 51.6px;
+    background-color: #CC0000;
+    position: absolute;
+    bottom: 27.5px;
+    left: 93.99px;
+    z-index: -10;
+}
+
+
 /* Pinza. */
 #pinzaContP {
     position: absolute;
     bottom: 35px;
-    left: 540px;
+    left: 145.59px;
     transform-origin: 0 0;
-    z-index: -10;
 }
 
 #pinzaP {
@@ -299,20 +330,20 @@
     top: -30px;
     background-color: #2B6587;
     z-index: -10;
-    /* display: none; */
+    display: none;
 }
 
 
 /* Articulaciones. */
 #articulacionPos1P {
     position: absolute;
-    left: 235px;
+    left: -15px;
     bottom: -7.5px;
 }
 
 #articulacionPos2P {
     position: absolute;
-    left: 235px;
+    left: 38.988px;
     bottom: -7.5px;
 }
 
@@ -323,12 +354,18 @@
     z-index: 15;
 }
 
+#articulacionPos4P {
+    position:absolute;
+    left: -15px;
+    top: -15px;
+    z-index: 15;
+}
 
 /* Almacenes de piezas. */
 #almacenXsP {
     position: absolute;
-    top: 65px;
-    left: 300px;
+    bottom: -254.25px;
+    left: 350.57px;
     height: 30px;
     width: 30px;
     background-color: #336600;
@@ -337,14 +374,61 @@
 
 #almacenOsP {
     position: absolute;
-    top: -130px;
-    left: 300px;
+    bottom: 293.54px;
+    left: 350.57px;
     height: 30px;
     width: 30px;
     background-color: #3862E0;
     border-radius: 50%;
 }
 
+
+/* Tablero en planta. */
+#boardP {
+    position: absolute;
+    bottom: -47.5px;
+    left: 180px;
+    border-collapse: collapse;
+    background-color: #D2E0F9;
+}
+
+#boardP td {
+    height: 50px;
+    min-height: 50px;
+    width: 50px;
+    min-width: 50px;
+    padding: 0;
+    border: 4px solid Black;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#ticP {
+    width: 50px;
+    height: 50px;
+    background-color: #D2E0F9;
+    border: 0px;
+    cursor: pointer;
+}
+
+#tableroPiezaXP {
+    height: 30px;
+    width: 30px;
+    position: relative;
+    left: 10px;
+    background-color: #336600;
+    border-radius: 50%;
+}
+
+#tableroPiezaOP {
+    height: 30px;
+    width: 30px;
+    position: relative;
+    left: 10px;
+    background-color: #3862E0;
+    border-radius: 50%;
+}
 /* Planta  termina aquí.*/
 /* ----------------------------------------------------- */
 
@@ -352,7 +436,7 @@
 /* Control de velocidad. */
 #velocidad {
     position: relative;
-    top: 420px;
+    top: 390px;
 }
 
 

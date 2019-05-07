@@ -125,4 +125,4 @@ l5 = 68.81
 dx = 34.4
 dy = 24.22
 # Consideraremos la altura como un parámetro más.
-h = 0
+h = 9.404993

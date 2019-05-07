@@ -14,18 +14,16 @@ from movimiento.servos import *
 # DEFINICION DE VARIABLES
 # Almacén más separado, si no parece que no es capaz de llegar.
 # TODO: Revisar esto.
-R1 = 200
-R2 = 230
-ang1 = 0.9*(pi/2)
-ang2 = 0.7*(pi/2)
+R = 283.582
+ang = (40*pi)/180
 
 # V1 es un vector con la posición de 4 "X"'s
-V1 = [[R1*cos(ang1), R1*sin(ang1)], [R1*cos(ang2), R1*sin(ang2)], [R2*cos(ang1), R2*sin(ang1)], [R2*cos(ang2), R2*sin(ang2)]]
+V1 = [[R*cos(ang), R*sin(ang)], [R*cos(ang), R*sin(ang)], [R*cos(ang), R*sin(ang)], [R*cos(ang), R*sin(ang)]]
 # U1 indica el número de pieza a coger en almacén de "X"'s
 U1 = 0
 
 # V2 es un vector con la posición de 4 "O"'s
-V2 = [[R1*cos(-ang1), R1*sin(-ang1)], [R1*cos(-ang2), R1*sin(-ang2)], [R2*cos(-ang1), R2*sin(-ang1)], [R2*cos(-ang2), R2*sin(-ang2)]]
+V2 = [[R*cos(-ang), R*sin(-ang)], [R*cos(-ang), R*sin(-ang)], [R*cos(-ang), R*sin(-ang)], [R*cos(-ang), R*sin(-ang)]]
 # U1 indica el número de pieza a coger en almacén de "O"'s
 U2 = 0
 
@@ -34,10 +32,10 @@ V = [V1, V2]
 U = [U1, U2]
 
 # Posicion del tablero de casillas ancho_tablero*ancho_tablero (mm²)
-ancho_tablero = 50
+ancho_tablero = 33.33333
 # Tablero también más separado.
 # TODO: Revisar esto.
-x_inicial_t = 80
+x_inicial_t = 116.988
 
 fila_1 = [[x_inicial_t + 2*ancho_tablero, -ancho_tablero], [x_inicial_t + 2*ancho_tablero, 0], [x_inicial_t + 2*ancho_tablero, ancho_tablero]]
 fila_2 = [[x_inicial_t + ancho_tablero, -ancho_tablero], [x_inicial_t + ancho_tablero, 0], [x_inicial_t + ancho_tablero, ancho_tablero]]
@@ -72,10 +70,11 @@ def movePieceFromTo(p0, pf):
     S[4] = -S[0]  # MODIFICAR POR TEMA ANGULOS NEGATIVOS
     ancho = 34  # Le dejo margen. Hay q vigilar q no toque a otras piezas
     S[5] = acos((ancho+18)/52)
-    h0 = 26*sin(S[5])+68
+    # h0 = 26*sin(S[5])+68
+    h0 = 0
     phi1, phi2, phi3, phi4 = verticalMove(r, h0)
     S[1] = phi1
-    S[2] = phi2
+    S[2] = phi4
 
     moveServos(S)
     printServosAngles(S)
@@ -83,18 +82,18 @@ def movePieceFromTo(p0, pf):
     # Cerrar pinza para coger pieza.
     ancho = 25  # A 25 mm. (< 28) la pinza hara fuerza - MODIFICAR
     S[5] = acos((ancho+18)/52)
-    h0 = 26*sin(S[5])+68
+    # h0 = 26*sin(S[5])+68
     phi1, phi2, phi3, phi4 = verticalMove(r, h0)
     S[1] = phi1
-    S[2] = phi2
+    S[2] = phi4
 
     moveServos(S)
     printServosAngles(S)
 
     # Subir la pinza para que no se choque
-    phi1, phi2, phi3, phi4 = verticalMove(r, h0+50)  # MODIFICAR
+    phi1, phi2, phi3, phi4 = verticalMove(r, h0+10)  # TODO: MODIFICAR
     S[1] = phi1
-    S[2] = phi2
+    S[2] = phi4
     moveServos(S)
     printServosAngles(S)
 
@@ -102,9 +101,9 @@ def movePieceFromTo(p0, pf):
     r = sqrt(pow(pf[0], 2) + pow(pf[1], 2))
     S[0] = atan(pf[1]/pf[0])
     S[4] = -S[0]  # MODIFICAR POR TEMA ANGULOS NEGATIVOS
-    phi1, phi2, phi3, phi4 = verticalMove(r, h0+50)
+    phi1, phi2, phi3, phi4 = verticalMove(r, h0+10) # TODO: modificar
     S[1] = phi1
-    S[2] = phi2
+    S[2] = phi4
 
     moveServos(S)
     printServosAngles(S)
@@ -112,7 +111,7 @@ def movePieceFromTo(p0, pf):
     # Bajar pinza sobre posición final.
     phi1, phi2, phi3, phi4 = verticalMove(r, h0)
     S[1] = phi1
-    S[2] = phi2
+    S[2] = phi4
 
     moveServos(S)
     printServosAngles(S)
@@ -120,10 +119,10 @@ def movePieceFromTo(p0, pf):
     # Soltar pieza en la posición final.
     ancho = 34  # > 28
     S[5] = acos((ancho+18)/52)
-    h0 = 26*sin(S[5])+68
+    # h0 = 26*sin(S[5])+68
     phi1, phi2, phi3, phi4 = verticalMove(r, h0)
     S[1] = phi1
-    S[2] = phi2
+    S[2] = phi4
 
     moveServos(S)
     printServosAngles(S)
@@ -131,7 +130,7 @@ def movePieceFromTo(p0, pf):
     # Subir la pinza para que no se choque
     phi1, phi2, phi3, phi4 = verticalMove(r, h0+50)  # MODIFICAR
     S[1] = phi1
-    S[2] = phi2
+    S[2] = phi4
     moveServos(S)
     printServosAngles(S)
 
