@@ -174,6 +174,11 @@ async function move_barras(phi1, phi2) {
 }
 
 
+// async funcion move_piece() {
+
+// }
+
+
 async function move_piece(noAlmacen, noTablero) {
     actualizaAlmacenA(Math.abs(noAlmacen) - 1);
     if (noAlmacen >= 0) {

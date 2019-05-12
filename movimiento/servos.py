@@ -34,10 +34,13 @@ def printServosAngles(S):
     """
     Devuelve información de los ángulos de los servos.
     """
-    for i in range(6):
-        # El 3 no es un servo.
-        if i != 3:
-            print(round(rad2Deg(S[i])), end = ",")
+    # for i in range(6):
+    #     # El 3 no es un servo.
+    #     if i != 3:
+    #         print(round(rad2Deg(S[i])), end = ",")
+    print(round(rad2Deg(S[0])), end = ",")
+    print(round(rad2Deg(S[1])), end = ",")
+    print(round(rad2Deg(S[2])), end = ",")
 
 
 def moveServo(servo, angle):

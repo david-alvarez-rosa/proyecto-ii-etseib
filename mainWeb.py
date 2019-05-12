@@ -44,6 +44,10 @@ def readVariables():
     Leer las variables y guardarlas. Devuelve la última jugada realizada.
     """
     movsStr = sys.argv[1]
+
+    # Devolver posición en almacén.
+    print(int(len(movsStr)/4), end = ",")
+
     movs = []
     for i in range(int(len(movsStr)/2)):
         movs.append([int(movsStr[2*i]), int(movsStr[2*i + 1])])
