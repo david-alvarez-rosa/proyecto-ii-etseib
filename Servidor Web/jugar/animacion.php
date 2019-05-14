@@ -83,12 +83,12 @@
       for ($i = 0; $i < 3; ++$i) {
           echo '<tr>';
           for ($j = 0; $j < 3; ++$j) {
-              if ($board[3*$i + $j] == "X")
+              if ($board[3*$i + $j] == "X" and ($i != $outputArray[35] or $j != $outputArray[36]))
                   echo '<td><div id="tableroPiezaXP"></div></td>';
-              else if ($board[3*$i + $j] == "O")
+              else if ($board[3*$i + $j] == "O" and ($i != $outputArray[17] or $j != $outputArray[18]))
                   echo '<td><div id="tableroPiezaOP"></div></td>';
               else
-                  echo '<td><a href="'.$url.$i.$j.'"><button id="ticP"><span></span></button></a></td>';
+                  echo '<td><div id="tableroPiezaP'.$i.$j.'"></div></td>';
           }
           echo '</tr>';
       }
@@ -101,12 +101,25 @@
  async function comenzarAnimacion() {
      await sleep(500);
 
-     move_piece(3, 1);
-     await sleep(550*delay);
+     /* Pieza del usuario. */
+     var phisIni = [<?php echo $outputArray[8].', '.$outputArray[9].', '.$outputArray[10]; ?>];
+     var phisEnd = [<?php echo $outputArray[11].', '.$outputArray[12].', '.$outputArray[13]; ?>];
+     var posPieza = "<?php echo $outputArray[17].$outputArray[18]; ?>";
+     phisIni[0] *= -1;
+     phisIni[2] *= -1;
+     phisEnd[2] *= -1;
+     var tipo = "O";
+     move_piece(phisIni, phisEnd, posPieza, tipo);
 
-     move_piece(-2, 3);
-     await sleep(550*delay);
-
-     reset();
+     /* Pieza del robot. */
+     await sleep(20*sleepTime);
+     var phisIni = [<?php echo $outputArray[26].', '.$outputArray[27].', '.$outputArray[28]; ?>];
+     var phisEnd = [<?php echo $outputArray[29].', '.$outputArray[30].', '.$outputArray[31]; ?>];
+     var posPieza = "<?php echo $outputArray[35].$outputArray[36]; ?>";
+     phisIni[0] *= -1;
+     phisIni[2] *= -1;
+     phisEnd[2] *= -1;
+     var tipo = "X";
+     move_piece(phisIni, phisEnd, posPieza, tipo);
  }
 </script>

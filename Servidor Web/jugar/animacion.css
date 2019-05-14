@@ -404,12 +404,85 @@
     font-weight: bold;
 }
 
-#ticP {
-    width: 50px;
-    height: 50px;
-    background-color: #D2E0F9;
-    border: 0px;
-    cursor: pointer;
+#tableroPiezaP00 {
+    height: 30px;
+    width: 30px;
+    position: relative;
+    left: 10px;
+    border-radius: 50%;
+    display: none;
+}
+
+#tableroPiezaP01 {
+    height: 30px;
+    width: 30px;
+    position: relative;
+    left: 10px;
+    border-radius: 50%;
+    display: none;
+}
+
+#tableroPiezaP02 {
+    height: 30px;
+    width: 30px;
+    position: relative;
+    left: 10px;
+    border-radius: 50%;
+    display: none;
+}
+
+#tableroPiezaP10 {
+    height: 30px;
+    width: 30px;
+    position: relative;
+    left: 10px;
+    border-radius: 50%;
+    display: none;
+}
+
+#tableroPiezaP11 {
+    height: 30px;
+    width: 30px;
+    position: relative;
+    left: 10px;
+    border-radius: 50%;
+    display: none;
+}
+
+#tableroPiezaP12 {
+    height: 30px;
+    width: 30px;
+    position: relative;
+    left: 10px;
+    border-radius: 50%;
+    display: none;
+}
+
+#tableroPiezaP20 {
+    height: 30px;
+    width: 30px;
+    position: relative;
+    left: 10px;
+    border-radius: 50%;
+    display: none;
+}
+
+#tableroPiezaP21 {
+    height: 30px;
+    width: 30px;
+    position: relative;
+    left: 10px;
+    border-radius: 50%;
+    display: none;
+}
+
+#tableroPiezaP22 {
+    height: 30px;
+    width: 30px;
+    position: relative;
+    left: 10px;
+    border-radius: 50%;
+    display: none;
 }
 
 #tableroPiezaXP {

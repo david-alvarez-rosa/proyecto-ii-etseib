@@ -174,74 +174,47 @@ async function move_barras(phi1, phi2) {
 }
 
 
-// async funcion move_piece() {
-
-// }
-
-
-async function move_piece(noAlmacen, noTablero) {
-    actualizaAlmacenA(Math.abs(noAlmacen) - 1);
-    if (noAlmacen >= 0) {
-        noAlmacen -= 1;
-        noTablero -= 1;
-        almacenAngP = Math.abs(almacenAngP);
-        almacenColorA("#3862E0");
-        piezaPinzaColorA("#3862E0");
-        if (noTablero >= 0)
-            document.getElementById("tableroPieza" + noTablero + "A").style.background = "#3862E0";
-        else {
-            noTablero *= -1;
-            document.getElementById("tableroPieza" + noTablero + "A").style.background = "#336600";
-        }
-    }
-    else {
-        noAlmacen *= -1;
-        noAlmacen -= 1;
-        almacenAngP = -Math.abs(almacenAngP);
-        almacenColorA("#336600");
-        piezaPinzaColorA("#336600");
-        if (noTablero >= 0) {
-            noTablero -= 1;
-            document.getElementById("tableroPieza" + noTablero + "A").style.background = "#336600";
-        }
-        else {
-            noTablero *= -1;
-            noTablero -= 1;
-            document.getElementById("tableroPieza" + noTablero + "A").style.background = "#3862E0";
-        }
-    }
-
-    // Ir al almacén.
-    rotacionP(0, almacenAngP);
-    await sleep(sleepTime);
-    tableroA.style.opacity = "0.1";
-    almacenA.style.opacity = "1";
-
-    move_barras(angulosBarrasA[0] - 1, 20);
-    await sleep(sleepTime);
-
-    move_barras(almacenAngsA[noAlmacen][0], almacenAngsA[noAlmacen][1]);
-    await sleep(sleepTime);
-    document.getElementById("piezaPinzaA").style.display = "block";
-    document.getElementById("almacenPieza" + noAlmacen + "A").style.display = "none";
-
-    // Ir al tablero.
-    rotacionP(almacenAngP, 0);
-    await sleep(sleepTime);
-
-    almacenA.style.opacity = "0.1";
-    tableroA.style.opacity = "1";
-    move_barras(tableroAngsA[noTablero][0], tableroAngsA[noTablero][1]);
-    await sleep(sleepTime);
-    piezaPinzaA.style.display = "none";
-    document.getElementById("tableroPieza" + noTablero + "A").style.display = "block";
-}
-
-
 async function reset() {
     move_barras(90, 77);
     await sleep(sleepTime);
 }
+
+
+async function move_piece(phisIni, phisEnd, posPieza, tipo) {
+    // phis* = [rotacion, brazo1, brazo2].
+    // Ir al almacén.
+    rotacionP(0, phisIni[0]);
+    tableroA.style.opacity = "0.1";
+    almacenA.style.opacity = "1";
+    await sleep(sleepTime);
+
+    move_barras(angulosBarrasA[0] - 1, 20);
+    await sleep(sleepTime);
+
+    move_barras(phisIni[1], phisIni[2]);
+    await sleep(sleepTime);
+    document.getElementById("piezaPinzaA").style.display = "block";
+    document.getElementById("almacenPieza" + 0 + "A").style.display = "none";
+
+    // Ir al tablero.
+    rotacionP(phisIni[0], phisEnd[0]);
+    almacenA.style.opacity = "0.1";
+    tableroA.style.opacity = "1";
+    await sleep(sleepTime);
+
+    move_barras(phisEnd[1], phisEnd[2]);
+    await sleep(sleepTime);
+    piezaPinzaA.style.display = "none";
+    document.getElementById("tableroPieza" + 0 + "A").style.display = "block";
+    if (tipo == "O")
+        document.getElementById("tableroPiezaP" + posPieza).style.background = "#3862E0";
+    else
+        document.getElementById("tableroPiezaP" + posPieza).style.background = "#336600";
+    document.getElementById("tableroPiezaP" + posPieza).style.display = "block";
+
+    reset();
+}
+
 
 var length1A = document.getElementById("barra1A").offsetWidth;
 var length2A = document.getElementById("barra2A").offsetWidth;
@@ -255,10 +228,6 @@ yBarra2AIniA = Number(yBarra2AIniA.slice(0, yBarra2AIniA.length - 2))
 var delay = 25 - Number(document.getElementById("velSlider").value);
 var sleepTime = 0;
 
+// Angulos y posiciones inicio.
 var posPinzaA = [120.588, 33.151];
 var angulosBarrasA = [90, 77];
-
-var almacenAngsA = [[46, 24], [43, 29], [39, 33], [36, 36]];
-var tableroAngsA = [[76, 73], [69, 67], [61, 61]];
-
-var almacenAngP = 40;
