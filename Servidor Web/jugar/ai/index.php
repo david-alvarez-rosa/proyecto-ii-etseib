@@ -70,7 +70,7 @@
 
              $command = 'python3 ../../cgi-bin/main2.py '.$movs.' '.$rama.' '.$nodo.' '.$sims.' '.$eb;
              $output = exec($command);
-             $outputArray = split(",", $output);
+             $outputArray = explode(",", $output);
              $n = sizeof($outputArray);
 
              $board = $outputArray[$n - 3];
