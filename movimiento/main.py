@@ -143,7 +143,7 @@ def movePieceFromTo(p0, pf, h):
     printServosAngles(S)
 
 
-def movePiece(i, j, tipo):
+def movePiece(i, j, tipo, posAlmacen):
     """
     Posiciona una pieza (de un tipo) en una posición concreta del tablero.
     """
@@ -157,7 +157,7 @@ def movePiece(i, j, tipo):
     print("%.1f" % tablero[i][j][0], end = ",")
     print("%.1f" % tablero[i][j][1], end = ",")
 
-    movePieceFromTo(V[tipo][U[tipo]], tablero[i][j], H[U[tipo]])
+    movePieceFromTo(V[tipo][posAlmacen], tablero[i][j], H[posAlmacen])
     U[tipo] += 1
 
     print(i, end =",")

@@ -46,7 +46,8 @@ def readVariables():
     movsStr = sys.argv[1]
 
     # Devolver posición en almacén.
-    print(int((len(movsStr) - 2)/4), end = ",")
+    posAlmacen = int((len(movsStr) - 2)/4)
+    print(int((len(movsStr) - 2)/4) + 1, end = ",")
 
     movs = []
     for i in range(int(len(movsStr)/2)):
@@ -82,7 +83,7 @@ def readVariables():
 
     actualiza(movs[len(movs) - 1][0], movs[len(movs) - 1][1])
 
-    return movs[len(movs) - 1][0], movs[len(movs) - 1][1]
+    return movs[len(movs) - 1][0], movs[len(movs) - 1][1], posAlmacen
 
 
 def nextUrl(i, j):
@@ -112,14 +113,14 @@ def printData(i, j):
 # Iniciar los servos.
 reset_servos()
 # Leer movimiento humano y mover la pieza correspondiente.
-i, j = readVariables()
-movePiece(i, j, "X")
+i, j, posAlmacen = readVariables()
+movePiece(i, j, "X", posAlmacen)
 if game_end(cfg.board) != "User wins":
     # Decidir movimiento respuesta y mover la pieza correspondiente.
     i, j = move()
     # Si se puede hacer movimiento, mover la pieza.
     if i != -1 and j != -1:
-        movePiece(i, j, "O")
+        movePiece(i, j, "O", posAlmacen + 1)
 # Devolver datos necesarios.
 printData(i, j)
 # Mirar si la partida ha terminado.

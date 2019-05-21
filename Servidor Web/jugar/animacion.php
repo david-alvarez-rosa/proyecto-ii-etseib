@@ -101,6 +101,11 @@
  async function comenzarAnimacion() {
      await sleep(500);
 
+     var posAlmacen =  "<?php echo $outputArray[0]; ?>";
+     for (var i = 0; i < posAlmacen + 1; ++i)
+         document.getElementById("almacenPieza" + i + "A").style.display = "none";
+
+
      /* Pieza del usuario. */
      var phisIni = [<?php echo $outputArray[8].', '.$outputArray[9].', '.$outputArray[10]; ?>];
      var phisEnd = [<?php echo $outputArray[11].', '.$outputArray[12].', '.$outputArray[13]; ?>];
@@ -112,7 +117,7 @@
      move_piece(phisIni, phisEnd, posPieza, tipo);
 
      /* Pieza del robot. */
-     await sleep(20*sleepTime);
+     await sleep(12*sleepTime);
      var phisIni = [<?php echo $outputArray[26].', '.$outputArray[27].', '.$outputArray[28]; ?>];
      var phisEnd = [<?php echo $outputArray[29].', '.$outputArray[30].', '.$outputArray[31]; ?>];
      var posPieza = "<?php echo $outputArray[35].$outputArray[36]; ?>";

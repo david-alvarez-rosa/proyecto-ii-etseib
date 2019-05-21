@@ -185,6 +185,20 @@ async function move_piece(phisIni, phisEnd, posPieza, tipo) {
     // Ir al almacén.
     rotacionP(0, phisIni[0]);
     tableroA.style.opacity = "0.1";
+    if (tipo == "O") {
+        document.getElementById("piezaPinzaA").style.background = "#3862E0";
+        document.getElementById("almacenPieza0A").style.background = "#3862E0";
+        document.getElementById("almacenPieza1A").style.background = "#3862E0";
+        document.getElementById("almacenPieza2A").style.background = "#3862E0";
+        document.getElementById("almacenPieza3A").style.background = "#3862E0";
+    }
+    else {
+        document.getElementById("piezaPinzaA").style.background = "#336600";
+        document.getElementById("almacenPieza0A").style.background = "#336600";
+        document.getElementById("almacenPieza1A").style.background = "#336600";
+        document.getElementById("almacenPieza2A").style.background = "#336600";
+        document.getElementById("almacenPieza3A").style.background = "#336600";
+    }
     almacenA.style.opacity = "1";
     await sleep(sleepTime);
 

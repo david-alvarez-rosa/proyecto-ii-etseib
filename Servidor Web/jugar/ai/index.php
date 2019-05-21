@@ -145,6 +145,8 @@
 
       <script src="../animacion.js"></script>
       <script type="text/javascript">
+       almacenXsP.style.background = "#3862E0";
+       almacenOsP.style.background = "#336600";
        <?php
        if (isset($_GET['vel'])) {
            echo 'mostrarAnimacion();';
