@@ -46,7 +46,7 @@ def readVariables():
     movsStr = sys.argv[1]
 
     # Devolver posición en almacén.
-    print(int(len(movsStr - 2)/4), end = ",")
+    print(int((len(movsStr) - 2)/4), end = ",")
 
     movs = []
     for i in range(int(len(movsStr)/2)):
