@@ -180,7 +180,7 @@ async function reset() {
 }
 
 
-async function move_piece(phisIni, phisEnd, posPieza, tipo) {
+async function move_piece(phisIni, phisEnd, posPieza, tipo, behind, posAlmacen) {
     // phis* = [rotacion, brazo1, brazo2].
     // Ir al almacén.
     rotacionP(0, phisIni[0]);
@@ -208,7 +208,7 @@ async function move_piece(phisIni, phisEnd, posPieza, tipo) {
     move_barras(phisIni[1], phisIni[2]);
     await sleep(sleepTime);
     document.getElementById("piezaPinzaA").style.display = "block";
-    document.getElementById("almacenPieza" + 0 + "A").style.display = "none";
+    document.getElementById("almacenPieza" + posAlmacen + "A").style.display = "none";
 
     // Ir al tablero.
     rotacionP(phisIni[0], phisEnd[0]);
@@ -219,13 +219,20 @@ async function move_piece(phisIni, phisEnd, posPieza, tipo) {
     move_barras(phisEnd[1], phisEnd[2]);
     await sleep(sleepTime);
     piezaPinzaA.style.display = "none";
-    document.getElementById("tableroPieza" + 0 + "A").style.display = "block";
-    if (tipo == "O")
+    document.getElementById("tableroPieza" + posPieza[1] + "A").style.display = "block";
+    if (tipo == "O") {
         document.getElementById("tableroPiezaP" + posPieza).style.background = "#3862E0";
-    else
+        if (behind == false)
+            document.getElementById("tableroPieza" + posPieza[1] + "A").style.background = "#3862E0";
+    }
+    else {
         document.getElementById("tableroPiezaP" + posPieza).style.background = "#336600";
+        if (behind == false)
+            document.getElementById("tableroPieza" + posPieza[1] + "A").style.background = "#336600";
+    }
     document.getElementById("tableroPiezaP" + posPieza).style.display = "block";
 
+    document.getElementById("almacenPieza" + posAlmacen + "A").style.display = "block";
     reset();
 }
 

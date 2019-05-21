@@ -99,12 +99,37 @@
 
 <script type="text/javascript">
  async function comenzarAnimacion() {
-     await sleep(500);
+     var boardRaw =  "<?php echo $outputArray[sizeof($outputArray) - 3]; ?>";
+     var lastORow = "<?php echo $outputArray[17]; ?>";
+     var lastOColumn = "<?php echo $outputArray[18]; ?>";
+     var lastXRow = "<?php echo $outputArray[35]; ?>";
+     var lastXColumn = "<?php echo $outputArray[36]; ?>";
+     var behindO = false;
+     var behindX = false;
+     for (var j = 0; j < 3; ++j)
+         for (var i = 0; i < 3; ++i) {
+             if (boardRaw[3*i + j] == "O" && (i != lastORow || j != lastOColumn)) {
+                 document.getElementById("tableroPieza" + j + "A").style.display = "block";
+                 document.getElementById("tableroPieza" + j + "A").style.background = "#3862E0";
+             }
+             else if (boardRaw[3*i + j] == "X" && (i != lastXRow || j != lastXColumn)) {
+                 document.getElementById("tableroPieza" + j + "A").style.display = "block";
+                 document.getElementById("tableroPieza" + j + "A").style.background = "#336600";
+             }
+             if (boardRaw[3*i + j] != ".") {
+                 if (lastOColumn == j && lastORow < i)
+                     behindO = true;
+                 if ((lastXColumn == j && lastXRow < i) || (lastXColumn == lastOColumn && lastXRow < lastORow))
+                     behindX = true;
+             }
 
-     var posAlmacen =  "<?php echo $outputArray[0]; ?>";
-     for (var i = 0; i < posAlmacen + 1; ++i)
+         }
+
+     var posAlmacen =  <?php echo $outputArray[0]; ?>;
+     for (var i = 0; i < posAlmacen; ++i)
          document.getElementById("almacenPieza" + i + "A").style.display = "none";
 
+     await sleep(500);
 
      /* Pieza del usuario. */
      var phisIni = [<?php echo $outputArray[8].', '.$outputArray[9].', '.$outputArray[10]; ?>];
@@ -114,10 +139,10 @@
      phisIni[2] *= -1;
      phisEnd[2] *= -1;
      var tipo = "O";
-     move_piece(phisIni, phisEnd, posPieza, tipo);
+     move_piece(phisIni, phisEnd, posPieza, tipo, behindO, posAlmacen);
 
      /* Pieza del robot. */
-     await sleep(12*sleepTime);
+     await sleep(11*sleepTime);
      var phisIni = [<?php echo $outputArray[26].', '.$outputArray[27].', '.$outputArray[28]; ?>];
      var phisEnd = [<?php echo $outputArray[29].', '.$outputArray[30].', '.$outputArray[31]; ?>];
      var posPieza = "<?php echo $outputArray[35].$outputArray[36]; ?>";
@@ -125,6 +150,6 @@
      phisIni[2] *= -1;
      phisEnd[2] *= -1;
      var tipo = "X";
-     move_piece(phisIni, phisEnd, posPieza, tipo);
+     move_piece(phisIni, phisEnd, posPieza, tipo, behindX, posAlmacen);
  }
 </script>
