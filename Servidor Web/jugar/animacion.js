@@ -56,6 +56,7 @@ function almacenColorA(color) {
     almacenPieza1A.style.background = color;
     almacenPieza2A.style.background = color;
     almacenPieza3A.style.background = color;
+    almacenPieza4A.style.background = color;
 }
 
 
@@ -191,6 +192,7 @@ async function move_piece(phisIni, phisEnd, posPieza, tipo, behind, posAlmacen) 
         document.getElementById("almacenPieza1A").style.background = "#3862E0";
         document.getElementById("almacenPieza2A").style.background = "#3862E0";
         document.getElementById("almacenPieza3A").style.background = "#3862E0";
+        document.getElementById("almacenPieza4A").style.background = "#3862E0";
     }
     else {
         document.getElementById("piezaPinzaA").style.background = "#336600";
@@ -198,6 +200,7 @@ async function move_piece(phisIni, phisEnd, posPieza, tipo, behind, posAlmacen) 
         document.getElementById("almacenPieza1A").style.background = "#336600";
         document.getElementById("almacenPieza2A").style.background = "#336600";
         document.getElementById("almacenPieza3A").style.background = "#336600";
+        document.getElementById("almacenPieza4A").style.background = "#336600";
     }
     almacenA.style.opacity = "1";
     await sleep(sleepTime);

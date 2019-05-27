@@ -173,21 +173,24 @@
 }
 
 #almacenPieza0A {
-    bottom: 65px;
+    bottom: 90px;
 }
 
 #almacenPieza1A {
-    bottom: 40px;
+    bottom: 65px;
 }
 
 #almacenPieza2A {
-    bottom: 15px;
+    bottom: 40px;
 }
 
 #almacenPieza3A {
-    bottom: -10px;
+    bottom: 15px;
 }
 
+#almacenPieza4A {
+    bottom: -10px;
+}
 
 /* Piezas tablero. */
 #tableroA {
@@ -509,7 +512,7 @@
 /* Control de velocidad. */
 #velocidad {
     position: relative;
-    top: 390px;
+    top: 425px;
 }
 
 

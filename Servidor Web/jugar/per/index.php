@@ -114,9 +114,9 @@
                   ?>
                   <!-- <input type="submit" value="Vuelve a empezar" /> -->
                </form>
-               <button onclick="comenzarAnimacion();">
-                  Volver a empezar
-               </button>
+               <!-- <button onclick="comenzarAnimacion();">
+                    Volver a empezar
+                    </button> -->
             </div>
 
             <button id="pantCompl" onclick="mostrarAnimacionCompleta();">

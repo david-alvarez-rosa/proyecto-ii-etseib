@@ -31,6 +31,7 @@
       <div id="almacenPieza1A"></div>
       <div id="almacenPieza2A"></div>
       <div id="almacenPieza3A"></div>
+      <div id="almacenPieza4A"></div>
    </div>
 
    <div id="tableroA">
@@ -96,7 +97,6 @@
    </table>
 </div>
 
-
 <script type="text/javascript">
  async function comenzarAnimacion() {
      var boardRaw =  "<?php echo $outputArray[sizeof($outputArray) - 3]; ?>";
@@ -122,7 +122,6 @@
                  if ((lastXColumn == j && lastXRow < i) || (lastXColumn == lastOColumn && lastXRow < lastORow))
                      behindX = true;
              }
-
          }
 
      var posAlmacen =  <?php echo $outputArray[0]; ?>;
@@ -130,6 +129,14 @@
          document.getElementById("almacenPieza" + i + "A").style.display = "none";
 
      await sleep(500);
+
+     var web = "<?php echo $_SERVER['REQUEST_URI'][16]; ?>";
+     <?php
+     if ($outputArray[$n - 1] != "Not ended")
+         echo 'var notEnd = false;';
+     else
+         echo 'var notEnd = true;';
+     ?>
 
      /* Pieza del usuario. */
      var phisIni = [<?php echo $outputArray[8].', '.$outputArray[9].', '.$outputArray[10]; ?>];
@@ -142,14 +149,16 @@
      move_piece(phisIni, phisEnd, posPieza, tipo, behindO, posAlmacen);
 
      /* Pieza del robot. */
-     await sleep(11*sleepTime);
-     var phisIni = [<?php echo $outputArray[26].', '.$outputArray[27].', '.$outputArray[28]; ?>];
-     var phisEnd = [<?php echo $outputArray[29].', '.$outputArray[30].', '.$outputArray[31]; ?>];
-     var posPieza = "<?php echo $outputArray[35].$outputArray[36]; ?>";
-     phisIni[0] *= -1;
-     phisIni[2] *= -1;
-     phisEnd[2] *= -1;
-     var tipo = "X";
-     move_piece(phisIni, phisEnd, posPieza, tipo, behindX, posAlmacen);
+     if (web != "p" || notEnd) {
+         await sleep(11*sleepTime);
+         var phisIni = [<?php echo $outputArray[26].', '.$outputArray[27].', '.$outputArray[28]; ?>];
+         var phisEnd = [<?php echo $outputArray[29].', '.$outputArray[30].', '.$outputArray[31]; ?>];
+         var posPieza = "<?php echo $outputArray[35].$outputArray[36]; ?>";
+         phisIni[0] *= -1;
+         phisIni[2] *= -1;
+         phisEnd[2] *= -1;
+         var tipo = "X";
+         move_piece(phisIni, phisEnd, posPieza, tipo, behindX, posAlmacen);
+     }
  }
 </script>

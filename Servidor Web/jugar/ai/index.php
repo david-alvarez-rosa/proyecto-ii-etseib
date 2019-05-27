@@ -125,7 +125,7 @@
                       echo ' value="'.$_GET['vel'].'" ';
                   echo 'step="3" onchange="delay = 25 - this.value;" />';
                   ?>
-                  <input type="submit" value="Vuelve a empezar" />
+                  <!-- <input type="submit" value="Vuelve a empezar" /> -->
                </form>
             </div>
 

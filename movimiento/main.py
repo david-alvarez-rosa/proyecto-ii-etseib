@@ -18,17 +18,17 @@ R = 283.582
 ang = (40*pi)/180
 
 # V1 es un vector con la posición de 4 "X"'s
-V1 = [[R*cos(ang), R*sin(ang)], [R*cos(ang), R*sin(ang)], [R*cos(ang), R*sin(ang)], [R*cos(ang), R*sin(ang)]]
+V1 = [[R*cos(ang), R*sin(ang)], [R*cos(ang), R*sin(ang)], [R*cos(ang), R*sin(ang)], [R*cos(ang), R*sin(ang)], [R*cos(ang), R*sin(ang)]]
 # U1 indica el número de pieza a coger en almacén de "X"'s
 U1 = 0
 
 # V2 es un vector con la posición de 4 "O"'s
-V2 = [[R*cos(-ang), R*sin(-ang)], [R*cos(-ang), R*sin(-ang)], [R*cos(-ang), R*sin(-ang)], [R*cos(-ang), R*sin(-ang)]]
+V2 = [[R*cos(-ang), R*sin(-ang)], [R*cos(-ang), R*sin(-ang)], [R*cos(-ang), R*sin(-ang)], [R*cos(-ang), R*sin(-ang)], [R*cos(-ang), R*sin(-ang)]]
 # U1 indica el número de pieza a coger en almacén de "O"'s
 U2 = 0
 
 # Alturas del almacen.
-H = [50, 33.333, 16.667, 0]
+H = [66.6667, 50, 33.333, 16.667, 0]
 
 # Unión de variables del almacén.
 V = [V1, V2]
