@@ -23,9 +23,8 @@
 
       <main>
          <div class="innertube">
-            <p>
-               Se podrían explicar cosas. Para comenzar a jugar los links son los
-               de la izquierda. Aquí un ejemplo de tablero.
+	          <p>
+               Bienvenidos a nuestro proyecto.
             </p>
 
             <table id="board" style="margin-right: 25px;">
