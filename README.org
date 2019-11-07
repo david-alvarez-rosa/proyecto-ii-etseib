@@ -1,7 +1,7 @@
 * Tres en Raya
 
 The final version can be found 
-[[here][https://david.alvarezrosa.com/tres-en-raya/]].
+[[https://david.alvarezrosa.com/tres-en-raya/][here]].
 
 The documentations can be downloaded (in pdf) from 
-[[here][https://david.alvarezrosa.com/proyecto/proyecto/documentacion/documentacion.pdf#view=Fit]].
+[[https://david.alvarezrosa.com/proyecto/proyecto/documentacion/documentacion.pdf#view=Fit][here]].
