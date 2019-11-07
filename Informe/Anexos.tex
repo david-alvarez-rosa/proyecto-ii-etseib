@@ -1,0 +1,152 @@
+% -*- TeX-master: "Informe.tex" -*-
+
+
+\section{Árbol de directorios}
+
+A continuación se muestra en la figura \ref{fig:directorios} el árbol de
+directorios del Servidor Web, con todos los diferentes archivos que se han
+creado. \\
+
+\begin{figure}[H]
+  \centering
+  \scalebox{.93}{\input{Directorios.tex}}
+  \caption{Árbol de directorios.}
+  \label{fig:directorios}
+\end{figure}
+
+
+\section{Código más representativo}
+
+A continuación se recoge el código desarrollado considerado más representativo
+en este proyecto. Se puede consultar el código completo en la
+\href{https://alvarezrosa.com/proyecto/proyecto/}{web} del proyecto.
+
+\subsection{Estrategia} \label{sec:cod_est}
+Aquí se recoge todo el codigo desarrollado en Python \imgInline{Logo_Python.png}
+relacionado con la estrategia de juego del Tres en Raya. Este código en el
+servidor se encuentra (de acuerdo con la figura \ref{fig:directorios} de la
+página \pageref{fig:directorios}) en el siguiente directorio: \\
+
+\dirtree{%
+  .1 \myFolder{Servidor Web}.
+  .2 \myFolder{cgi-bin}.
+  .3 \myFolder{estrategia}.
+  .4 \myPy{basica}.
+  .4 \myPy{cfg}.
+  .4 \myPy{equivalencias}.
+  .4 \myPy{main}.
+}
+
+\subsubsection*{Estrategia Básica (\textit{basica.py})}
+\pycode[label = basica.py]{../Codigo/estrategia/basica.py}
+\subsubsection*{Auxiliar (\textit{cfg.py})}
+\pycode[label = cfg.py]{../Codigo/estrategia/cfg.py}
+\subsubsection*{Equivalencias (\textit{equivalencias.py})}
+\pycode[label = equivalencias.py]{../Codigo/estrategia/equivalencias.py}
+\subsubsection*{Programa principal (\textit{main.py})}
+\pycode[label = main.py]{../Codigo/estrategia/main.py}
+
+
+\subsection{Movimiento} \label{sec:cod_mov}
+Aquí se recoge todo el codigo desarrollado en Python \imgInline{Logo_Python.png}
+relacionado con el movimiento del brazo robótico. Este código en el servidor se
+encuentra (de acuerdo con la figura \ref{fig:directorios} de la página
+\pageref{fig:directorios}) en el siguiente directorio: \\
+
+\dirtree{%
+  .1 \myFolder{Servidor Web}.
+  .2 \myFolder{cgi-bin}.
+  .3 \myFolder{movimiento}.
+  .4 \myPy{main}.
+  .4 \myPy{plano}.
+  .4 \myPy{servos}.
+}
+
+\subsubsection*{Programa principal (\textit{main.py})}
+\pycode[label = main.py]{../Codigo/movimiento/main.py}
+\subsubsection*{Plano (\textit{plano.py})}
+\pycode[label = plano.py]{../Codigo/movimiento/plano.py}
+\subsubsection*{Servomotores (\textit{servos.py})}
+\pycode[label = servos.py]{../Codigo/movimiento/servos.py}
+
+
+\subsection{Programa principal}
+Aquí se recoge todo el codigo desarrollado en Python \imgInline{Logo_Python.png}
+encargado de fusionar/coordinar el código de las secciones anteriores
+(\ref{sec:cod_est} y \ref{sec:cod_mov}). Este código en el servidor se
+encuentra (de acuerdo con la figura \ref{fig:directorios} de la página
+\pageref{fig:directorios}) en el siguiente directorio: \\
+
+\dirtree{%
+  .1 \myFolder{Servidor Web}.
+  .2 \myFolder{cgi-bin}.
+  .3 \myPy{main}.
+  .3 \myPy{main2}.
+}
+
+\subsubsection*{Programa principal 1 (\textit{main1.py})}
+\pycode[label = main.py]{../Codigo/mainWeb.py}
+\subsubsection*{Programa principal 2 (\textit{main2.py})}
+\pycode[label = main2.py]{../Codigo/mainWeb2.py}
+
+
+\subsection{Animación}
+Aquí se recoge el código desarrollado en JavaScript \imgInline{Logo_JS.png}
+que hace posibles las animaciones del brazo robótico virtual que se muestra en
+la web. También se añade su corrrespondiente HTML \imgInline{Logo_HTML.png} y
+CSS \imgInline{Logo_CSS.png}. Este código en el servidor se encuentra (de
+acuerdo con la figura \ref{fig:directorios} de la página
+\pageref{fig:directorios}) en el siguiente directorio: \\
+
+\dirtree{%
+  .1 \myFolder{Servidor Web}.
+  .2 \myFolder{jugar}.
+  .3 \myHtml{animacion}.
+  .3 \myJs{animacion}.
+}
+
+\subsubsection*{Animación HTML (\textit{animacion.php})}
+\phpcode[label = animacion.php]{../Codigo/Servidor\ Web/jugar/animacion.php}
+\subsubsection*{Animación JS (\textit{animacion.js})}
+\jscode[label = animacion.js]{../Codigo/Servidor\ Web/jugar/animacion.js}
+
+
+\subsection{Servidor}
+El resto de la parte de archivos del servidor han sido desarrollados en diversos
+lenguajes, como son PHP \imgInline{Logo_PHP.png}, HTML
+\imgInline{Logo_HTML.png}, CSS \imgInline{Logo_CSS.png} y JavaScript
+\imgInline{Logo_JS.png}. En este caso, debido a la extensión, solo se mostrarán
+los archivos considerados más representativos. Más concretamente se mostrarán
+los recogidos en el siguiente árbol (de acuerdo con la figura
+\ref{fig:directorios} de la página \pageref{fig:directorios}). \\
+
+\dirtree{%
+  .1 \myFolder{Servidor Web}.
+  %
+  .2 \myFolder{jugar}.
+  .3 \myFolder{ai}.
+  .4 \myPhp{index}.
+  .3 \myPhp{controles}.
+  .3 \myPhp{data}.
+  .3 \myPhp{tablero}.
+  %
+  .2 \myHtml{footer}.
+  .2 \myHtml{navbar}.
+}
+
+\vspace{.5cm}
+El contenido de los archivos a continuación se muestra siguiendo el mismo orden
+en el que aparecen en el árbol anterior.
+
+\subsubsection*{Página principal jugar/ai/ (\textit{index.php})}
+\phpcode[label = index.php]{../Codigo/Servidor\ Web/jugar/ai/index.php}
+\subsubsection*{Controles (\textit{controles.php})}
+\phpcode[label = controles.php]{../Codigo/Servidor\ Web/jugar/controles.php}
+\subsubsection*{Tabla datos diversos (\textit{data.php})}
+\phpcode[label = data.php]{../Codigo/Servidor\ Web/jugar/data.php}
+\subsubsection*{Tablero del Tres en Raya (\textit{tablero.php})}
+\phpcode[label = tablero.php]{../Codigo/Servidor\ Web/jugar/tablero.php}
+\subsubsection*{Pie de página (\textit{footer.html})}
+\htmlcode[label = footer.html]{../Codigo/Servidor\ Web/footer.html}
+\subsubsection*{Barra de navegación (\textit{navbar.html})}
+\htmlcode[label = navbar.html]{../Codigo/Servidor\ Web/navbar.html}

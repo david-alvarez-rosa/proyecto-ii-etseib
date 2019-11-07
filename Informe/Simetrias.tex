@@ -1,0 +1,49 @@
+% -*- TeX-master: "Informe.tex" -*-
+
+\begin{tikzpicture}
+  \node[board, draw] (R) {
+    \x \& \e \& \e \\
+    \e \& \e \& \e \\
+    \e \& \e \& \e \\
+  };
+  \node[board, right = of R] (A) {
+    \x \& \o \& \e \\
+    \e \& \e \& \e \\
+    \e \& \e \& \e \\
+  };
+  \node[board, right = of A] (B) {
+    \x \& \e \& \o \\
+    \e \& \e \& \e \\
+    \e \& \e \& \e \\
+  };
+  \node[board, below = of R] (C) {
+    \x \& \e \& \e \\
+    \o \& \e \& \e \\
+    \e \& \e \& \e \\
+  };
+  \node[board, below = of A] (D) {
+    \x \& \e \& \e \\
+    \e \& \o \& \e \\
+    \e \& \e \& \e \\
+  };
+  \node[board, below = of B] (E) {
+    \x \& \e \& \e \\
+    \e \& \e \& \o \\
+    \e \& \e \& \e \\
+  };
+  \node[board, below = of C] (F) {
+    \x \& \e \& \e \\
+    \e \& \e \& \e \\
+    \o \& \e \& \e \\
+  };
+  \node[board, below = of D] (G) {
+    \x \& \e \& \e \\
+    \e \& \e \& \e \\
+    \e \& \o \& \e \\
+  };
+  \node[board, below = of E] (H) {
+    \x \& \e \& \e \\
+    \e \& \e \& \e \\
+    \e \& \e \& \o \\
+  };
+\end{tikzpicture}
