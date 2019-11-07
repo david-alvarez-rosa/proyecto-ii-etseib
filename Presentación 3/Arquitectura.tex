@@ -1,0 +1,54 @@
+% -*- TeX-master: "Informe.tex" -*-
+
+\begin{tikzpicture}
+  % Cliente.
+  \node[boxp = magenta] (Us) {Usuario};
+  \node[box = magenta] (UN) [right = of Us] {Navegador};
+  \begin{scope}[on background layer]
+    \node[fit = (Us)(UN), cont = magenta, label = {Cliente}] (U) {};
+  \end{scope}
+
+  % Servidor Web.
+  \node[boxp = gray] (SI) [below = 1.25 of U, xshift = -6.5] {\textit{Index}};
+  \node[box = gray] (ST) [left = .75 of SI] {Tablero};
+  \node[box = gray] (SN) [right = .75 of SI] {\textit{Navbar}};
+  \node[box = gray] (SD) [below = .5 of ST] {Data};
+  \node[box = gray] (SA) [right = .35 of SD] {Animación};
+  \node[box = gray] (SC) [below = .5 of SN] {Controles};
+  \node[box = gray] (SCi) [below = .5 of SD] {Animación};
+  \node[box = gray] (SF) [below = .5 of SA, xshift = .25cm] {\textit{Footer}};
+  \node[box = gray] (SE) [below = .5 of SC, xshift = .55cm] {Otros \ldots};
+  \begin{scope}[on background layer]
+    \node[fit = (SI)(ST)(SN)(SC)(SCi)(SD)(SE)(SA), cont = gray,
+    label = above right:{Servidor Web}] (S) {};
+  \end{scope}
+
+  % Programa Principal.
+  \node[boxp = orange] (Mai) [below = 1.5 of S] {Main};
+  \begin{scope}[on background layer]
+    \node[fit = (Mai), cont = orange, label = below:{Programa principal}] (Ma) {};
+  \end{scope}
+
+  % Brazo robótico.
+  \node[boxp = red] (MM) [above right = .25 and 4 of Ma] {Principal};
+  \node[box = red] (MP) [below = .5 of MM] {Plano};
+  \node[box = red] (MI) [below = .5 of MP] {Interpolación};
+  \begin{scope}[on background layer]
+    \node[fit = (MM)(MP)(MI), cont = red, label = {Movimiento robot}] (M) {};
+  \end{scope}
+
+  % Tres en Raya.
+  \node[boxp = blue] (TEs) [above left = .78 and 4 of Ma] {Principal};
+  \node[box = blue] (TB) [below = .5 of TEs] {Básica};
+  \node[box = blue] (TEq) [below = .5 of TB] {Equivalencias};
+  \node[box = blue] (TA) [below = .5 of TEq] {Auxiliar};
+  \begin{scope}[on background layer]
+    \node[fit = (TEs)(TB)(TEq)(TA), cont = blue, label = {Estrategia Tres en Raya}] (T) {};
+  \end{scope}
+
+  % Conexiones globales.
+  \connectV{U}{S};
+  \connectV{S}{Ma};
+  \connectH{T}{Ma};
+  \connectH{Ma}{M};
+\end{tikzpicture}

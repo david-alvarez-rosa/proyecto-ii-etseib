@@ -1,0 +1,65 @@
+% -*- TeX-master: "Presentación.tex" -*-
+
+
+% Rama.
+
+\begin{tikzpicture}[tree]
+  \node[board] {
+    \o \& \e \& \e \\
+    \e \& \e \& \e \\
+    \e \& \e \& \e \\
+  }
+  child {
+    node[board] {
+      \o \& \e \& \e \\
+      \e \& \x \& \e \\
+      \e \& \e \& \e \\
+    }
+    child {
+      node[board] {
+        \o \& \o \& \e \\
+        \e \& \x \& \e \\
+        \e \& \e \& \e \\
+      }
+      \EB
+    }
+    child {
+      node[board] {
+        \o \& \e \& \o \\
+        \e \& \x \& \e \\
+        \e \& \e \& \e \\
+      }
+      \EB
+    }
+    child {
+      node[board] {
+        \o \& \e \& \e \\
+        \e \& \x \& \o \\
+        \e \& \e \& \e \\
+      }
+      child{
+        node[board] {
+          \o \& \e \& \e \\
+          \e \& \x \& \o \\
+          \x \& \e \& \e \\
+        }
+      }
+      \EB
+    }
+    child {
+      node[board] {
+        \o \& \e \& \e \\
+        \e \& \x \& \e \\
+        \e \& \e \& \o \\
+      }
+      child {
+        node[board] {
+          \o \& \x \& \e \\
+          \e \& \x \& \e \\
+          \e \& \e \& \o \\
+        }
+      }
+      \EB
+    }
+  };
+\end{tikzpicture}

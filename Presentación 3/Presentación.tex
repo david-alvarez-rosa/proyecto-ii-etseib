@@ -1,0 +1,348 @@
+\documentclass[xcolor = {dvipsnames, table}]{beamer}
+% \setbeameroption{show notes} % Comentar/Descomentar para las notas
+
+\input{Preamble.tex}
+
+
+\title{Tres en raya con \textit{Raspberry Pi}}
+\subtitle{Proyecto II}
+\author{David Álvarez \and Guillermo Creus}
+\institute[]{
+  Escuela Técnica Superior de Ingeniería Industrial de Barcelona \\
+  Universidad Politécnica de Cataluña
+}
+\date{\today}
+\titlegraphic{
+  \includegraphics[height = 1.5cm]{Logo_ETSEIB.png}
+  \hspace{1cm}
+  \includegraphics[height = 1.5cm]{Logo_UPC.png}
+}
+
+
+\begin{document}
+
+\frame{\titlepage}
+
+
+\section{Introducción}
+
+\subsection{El proyecto}
+
+\begin{frame}{Visión general del proyecto}
+  \begin{columns}
+    \column{.55\textwidth}
+    \begin{itemize}
+      \item Estrategia Tres en Raya.
+      \item Replanteamiento proyecto:
+      \begin{itemize}
+        \item Movimiento con brazo robótico.
+        \item Animación virtual.
+      \end{itemize}
+      \item Interfaz web.
+    \end{itemize}
+    \column{.45\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width = \textwidth]{Robot.png}
+    \end{figure}
+    \begin{figure}
+      \centering
+      \includegraphics[width = \textwidth]{Animacion.png}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Replanteamiento del proyecto}
+  \begin{figure}
+      \centering
+      \includegraphics[width=.7\textwidth]{worldwideweb.png}
+  \end{figure}
+
+\end{frame}
+
+
+\section{Herramientas e implementación}
+
+\subsection{Introducción}
+
+\begin{frame}{Herramientas e implementación}
+  \begin{itemize}
+    \item ¿Qué herramientas se han usado en este proyecto?
+    \item ¿Qué lenguajes de programación se han usado?
+  \end{itemize}
+\end{frame}
+
+\subsection{Tres en Raya}
+
+\begin{frame}{Lenguaje de programación Tres en Raya}
+  \begin{columns}
+    \column{.7\textwidth}
+    \begin{itemize}
+      \item Python como lenguaje principal.
+      \item Bibliotecas usadas:
+      \begin{itemize}
+        \item Random $\rightarrow$ Aleatorizar movimientos.
+        \item Sys $\rightarrow$ Leer variables desde terminal.
+        \item Math $\rightarrow$ Resolución de ecuaciones de enlace.
+        \item \colorbox{gray!50}{Adafruit} $\rightarrow$ Mover servos.
+        \item \colorbox{gray!50}{Time} $\rightarrow$ Sleep.
+        \item \colorbox{gray!50}{Threading} $\rightarrow$ Movimiento simultáneo.
+      \end{itemize}
+    \end{itemize}
+    \column{.3\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width = \textwidth]{Logo_Python.png}
+    \end{figure}
+  \end{columns}
+
+  \note{
+    Comentar que \underline{solo} se han usado librerías básicas, todo lo demás
+    lo hemos hecho nosotros. \\
+    Las librerías que están subrayadas son las que se usarían si estuviera
+    funcionando el brazo robótico (nosotros en la web no las usamos).
+  }
+\end{frame}
+
+
+\subsection{Servidor web}
+
+\begin{frame}{El servidor web usado y lenguajes}
+  \begin{columns}
+    \column{.55\textwidth}
+    \begin{itemize}
+      \item Servidor Web usado: Apache.
+      \begin{itemize}
+        \item Software libre.
+        \item Es el servidor web más usado actualmente en el mundo.
+      \end{itemize}
+      \item Lenguaje usado para conectar el servidor web con el código en
+      Python: PHP.
+    \end{itemize}
+    \column{.4\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width = \textwidth]{Logo_Apache.png}
+    \end{figure}
+    \begin{figure}
+      \centering
+      \includegraphics[width = \textwidth]{Logo_PHP.png}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+
+\subsection{Interfaz gráfica}
+
+\begin{frame}{Lenguajes utilizados en la Interfaz}
+  \begin{itemize}
+    \item \underline{HTML}: Creación de la estructuración de la web.
+    \item \underline{CSS}: Hojas de estilo (apariencia de la web).
+    \item \underline{JS}: Animación del brazo robótico.
+  \end{itemize}
+  \vspace{.75cm}
+  \begin{figure}[b]
+    \centering
+    \includegraphics[width = .2\textwidth]{Logo_HTML.png}
+    \hspace{.1\textwidth}
+    \includegraphics[width = .2\textwidth]{Logo_CSS.png}
+    \hspace{.1\textwidth}
+    \includegraphics[width = .2\textwidth]{Logo_JS.png}
+  \end{figure}
+\end{frame}
+
+
+\subsection{Resumen}
+
+\begin{frame}{Resumen de lenguajes utilizados}
+\begin{table}[htbp]
+  \centering
+  \renewcommand{\arraystretch}{1.25}
+  \setlength{\tabcolsep}{1.5\tabcolsep}
+  \rowcolors{2}{white}{gray!30}
+  \begin{tabular}{*3c}
+    \toprule
+    Lenguaje & \# Archivos & \# Líneas total \\
+    \midrule
+    Python \imgInline{Logo_Python.png} & 9 & 1025 \\
+    JavaScript \imgInline{Logo_JS.png} & 2 & 366 \\
+    PHP \imgInline{Logo_PHP.png} + HTML \imgInline{Logo_HTML.png} & 18 & 1315 \\
+    CSS \imgInline{Logo_CSS.png} & 3 & 696 \\
+    \hline
+    TOTAL & 32 & 3402 \\
+    \bottomrule
+  \end{tabular}
+  \vspace{1cm}
+  \begin{itemize}
+    \item Otros: \LaTeX para presentaciones (Beamer), gráficos e informe.
+  \end{itemize}
+\end{table}
+\end{frame}
+
+
+\section{Funcionamiento y lógica}
+
+\begin{frame}{Funcionamiento y lógica}
+  \begin{itemize}
+    \item ¿Cuál es la lógica detrás de la estrategia del Tres en Raya?
+    \item ¿Cómo se mueven las piezas?
+    \item ¿Cómo funciona la animación?
+  \end{itemize}
+\end{frame}
+
+
+\subsection{Tres en Raya}
+
+\begin{frame}{Funcionamiento estrategia Tres en Raya}
+  \begin{itemize}
+    \item Provee una respuesta al input proporcionado
+    \item Juego suma cero $\Rightarrow$ con una estrategia correcta se puede evitar perder
+    \item Desarrollo del árbol de posibilidades, evitando las ramas perdedoras
+    \item \textbf{FINALIDAD:} Dado un tablero, ``guiar'' la partida hacia una
+    posición ganadora o acabar en tablas mediante una \textit{estrategia
+      básica.}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Descarte de tableros según simetrías}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{figure}
+      \centering
+      \scalebox{.5}{\input{Simetrias.tex}}
+    \end{figure}
+    \column{0.3\textwidth}
+    \begin{itemize}
+      \item Permite pasar de $9!$ (362800) tableros a 30.
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Estrategia básica}
+  \begin{columns}
+    \column{0.6\textwidth}
+    \begin{figure}
+      \centering
+      \scalebox{.5}{
+        \begin{tikzpicture}[tree]
+          \node[board] (20) {
+            \o \& \e \& \e \\
+            \o \& \e \& \x \\
+            \e \& \e \& \x \\
+          }
+          child {
+            node[board] (21) {
+              \o \& \e \& \e \\
+              \o \& \e \& \x \\
+              \x \& \e \& \x \\
+            }
+          }
+          child {
+            node[board] (22) {
+              \o \& \e \& \x \\
+              \o \& \e \& \x \\
+              \e \& \e \& \x \\
+            }
+          };
+          % \draw[marker = RoyalBlue] (1-1-1.north west) to (1-3-3.south east);
+          \draw[marker = OliveGreen] (22-3-3.south) to (22-1-3.north);
+          % \draw[marker = OliveGreen] (22-2-1.west) to (22-2-3.east);
+          % \draw[marker = RoyalBlue] (23-1-1.north) to (23-3-1.south);
+        \end{tikzpicture}
+      }
+    \end{figure}
+    \column{0.4\textwidth}
+    \begin{itemize}
+      \item \textbf{NO} es suficiente para evitar la derrota.
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Una rama como ejemplo}
+  \begin{figure}
+    \centering
+    \vspace{-1.25cm}
+    \scalebox{.375}{\input{Rama.tex}}
+  \end{figure}
+\end{frame}
+
+
+\subsection{Interfaz gráfica}
+
+\begin{frame}{Interfaz gráfica}
+  \begin{columns}
+    \column{.55\textwidth}
+    \begin{itemize}
+      \item Se trata de una interfaz web.
+      \item Juego de Tres en Raya interactivo.
+      \item Información de ángulos.
+      \item Documentación y código dentro de la web.
+    \end{itemize}
+    \column{.45\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width = \textwidth]{Interfaz_web.png}
+    \end{figure}
+    \begin{figure}
+      \centering
+      \includegraphics[width = \textwidth]{Interfaz_tabla.png}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Servidor web}
+  \begin{figure}
+    \centering
+    \scalebox{.65}{\input{Arquitectura.tex}}
+  \end{figure}
+\end{frame}
+
+
+\subsection{Movimiento}
+
+\begin{frame}{Brazo robótico virtual a escala}
+  \begin{columns}
+    \column{.6\textwidth}
+    \begin{enumerate}
+      \item Definición puntos en el espacio de almacen.
+      \item Resolución de ecuaciones de enlace cinemáticas (coordenadas $\rightarrow$
+      ángulos).
+      \item JS mueve las barras.
+      \item Definición puntos en el espacio de posición en el tablero.
+      \item Igual que (2).
+    \end{enumerate}
+    \column{.4\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width = \textwidth]{Brazo_escala.png}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Brazo robótico virtual a escala II}
+  \begin{figure}
+    \centering
+    \includegraphics[width = .95\textwidth]{Animacion.png}
+  \end{figure}
+  \note{
+    Comentar la simultaneidad de movimientos. \\
+    La velocidad se puee ajustar también.
+  }
+\end{frame}
+
+
+\section{Demostración}
+
+\subsection{Resultados}
+
+\begin{frame}{Resultados}
+  \begin{center}
+    \href{https://alvarezrosa.com/proyecto/}{Comenzar}
+  \end{center}
+  \note{
+    Clicamos y enseñamos la web.
+  }
+\end{frame}
+
+
+\end{document}
